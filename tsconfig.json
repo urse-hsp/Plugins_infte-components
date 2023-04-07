@@ -9,7 +9,8 @@
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@infte/components": ["src"],
-      "@infte/components/*": ["src/*", "*"]
+      "@infte/components/*": ["src/*", "*"],
+      "@infte/*": ["packages/*", "*"]
     }
   },
   "include": [".dumi/**/*", ".dumirc.ts", "src/**/*"]

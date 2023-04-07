@@ -1,9 +1,8 @@
+import { isAddress } from '@infte/web3-utils';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { message } from 'antd';
 import { ethers } from 'ethers';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-// import { useTranslation } from 'react-i18next';
-import React from 'react';
 import { createContainer } from 'unstated-next';
 import config, { type chainsType, type contractsType } from './config';
 import { dataType } from './data';
@@ -40,8 +39,9 @@ interface web3HookType {
   contracts: contractsType | undefined;
 }
 
-const useWeb3Hook = (): web3HookType => {
-  // const { t } = useTranslation();
+// initialState
+const useWeb3Hook = (props): web3HookType => {
+  console.log(props, '123');
 
   // Web3
   const [web3Provider, setWeb3Provider] = useState<any>(null);
@@ -203,8 +203,8 @@ const useWeb3Hook = (): web3HookType => {
       // 处理新帐户或缺少新帐户（_A）。/ Handle the new _accounts, or lack thereof.
       if (!_accounts.length) return;
       if (account === _accounts[0]) return;
-      setAccount(_accounts[0]);
-      window.location.reload();
+      setAccount(isAddress(_accounts[0]) ?? '');
+      // window.location.reload();
     });
 
     // chainChanged
@@ -214,7 +214,7 @@ const useWeb3Hook = (): web3HookType => {
         return element.chainId === Number(chainIdValue);
       });
       setNetworkId(network.networkId);
-      window.location.reload();
+      // window.location.reload();
     });
 
     // disconnect
@@ -257,12 +257,16 @@ export const useWeb3Provider = (): web3HookType => {
 
 type Web3ModalType = {
   children: ReactNode;
+  ethereumClient: any;
 };
 
-export function Web3Modal({ children }: Web3ModalType) {
+export function Web3Modal(props: Web3ModalType) {
+  const { children } = props;
   return (
     <Storage.Provider>
-      <Web3Hook.Provider>{children}</Web3Hook.Provider>
+      <Web3Hook.Provider initialState={props.ethereumClient}>
+        {children}
+      </Web3Hook.Provider>
     </Storage.Provider>
   );
 }

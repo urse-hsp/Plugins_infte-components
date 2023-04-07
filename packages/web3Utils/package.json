@@ -1,5 +1,5 @@
 {
-  "name": "@infte/web3modal-react",
+  "name": "@infte/web3-utils",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -9,9 +9,5 @@
   "scripts": {
     "build": "father build",
     "dev": "father dev"
-  },
-  "dependencies": {
-    "@metamask/detect-provider": "^2.0.0",
-    "unstated-next": "^1.1.0"
   }
 }
