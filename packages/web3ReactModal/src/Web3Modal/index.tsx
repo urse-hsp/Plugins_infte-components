@@ -10,9 +10,9 @@ import React, {
   useState,
 } from 'react';
 import { createContainer } from 'unstated-next';
+import resources, { localeKeys } from '../locales';
 import config, { type chainsType, type contractsType } from './config';
-import Storage from './storage';
-
+import Storage, { storageInitialStates } from './storage';
 export type dataType<T> = Record<string, T>;
 
 export type WalletType = string;
@@ -47,19 +47,19 @@ interface web3HookType {
 type initialState = {
   chainsList?: chainsType[]; // 支持的链
   reload?: boolean; // 刷新页面
+  locale?: localeKeys; // 语言
 };
+
+const BaseLocale = 'zh_cn';
 const BaseinitialState: initialState = {
   chainsList: config.chainsList,
   reload: false,
+  locale: BaseLocale,
 };
 
 const useWeb3Hook = (props?: initialState): web3HookType => {
-  const initialData: initialState = {
-    ...BaseinitialState,
-    ...props,
-  };
-  const { chainsList = [], reload } = initialData;
-  console.log(initialData, 'initialData');
+  const initialData: initialState = Object.assign({}, BaseinitialState, props);
+  const { chainsList = [], reload, locale = BaseLocale } = initialData;
 
   // Web3
   const [web3Provider, setWeb3Provider] = useState<any>(null);
@@ -75,6 +75,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   );
 
   const { walletType, networkId, setNetworkId } = Storage.useContainer();
+
+  const t = (str: string) => {
+    return resources[locale][str];
+  };
 
   const setProviderChainId = (chainId: string) => {
     return Number(
@@ -151,14 +155,14 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
                   return addError.message;
                 }
               } else if (switchError.code === 4001) {
-                // message.error(t('You denied the "Switch network" request'));
+                message.error(t('You denied the "Switch network" request'));
                 return;
               } else if (switchError.code === -32002) {
-                // message.destroy(
-                //   t(
-                //     'A "Switch Network" request has been sent,Please confirm in your wallet.',
-                //   ) ?? '',
-                // );
+                message.destroy(
+                  t(
+                    'A "Switch Network" request has been sent,Please confirm in your wallet.',
+                  ),
+                );
                 return;
               } else {
                 message.error(switchError.message);
@@ -189,11 +193,11 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           return messgae;
         }
       } else {
-        // message.error(
-        //   `${t(
-        //     'Unsupported network, need to switch to supported network:',
-        //   )}${network_id}`,
-        // );
+        message.error(
+          `${t(
+            'Unsupported network, need to switch to supported network:',
+          )}${network_id}`,
+        );
       }
     },
     [],
@@ -273,10 +277,12 @@ export const useWeb3Provider = (): web3HookType => {
   }, [data]);
 };
 
-type Web3ModalType = {
+interface ethereumClient extends initialState, storageInitialStates {}
+
+interface Web3ModalType {
   children: ReactNode;
-  ethereumClient: initialState;
-};
+  ethereumClient: ethereumClient;
+}
 
 export function Web3Modal(props: Web3ModalType) {
   const { children, ethereumClient } = props;

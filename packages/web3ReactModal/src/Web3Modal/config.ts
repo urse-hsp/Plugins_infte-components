@@ -11,7 +11,6 @@ export interface chainsType {
 }
 interface BaseDataType {
   BASE_NETWORK_ID: number;
-  BASE_WALLET_TYPE: string;
   chainsList: chainsType[];
 }
 
@@ -27,7 +26,6 @@ const config: BaseDataType = {
 
   // 钱包
   BASE_NETWORK_ID: CHAIN_ID,
-  BASE_WALLET_TYPE: 'MetaMask',
   chainsList, // 支持链
   // 主网
 };

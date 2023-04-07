@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
+    "dev": "react-scripts start",
     "eject": "react-scripts eject",
     "start": "react-scripts start"
   },

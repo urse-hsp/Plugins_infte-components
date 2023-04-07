@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-  <Web3Modal ethereumClient={{}}>
+  <Web3Modal ethereumClient={{ locale: 'zh_hk' }}>
     <App />,
   </Web3Modal>,
   // </React.StrictMode>,
