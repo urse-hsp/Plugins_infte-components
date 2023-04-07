@@ -9,5 +9,8 @@
   "scripts": {
     "build": "father build",
     "dev": "father dev"
+  },
+  "dependencies": {
+    "ethers": "5.7.2"
   }
 }

@@ -22,6 +22,7 @@
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "package-dev": "turbo run dev --filter=web...",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
     "start": "npm run dev"
@@ -49,8 +50,7 @@
     ]
   },
   "dependencies": {
-    "antd": "^5.3.2",
-    "ethers": "5.7.2"
+    "antd": "^5.3.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

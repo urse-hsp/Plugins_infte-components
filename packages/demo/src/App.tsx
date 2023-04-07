@@ -1,4 +1,5 @@
 import { useWeb3Provider } from '@infte/web3modal-react';
+
 import './App.css';
 
 function App() {

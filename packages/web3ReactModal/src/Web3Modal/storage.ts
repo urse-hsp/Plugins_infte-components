@@ -1,9 +1,10 @@
+import { localStorage } from '@infte/utils';
 import { useMemo, useState } from 'react';
 import { createContainer } from 'unstated-next';
+import { type WalletType } from '.';
 import config from './config';
-import { dataType } from './data';
-import { localStorage } from './utils';
-import { type WalletType } from './Web3Modal';
+
+export type dataType<T> = Record<string, T>;
 
 const NETWORK_ID_NAME = 'NETWORK_ID';
 const WALLET_TYPE_NAME = 'WALLET_TYPE';

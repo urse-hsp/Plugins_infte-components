@@ -1,4 +1,4 @@
-import chains from './network.chains.list.json';
+import chains from '../Web3Modal/network.chains.list.json';
 
 export interface contractsType {
   social: string;

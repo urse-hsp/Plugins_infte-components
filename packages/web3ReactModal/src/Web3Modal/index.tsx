@@ -2,13 +2,18 @@ import { isAddress } from '@infte/web3-utils';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { message } from 'antd';
 import { ethers } from 'ethers';
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { createContainer } from 'unstated-next';
 import config, { type chainsType, type contractsType } from './config';
-import { dataType } from './data';
 import Storage from './storage';
 
-const chainsList = config.chainsList;
+export type dataType<T> = Record<string, T>;
 
 export type WalletType = string;
 type WalletProiderType = Record<WalletType, any>;
@@ -39,9 +44,22 @@ interface web3HookType {
   contracts: contractsType | undefined;
 }
 
-// initialState
-const useWeb3Hook = (props): web3HookType => {
-  console.log(props, '123');
+type initialState = {
+  chainsList?: chainsType[]; // 支持的链
+  reload?: boolean; // 刷新页面
+};
+const BaseinitialState: initialState = {
+  chainsList: config.chainsList,
+  reload: false,
+};
+
+const useWeb3Hook = (props?: initialState): web3HookType => {
+  const initialData: initialState = {
+    ...BaseinitialState,
+    ...props,
+  };
+  const { chainsList = [], reload } = initialData;
+  console.log(initialData, 'initialData');
 
   // Web3
   const [web3Provider, setWeb3Provider] = useState<any>(null);
@@ -199,12 +217,12 @@ const useWeb3Hook = (props): web3HookType => {
   // 监听登录
   useEffect(() => {
     if (!WalletProider?.on) return;
+    // 切换
     WalletProider.on('accountsChanged', (_accounts: any) => {
-      // 处理新帐户或缺少新帐户（_A）。/ Handle the new _accounts, or lack thereof.
       if (!_accounts.length) return;
       if (account === _accounts[0]) return;
       setAccount(isAddress(_accounts[0]) ?? '');
-      // window.location.reload();
+      if (reload) window.location.reload();
     });
 
     // chainChanged
@@ -214,7 +232,7 @@ const useWeb3Hook = (props): web3HookType => {
         return element.chainId === Number(chainIdValue);
       });
       setNetworkId(network.networkId);
-      // window.location.reload();
+      if (reload) window.location.reload();
     });
 
     // disconnect
@@ -257,14 +275,14 @@ export const useWeb3Provider = (): web3HookType => {
 
 type Web3ModalType = {
   children: ReactNode;
-  ethereumClient: any;
+  ethereumClient: initialState;
 };
 
 export function Web3Modal(props: Web3ModalType) {
-  const { children } = props;
+  const { children, ethereumClient } = props;
   return (
     <Storage.Provider>
-      <Web3Hook.Provider initialState={props.ethereumClient}>
+      <Web3Hook.Provider initialState={ethereumClient}>
         {children}
       </Web3Hook.Provider>
     </Storage.Provider>
