@@ -10,9 +10,11 @@ import React, {
   useState,
 } from 'react';
 import { createContainer } from 'unstated-next';
-import resources, { localeKeys } from '../locales';
+import resources from '../locales';
+import { localeKeys } from '../locales/index';
 import config, { type chainsType, type contractsType } from './config';
 import Storage, { storageInitialStates } from './storage';
+
 export type dataType<T> = Record<string, T>;
 
 export type WalletType = string;
@@ -34,11 +36,7 @@ interface web3HookType {
   account: string; // 账户
   active: boolean; // 是否链接
   loading: boolean; // loading
-  connect: (
-    network_id: number,
-    wallet_type: WalletType,
-    auto_connect?: boolean,
-  ) => any;
+  connect: (network_id?: number, wallet_type?: WalletType) => any;
   disconnect: () => any;
   networkChainsInfo: chainsType | undefined;
   contracts: contractsType | undefined;
@@ -74,7 +72,8 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     undefined,
   );
 
-  const { walletType, networkId, setNetworkId } = Storage.useContainer();
+  const { walletType, networkId, setNetworkId, setWalletType } =
+    Storage.useContainer();
 
   const t = (str: string) => {
     return resources[locale][str];
@@ -86,10 +85,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     );
   };
 
-  const connect = useCallback(
+  const connector = useCallback(
     async (
       chainsId: number,
-      wallet_type: WalletType = 'MetaMask',
+      wallet_type: WalletType,
       auto_connect?: boolean,
     ) => {
       setLoading(true);
@@ -183,9 +182,9 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           setChainId(providerChainId);
           setContracts(chainsInfo.contracts);
           setNetworkChainsInfo(chainsInfo);
-
           setLoading(false);
-
+          setNetworkId(providerChainId);
+          setWalletType(wallet_type);
           return null;
         } catch (e: any) {
           const messgae = t(catchMsg[e.message]) ?? e.message;
@@ -203,6 +202,12 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     [],
   );
 
+  const connect = (id = networkId, type = walletType) => {
+    if (id && type) {
+      connector(id, type);
+    }
+  };
+
   const disconnect = () => {
     setWeb3Provider(null);
     setWalletProider(null);
@@ -214,7 +219,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
   useEffect(() => {
     if (networkId && walletType) {
-      connect(networkId, walletType, false);
+      connector(networkId, walletType, false);
     }
   }, []);
 
@@ -225,7 +230,8 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     WalletProider.on('accountsChanged', (_accounts: any) => {
       if (!_accounts.length) return;
       if (account === _accounts[0]) return;
-      setAccount(isAddress(_accounts[0]) ?? '');
+      const networkId: string = isAddress(_accounts[0]) ?? '';
+      setAccount(networkId);
       if (reload) window.location.reload();
     });
 
@@ -240,7 +246,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     });
 
     // disconnect
-    WalletProider?.once('disconnect', disconnect);
+    // WalletProider?.on('disconnect', disconnect);
   }, [WalletProider, account, disconnect, setNetworkId]);
 
   return useMemo(() => {
@@ -277,7 +283,9 @@ export const useWeb3Provider = (): web3HookType => {
   }, [data]);
 };
 
-interface ethereumClient extends initialState, storageInitialStates {}
+interface ethereumClient extends initialState, storageInitialStates {
+  locale?: localeKeys; // 语言
+}
 
 interface Web3ModalType {
   children: ReactNode;

@@ -1,17 +1,26 @@
 [
   {
     "name": "FIBO",
-    "shortName": "FIBO",
-    "chainId": 1230,
-    "networkId": 1230,
+    "chainId": 12306,
+    "shortName": "fibo",
+    "chain": "FIBO",
+    "network": "fibochain",
+    "networkId": 12306,
+    "nativeCurrency": { "name": "FIBO", "symbol": "FIBO", "decimals": 18 },
     "rpc": ["https://fbc-dataseed1.fibochain.org"],
+    "faucets": [],
     "explorers": [
       {
         "name": "FIBO",
-        "url": "https://scan.fibochain.org/",
+        "url": "https://scan.fibochain.org",
         "standard": "EIP3091"
       }
-    ]
+    ],
+    "infoURL": "https://ethereum.org",
+    "contracts": {
+      "social": ""
+    },
+    "location_id": 1
   },
   {
     "name": "Ethereum Mainnet",
@@ -2039,7 +2048,7 @@
     "explorers": [
       {
         "name": "OKLink",
-        "url": "https://www.oklink.com/okexchain-test",
+        "url": "https://www.oklink.com/oktc-test",
         "standard": "EIP3091"
       }
     ],

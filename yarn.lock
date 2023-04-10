@@ -2060,7 +2060,7 @@
 
 "@infte/web3modal-react@^1.0.4", "@infte/web3modal-react@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.5"
+  "version" "1.0.8"
   dependencies:
     "@infte/utils" "^1.0.0"
     "@infte/web3-utils" "^1.0.0"

@@ -1,10 +1,10 @@
 {
   "name": "@infte/web3modal-react",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "",
   "license": "ISC",
   "author": "",
-  "main": "dist/index.ts",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",

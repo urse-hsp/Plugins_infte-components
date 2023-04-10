@@ -16,7 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      // "@infte/web3modal-react": ["@infte/web3modal-react"]
+      "@infte/*": ["*"]
     }
   },
   "include": ["src"]

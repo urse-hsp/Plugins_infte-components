@@ -10,14 +10,8 @@ const NETWORK_ID_NAME = 'NETWORK_ID';
 const WALLET_TYPE_NAME = 'WALLET_TYPE';
 
 export type storageInitialStates = {
-  network_id: number; // 默认链
+  network_id?: number | string | null; // 默认链
   wallet_type?: string; // 钱包类型
-};
-const defaultStates: storageInitialStates = {
-  network_id: localStorage(NETWORK_ID_NAME)
-    ? Number(localStorage(NETWORK_ID_NAME))
-    : config.chainsList[0].chainId,
-  wallet_type: localStorage(WALLET_TYPE_NAME) ?? 'MetaMask',
 };
 
 interface StorageType {
@@ -28,15 +22,28 @@ interface StorageType {
 }
 
 function useStorage(customInitialStates?: storageInitialStates): StorageType {
-  const initStates = Object.assign({}, defaultStates, customInitialStates);
+  const initStates: storageInitialStates = {
+    ...customInitialStates,
+    network_id:
+      localStorage(NETWORK_ID_NAME) ??
+      customInitialStates?.network_id ??
+      config.chainsList[0].chainId,
+    wallet_type:
+      localStorage(WALLET_TYPE_NAME) ??
+      customInitialStates?.wallet_type ??
+      'MetaMask',
+  };
 
-  const [networkId, setNetworkId] = useState<number>(initStates.network_id);
-  const [walletType, setWalletType] = useState<WalletType>(
-    initStates?.wallet_type ?? '',
+  const [networkId, setNetworkId] = useState<
+    storageInitialStates['network_id']
+  >(initStates.network_id ?? null);
+
+  const [walletType, setWalletType] = useState<string>(
+    initStates?.wallet_type ?? 'MetaMask',
   );
 
   return {
-    networkId,
+    networkId: Number(networkId),
     walletType,
     setNetworkId: (payload: number) => {
       localStorage(NETWORK_ID_NAME, payload);

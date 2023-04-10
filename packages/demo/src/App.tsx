@@ -4,13 +4,12 @@ import './App.css';
 
 function App() {
   const { connect, account, disconnect } = useWeb3Provider();
-  // console.log(getName('hsp'), 'getName');
 
   return (
     <div className="App">
       <button
         onClick={() => {
-          connect?.(65, 'MetaMask');
+          connect?.(12306);
         }}
       >
         链接
