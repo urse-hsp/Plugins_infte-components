@@ -2,13 +2,7 @@ import { isAddress } from '@infte/web3-utils';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { message } from 'antd';
 import { ethers } from 'ethers';
-import React, {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { createContainer } from 'unstated-next';
 import resources from '../locales';
 import { localeKeys } from '../locales/index';
