@@ -1366,15 +1366,7 @@
   "resolved" "https://registry.npmmirror.com/@csstools/normalize.css/-/normalize.css-12.0.0.tgz"
   "version" "12.0.0"
 
-"@csstools/postcss-cascade-layers@^1.1.1":
-  "integrity" "sha512-+KdYrpKC5TgomQr2DlZF4lDEpHcoxnj5IGddYYfBWJAKfj1JtuHUIqMa+E1pJJ+z3kvDViWMqyqPlG4Ja7amQA=="
-  "resolved" "https://registry.npmmirror.com/@csstools/postcss-cascade-layers/-/postcss-cascade-layers-1.1.1.tgz"
-  "version" "1.1.1"
-  dependencies:
-    "@csstools/selector-specificity" "^2.0.2"
-    "postcss-selector-parser" "^6.0.10"
-
-"@csstools/postcss-color-function@^1.1.0", "@csstools/postcss-color-function@^1.1.1":
+"@csstools/postcss-color-function@^1.1.0":
   "integrity" "sha512-Bc0f62WmHdtRDjf5f3e2STwRAl89N2CLb+9iAwzrv4L2hncrbDwnQD9PCq0gtAt7pOI2leIV08HIBUd4jxD8cw=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-color-function/-/postcss-color-function-1.1.1.tgz"
   "version" "1.1.1"
@@ -1382,21 +1374,21 @@
     "@csstools/postcss-progressive-custom-properties" "^1.1.0"
     "postcss-value-parser" "^4.2.0"
 
-"@csstools/postcss-font-format-keywords@^1.0.0", "@csstools/postcss-font-format-keywords@^1.0.1":
+"@csstools/postcss-font-format-keywords@^1.0.0":
   "integrity" "sha512-ZgrlzuUAjXIOc2JueK0X5sZDjCtgimVp/O5CEqTcs5ShWBa6smhWYbS0x5cVc/+rycTDbjjzoP0KTDnUneZGOg=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-font-format-keywords/-/postcss-font-format-keywords-1.0.1.tgz"
   "version" "1.0.1"
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"@csstools/postcss-hwb-function@^1.0.0", "@csstools/postcss-hwb-function@^1.0.2":
+"@csstools/postcss-hwb-function@^1.0.0":
   "integrity" "sha512-YHdEru4o3Rsbjmu6vHy4UKOXZD+Rn2zmkAmLRfPet6+Jz4Ojw8cbWxe1n42VaXQhD3CQUXXTooIy8OkVbUcL+w=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-hwb-function/-/postcss-hwb-function-1.0.2.tgz"
   "version" "1.0.2"
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"@csstools/postcss-ic-unit@^1.0.0", "@csstools/postcss-ic-unit@^1.0.1":
+"@csstools/postcss-ic-unit@^1.0.0":
   "integrity" "sha512-Ot1rcwRAaRHNKC9tAqoqNZhjdYBzKk1POgWfhN4uCOE47ebGcLRqXjKkApVDpjifL6u2/55ekkpnFcp+s/OZUw=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-ic-unit/-/postcss-ic-unit-1.0.1.tgz"
   "version" "1.0.1"
@@ -1404,7 +1396,7 @@
     "@csstools/postcss-progressive-custom-properties" "^1.1.0"
     "postcss-value-parser" "^4.2.0"
 
-"@csstools/postcss-is-pseudo-class@^2.0.2", "@csstools/postcss-is-pseudo-class@^2.0.7":
+"@csstools/postcss-is-pseudo-class@^2.0.2":
   "integrity" "sha512-7JPeVVZHd+jxYdULl87lvjgvWldYu+Bc62s9vD/ED6/QTGjy0jy0US/f6BG53sVMTBJ1lzKZFpYmofBN9eaRiA=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-is-pseudo-class/-/postcss-is-pseudo-class-2.0.7.tgz"
   "version" "2.0.7"
@@ -1412,21 +1404,14 @@
     "@csstools/selector-specificity" "^2.0.0"
     "postcss-selector-parser" "^6.0.10"
 
-"@csstools/postcss-nested-calc@^1.0.0":
-  "integrity" "sha512-JCsQsw1wjYwv1bJmgjKSoZNvf7R6+wuHDAbi5f/7MbFhl2d/+v+TvBTU4BJH3G1X1H87dHl0mh6TfYogbT/dJQ=="
-  "resolved" "https://registry.npmmirror.com/@csstools/postcss-nested-calc/-/postcss-nested-calc-1.0.0.tgz"
-  "version" "1.0.0"
-  dependencies:
-    "postcss-value-parser" "^4.2.0"
-
-"@csstools/postcss-normalize-display-values@^1.0.0", "@csstools/postcss-normalize-display-values@^1.0.1":
+"@csstools/postcss-normalize-display-values@^1.0.0":
   "integrity" "sha512-jcOanIbv55OFKQ3sYeFD/T0Ti7AMXc9nM1hZWu8m/2722gOTxFg7xYu4RDLJLeZmPUVQlGzo4jhzvTUq3x4ZUw=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-normalize-display-values/-/postcss-normalize-display-values-1.0.1.tgz"
   "version" "1.0.1"
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"@csstools/postcss-oklab-function@^1.1.0", "@csstools/postcss-oklab-function@^1.1.1":
+"@csstools/postcss-oklab-function@^1.1.0":
   "integrity" "sha512-nJpJgsdA3dA9y5pgyb/UfEzE7W5Ka7u0CX0/HIMVBNWzWemdcTH3XwANECU6anWv/ao4vVNLTMxhiPNZsTK6iA=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-oklab-function/-/postcss-oklab-function-1.1.1.tgz"
   "version" "1.1.1"
@@ -1441,28 +1426,14 @@
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"@csstools/postcss-stepped-value-functions@^1.0.0", "@csstools/postcss-stepped-value-functions@^1.0.1":
+"@csstools/postcss-stepped-value-functions@^1.0.0":
   "integrity" "sha512-dz0LNoo3ijpTOQqEJLY8nyaapl6umbmDcgj4AD0lgVQ572b2eqA1iGZYTTWhrcrHztWDDRAX2DGYyw2VBjvCvQ=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-stepped-value-functions/-/postcss-stepped-value-functions-1.0.1.tgz"
   "version" "1.0.1"
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"@csstools/postcss-text-decoration-shorthand@^1.0.0":
-  "integrity" "sha512-c1XwKJ2eMIWrzQenN0XbcfzckOLLJiczqy+YvfGmzoVXd7pT9FfObiSEfzs84bpE/VqfpEuAZ9tCRbZkZxxbdw=="
-  "resolved" "https://registry.npmmirror.com/@csstools/postcss-text-decoration-shorthand/-/postcss-text-decoration-shorthand-1.0.0.tgz"
-  "version" "1.0.0"
-  dependencies:
-    "postcss-value-parser" "^4.2.0"
-
-"@csstools/postcss-trigonometric-functions@^1.0.2":
-  "integrity" "sha512-woKaLO///4bb+zZC2s80l+7cm07M7268MsyG3M0ActXXEFi6SuhvriQYcb58iiKGbjwwIU7n45iRLEHypB47Og=="
-  "resolved" "https://registry.npmmirror.com/@csstools/postcss-trigonometric-functions/-/postcss-trigonometric-functions-1.0.2.tgz"
-  "version" "1.0.2"
-  dependencies:
-    "postcss-value-parser" "^4.2.0"
-
-"@csstools/postcss-unset-value@^1.0.0", "@csstools/postcss-unset-value@^1.0.2":
+"@csstools/postcss-unset-value@^1.0.0":
   "integrity" "sha512-c8J4roPBILnelAsdLr4XOAR/GsTm0GJi4XpcfvoWk3U6KiTCqiFYc63KhRMQQX35jYMp4Ao8Ij9+IZRgMfJp1g=="
   "resolved" "https://registry.npmmirror.com/@csstools/postcss-unset-value/-/postcss-unset-value-1.0.2.tgz"
   "version" "1.0.2"
@@ -2048,6 +2019,9 @@
     "kolorist" "^1.6.0"
     "local-pkg" "^0.4.2"
 
+"@infte/demo@^0.1.0":
+  "resolved" "git+ssh://git@github.com/packages/myapp.git"
+
 "@infte/utils@^1.0.0", "@infte/utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\utils":
   "resolved" "file:packages/utils"
   "version" "1.0.0"
@@ -2060,7 +2034,7 @@
 
 "@infte/web3modal-react@^1.0.4", "@infte/web3modal-react@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.8"
+  "version" "1.0.9"
   dependencies:
     "@infte/utils" "^1.0.0"
     "@infte/web3-utils" "^1.0.0"
@@ -2935,7 +2909,7 @@
 
 "@testing-library/jest-dom@^5.16.5":
   "integrity" "sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA=="
-  "resolved" "https://registry.npmmirror.com/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz"
+  "resolved" "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz"
   "version" "5.16.5"
   dependencies:
     "@adobe/css-tools" "^4.0.1"
@@ -2950,7 +2924,7 @@
 
 "@testing-library/react@^13.4.0":
   "integrity" "sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw=="
-  "resolved" "https://registry.npmmirror.com/@testing-library/react/-/react-13.4.0.tgz"
+  "resolved" "https://registry.npmjs.org/@testing-library/react/-/react-13.4.0.tgz"
   "version" "13.4.0"
   dependencies:
     "@babel/runtime" "^7.12.5"
@@ -2959,7 +2933,7 @@
 
 "@testing-library/user-event@^13.5.0":
   "integrity" "sha512-5Kwtbo3Y/NowpkbRuSepbyMFkZmHgD+vPzYB/RJ4oxt5Gj/avFFBYjhw27cqSVPVw/3a67NK1PbiIr9k4Gwmdg=="
-  "resolved" "https://registry.npmmirror.com/@testing-library/user-event/-/user-event-13.5.0.tgz"
+  "resolved" "https://registry.npmjs.org/@testing-library/user-event/-/user-event-13.5.0.tgz"
   "version" "13.5.0"
   dependencies:
     "@babel/runtime" "^7.12.5"
@@ -3199,7 +3173,7 @@
 
 "@types/jest@^27.5.2":
   "integrity" "sha512-mpT8LJJ4CMeeahobofYWIjFo0xonRS/HfxnVEPMPFSQdGUt1uHCnoPT7Zhb+sjDU2wz0oKV0OLUR0WzrHNgfeA=="
-  "resolved" "https://registry.npmmirror.com/@types/jest/-/jest-27.5.2.tgz"
+  "resolved" "https://registry.npmjs.org/@types/jest/-/jest-27.5.2.tgz"
   "version" "27.5.2"
   dependencies:
     "jest-matcher-utils" "^27.0.0"
@@ -3294,14 +3268,14 @@
 
 "@types/react-dom@^18.0.0", "@types/react-dom@^18.0.11":
   "integrity" "sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw=="
-  "resolved" "https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.0.11.tgz"
+  "resolved" "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.11.tgz"
   "version" "18.0.11"
   dependencies:
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^18.0.0", "@types/react@^18.0.29", "@types/react@16 || 17 || 18":
   "integrity" "sha512-sHxzVxeanvQyQ1lr8NSHaj0kDzcNiGpILEVt69g9S31/7PfMvNCKLKcsHw4lYKjs3cGNJjXSP4mYzX43QlnjNA=="
-  "resolved" "https://registry.npmmirror.com/@types/react/-/react-18.0.33.tgz"
+  "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.33.tgz"
   "version" "18.0.33"
   dependencies:
     "@types/prop-types" "*"
@@ -4487,7 +4461,7 @@
   "resolved" "https://registry.npmmirror.com/atomic-sleep/-/atomic-sleep-1.0.0.tgz"
   "version" "1.0.0"
 
-"autoprefixer@^10.4.13", "autoprefixer@^10.4.6":
+"autoprefixer@^10.4.6":
   "integrity" "sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ=="
   "resolved" "https://registry.npmmirror.com/autoprefixer/-/autoprefixer-10.4.14.tgz"
   "version" "10.4.14"
@@ -6038,11 +6012,6 @@
   "resolved" "https://registry.npmmirror.com/cssdb/-/cssdb-6.6.3.tgz"
   "version" "6.6.3"
 
-"cssdb@^7.1.0":
-  "integrity" "sha512-NQNRhrEnS6cW+RU/foLphb6xI/MDA70bI3Cy6VxJU8ilxgyTYz1X9zUzFGVTG5nGPylcKAGIt/UNc4deT56lQQ=="
-  "resolved" "https://registry.npmmirror.com/cssdb/-/cssdb-7.5.3.tgz"
-  "version" "7.5.3"
-
 "cssesc@^3.0.0":
   "integrity" "sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg=="
   "resolved" "https://registry.npmmirror.com/cssesc/-/cssesc-3.0.0.tgz"
@@ -6338,6 +6307,7 @@
   "resolved" "file:packages/demo"
   "version" "0.1.0"
   dependencies:
+    "@infte/demo" "^0.1.0"
     "@infte/utils" "^1.0.0"
     "@infte/web3-utils" "^1.0.0"
     "@infte/web3modal-react" "^1.0.4"
@@ -12387,7 +12357,7 @@
   "resolved" "https://registry.npmmirror.com/point-in-polygon/-/point-in-polygon-1.1.0.tgz"
   "version" "1.1.0"
 
-"postcss-attribute-case-insensitive@^5.0.0", "postcss-attribute-case-insensitive@^5.0.2":
+"postcss-attribute-case-insensitive@^5.0.0":
   "integrity" "sha512-XIidXV8fDr0kKt28vqki84fRK8VW8eTuIa4PChv2MqKuT6C9UjmSKzen6KaWhWEoYvwxFCa7n/tC1SZ3tyq4SQ=="
   "resolved" "https://registry.npmmirror.com/postcss-attribute-case-insensitive/-/postcss-attribute-case-insensitive-5.0.2.tgz"
   "version" "5.0.2"
@@ -12414,21 +12384,21 @@
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"postcss-color-functional-notation@^4.2.2", "postcss-color-functional-notation@^4.2.4":
+"postcss-color-functional-notation@^4.2.2":
   "integrity" "sha512-2yrTAUZUab9s6CpxkxC4rVgFEVaR6/2Pipvi6qcgvnYiVqZcbDHEoBDhrXzyb7Efh2CCfHQNtcqWcIruDTIUeg=="
   "resolved" "https://registry.npmmirror.com/postcss-color-functional-notation/-/postcss-color-functional-notation-4.2.4.tgz"
   "version" "4.2.4"
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"postcss-color-hex-alpha@^8.0.3", "postcss-color-hex-alpha@^8.0.4":
+"postcss-color-hex-alpha@^8.0.3":
   "integrity" "sha512-nLo2DCRC9eE4w2JmuKgVA3fGL3d01kGq752pVALF68qpGLmx2Qrk91QTKkdUqqp45T1K1XV8IhQpcu1hoAQflQ=="
   "resolved" "https://registry.npmmirror.com/postcss-color-hex-alpha/-/postcss-color-hex-alpha-8.0.4.tgz"
   "version" "8.0.4"
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"postcss-color-rebeccapurple@^7.0.2", "postcss-color-rebeccapurple@^7.1.1":
+"postcss-color-rebeccapurple@^7.0.2":
   "integrity" "sha512-pGxkuVEInwLHgkNxUc4sdg4g3py7zUeCQ9sMfwyHAT+Ezk8a4OaaVZ8lIY5+oNqA/BXXgLyXv0+5wHP68R79hg=="
   "resolved" "https://registry.npmmirror.com/postcss-color-rebeccapurple/-/postcss-color-rebeccapurple-7.1.1.tgz"
   "version" "7.1.1"
@@ -12453,28 +12423,28 @@
     "browserslist" "^4.21.4"
     "postcss-value-parser" "^4.2.0"
 
-"postcss-custom-media@^8.0.0", "postcss-custom-media@^8.0.2":
+"postcss-custom-media@^8.0.0":
   "integrity" "sha512-7yi25vDAoHAkbhAzX9dHx2yc6ntS4jQvejrNcC+csQJAXjj15e7VcWfMgLqBNAbOvqi5uIa9huOVwdHbf+sKqg=="
   "resolved" "https://registry.npmmirror.com/postcss-custom-media/-/postcss-custom-media-8.0.2.tgz"
   "version" "8.0.2"
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"postcss-custom-properties@^12.1.10", "postcss-custom-properties@^12.1.7":
+"postcss-custom-properties@^12.1.7":
   "integrity" "sha512-0IDJYhgU8xDv1KY6+VgUwuQkVtmYzRwu+dMjnmdMafXYv86SWqfxkc7qdDvWS38vsjaEtv8e0vGOUQrAiMBLpQ=="
   "resolved" "https://registry.npmmirror.com/postcss-custom-properties/-/postcss-custom-properties-12.1.11.tgz"
   "version" "12.1.11"
   dependencies:
     "postcss-value-parser" "^4.2.0"
 
-"postcss-custom-selectors@^6.0.0", "postcss-custom-selectors@^6.0.3":
+"postcss-custom-selectors@^6.0.0":
   "integrity" "sha512-fgVkmyiWDwmD3JbpCmB45SvvlCD6z9CG6Ie6Iere22W5aHea6oWa7EM2bpnv2Fj3I94L3VbtvX9KqwSi5aFzSg=="
   "resolved" "https://registry.npmmirror.com/postcss-custom-selectors/-/postcss-custom-selectors-6.0.3.tgz"
   "version" "6.0.3"
   dependencies:
     "postcss-selector-parser" "^6.0.4"
 
-"postcss-dir-pseudo-class@^6.0.4", "postcss-dir-pseudo-class@^6.0.5":
+"postcss-dir-pseudo-class@^6.0.4":
   "integrity" "sha512-eqn4m70P031PF7ZQIvSgy9RSJ5uI2171O/OO/zcRNYpJbvaeKFUlar1aJ7rmgiQtbm0FSPsRewjpdS0Oew7MPA=="
   "resolved" "https://registry.npmmirror.com/postcss-dir-pseudo-class/-/postcss-dir-pseudo-class-6.0.5.tgz"
   "version" "6.0.5"
@@ -12501,7 +12471,7 @@
   "resolved" "https://registry.npmmirror.com/postcss-discard-overridden/-/postcss-discard-overridden-5.1.0.tgz"
   "version" "5.1.0"
 
-"postcss-double-position-gradients@^3.1.1", "postcss-double-position-gradients@^3.1.2":
+"postcss-double-position-gradients@^3.1.1":
   "integrity" "sha512-GX+FuE/uBR6eskOK+4vkXgT6pDkexLokPaz/AbJna9s5Kzp/yl488pKPjhy0obB475ovfT1Wv8ho7U/cHNaRgQ=="
   "resolved" "https://registry.npmmirror.com/postcss-double-position-gradients/-/postcss-double-position-gradients-3.1.2.tgz"
   "version" "3.1.2"
@@ -12540,12 +12510,12 @@
   "resolved" "https://registry.npmmirror.com/postcss-font-variant/-/postcss-font-variant-5.0.0.tgz"
   "version" "5.0.0"
 
-"postcss-gap-properties@^3.0.3", "postcss-gap-properties@^3.0.5":
+"postcss-gap-properties@^3.0.3":
   "integrity" "sha512-IuE6gKSdoUNcvkGIqdtjtcMtZIFyXZhmFd5RUlg97iVEvp1BZKV5ngsAjCjrVy+14uhGBQl9tzmi1Qwq4kqVOg=="
   "resolved" "https://registry.npmmirror.com/postcss-gap-properties/-/postcss-gap-properties-3.0.5.tgz"
   "version" "3.0.5"
 
-"postcss-image-set-function@^4.0.6", "postcss-image-set-function@^4.0.7":
+"postcss-image-set-function@^4.0.6":
   "integrity" "sha512-9T2r9rsvYzm5ndsBE8WgtrMlIT7VbtTfE7b3BQnudUqnBcBo7L758oc+o+pdj/dUV0l5wjwSdjeOH2DZtfv8qw=="
   "resolved" "https://registry.npmmirror.com/postcss-image-set-function/-/postcss-image-set-function-4.0.7.tgz"
   "version" "4.0.7"
@@ -12573,7 +12543,7 @@
   dependencies:
     "camelcase-css" "^2.0.1"
 
-"postcss-lab-function@^4.2.0", "postcss-lab-function@^4.2.1":
+"postcss-lab-function@^4.2.0":
   "integrity" "sha512-xuXll4isR03CrQsmxyz92LJB2xX9n+pZJ5jE9JgcnmsCammLyKdlzrBin+25dy6wIjfhJpKBAN80gsTlCgRk2w=="
   "resolved" "https://registry.npmmirror.com/postcss-lab-function/-/postcss-lab-function-4.2.1.tgz"
   "version" "4.2.1"
@@ -12698,7 +12668,7 @@
   dependencies:
     "postcss-selector-parser" "^6.0.10"
 
-"postcss-nesting@^10.1.4", "postcss-nesting@^10.2.0":
+"postcss-nesting@^10.1.4":
   "integrity" "sha512-EwMkYchxiDiKUhlJGzWsD9b2zvq/r2SSubcRrgP+jujMXFzqvANLt16lJANC+5uZ6hjI7lpRmI6O8JIl+8l1KA=="
   "resolved" "https://registry.npmmirror.com/postcss-nesting/-/postcss-nesting-10.2.0.tgz"
   "version" "10.2.0"
@@ -12791,7 +12761,7 @@
     "cssnano-utils" "^3.1.0"
     "postcss-value-parser" "^4.2.0"
 
-"postcss-overflow-shorthand@^3.0.3", "postcss-overflow-shorthand@^3.0.4":
+"postcss-overflow-shorthand@^3.0.3":
   "integrity" "sha512-otYl/ylHK8Y9bcBnPLo3foYFLL6a6Ak+3EQBPOTR7luMYCOsiVTUk1iLvNf6tVPNGXcoL9Hoz37kpfriRIFb4A=="
   "resolved" "https://registry.npmmirror.com/postcss-overflow-shorthand/-/postcss-overflow-shorthand-3.0.4.tgz"
   "version" "3.0.4"
@@ -12803,7 +12773,7 @@
   "resolved" "https://registry.npmmirror.com/postcss-page-break/-/postcss-page-break-3.0.4.tgz"
   "version" "3.0.4"
 
-"postcss-place@^7.0.4", "postcss-place@^7.0.5":
+"postcss-place@^7.0.4":
   "integrity" "sha512-wR8igaZROA6Z4pv0d+bvVrvGY4GVHihBCBQieXFY3kuSuMyOmEnnfFzHl/tQuqHZkfkIVBEbDvYcFfHmpSet9g=="
   "resolved" "https://registry.npmmirror.com/postcss-place/-/postcss-place-7.0.5.tgz"
   "version" "7.0.5"
@@ -12815,62 +12785,7 @@
   "resolved" "https://registry.npmmirror.com/postcss-prefix-selector/-/postcss-prefix-selector-1.16.0.tgz"
   "version" "1.16.0"
 
-"postcss-preset-env@^7.0.1":
-  "integrity" "sha512-T1LgRm5uEVFSEF83vHZJV2z19lHg4yJuZ6gXZZkqVsqv63nlr6zabMH3l4Pc01FQCyfWVrh2GaUeCVy9Po+Aag=="
-  "resolved" "https://registry.npmmirror.com/postcss-preset-env/-/postcss-preset-env-7.8.3.tgz"
-  "version" "7.8.3"
-  dependencies:
-    "@csstools/postcss-cascade-layers" "^1.1.1"
-    "@csstools/postcss-color-function" "^1.1.1"
-    "@csstools/postcss-font-format-keywords" "^1.0.1"
-    "@csstools/postcss-hwb-function" "^1.0.2"
-    "@csstools/postcss-ic-unit" "^1.0.1"
-    "@csstools/postcss-is-pseudo-class" "^2.0.7"
-    "@csstools/postcss-nested-calc" "^1.0.0"
-    "@csstools/postcss-normalize-display-values" "^1.0.1"
-    "@csstools/postcss-oklab-function" "^1.1.1"
-    "@csstools/postcss-progressive-custom-properties" "^1.3.0"
-    "@csstools/postcss-stepped-value-functions" "^1.0.1"
-    "@csstools/postcss-text-decoration-shorthand" "^1.0.0"
-    "@csstools/postcss-trigonometric-functions" "^1.0.2"
-    "@csstools/postcss-unset-value" "^1.0.2"
-    "autoprefixer" "^10.4.13"
-    "browserslist" "^4.21.4"
-    "css-blank-pseudo" "^3.0.3"
-    "css-has-pseudo" "^3.0.4"
-    "css-prefers-color-scheme" "^6.0.3"
-    "cssdb" "^7.1.0"
-    "postcss-attribute-case-insensitive" "^5.0.2"
-    "postcss-clamp" "^4.1.0"
-    "postcss-color-functional-notation" "^4.2.4"
-    "postcss-color-hex-alpha" "^8.0.4"
-    "postcss-color-rebeccapurple" "^7.1.1"
-    "postcss-custom-media" "^8.0.2"
-    "postcss-custom-properties" "^12.1.10"
-    "postcss-custom-selectors" "^6.0.3"
-    "postcss-dir-pseudo-class" "^6.0.5"
-    "postcss-double-position-gradients" "^3.1.2"
-    "postcss-env-function" "^4.0.6"
-    "postcss-focus-visible" "^6.0.4"
-    "postcss-focus-within" "^5.0.4"
-    "postcss-font-variant" "^5.0.0"
-    "postcss-gap-properties" "^3.0.5"
-    "postcss-image-set-function" "^4.0.7"
-    "postcss-initial" "^4.0.1"
-    "postcss-lab-function" "^4.2.1"
-    "postcss-logical" "^5.0.4"
-    "postcss-media-minmax" "^5.0.0"
-    "postcss-nesting" "^10.2.0"
-    "postcss-opacity-percentage" "^1.1.2"
-    "postcss-overflow-shorthand" "^3.0.4"
-    "postcss-page-break" "^3.0.4"
-    "postcss-place" "^7.0.5"
-    "postcss-pseudo-class-any-link" "^7.1.6"
-    "postcss-replace-overflow-wrap" "^4.0.0"
-    "postcss-selector-not" "^6.0.1"
-    "postcss-value-parser" "^4.2.0"
-
-"postcss-preset-env@7.5.0":
+"postcss-preset-env@^7.0.1", "postcss-preset-env@7.5.0":
   "integrity" "sha512-0BJzWEfCdTtK2R3EiKKSdkE51/DI/BwnhlnicSW482Ym6/DGHud8K0wGLcdjip1epVX0HKo4c8zzTeV/SkiejQ=="
   "resolved" "https://registry.npmmirror.com/postcss-preset-env/-/postcss-preset-env-7.5.0.tgz"
   "version" "7.5.0"
@@ -12921,7 +12836,7 @@
     "postcss-selector-not" "^5.0.0"
     "postcss-value-parser" "^4.2.0"
 
-"postcss-pseudo-class-any-link@^7.1.2", "postcss-pseudo-class-any-link@^7.1.6":
+"postcss-pseudo-class-any-link@^7.1.2":
   "integrity" "sha512-9sCtZkO6f/5ML9WcTLcIyV1yz9D1rf0tWc+ulKcvV30s0iZKS/ONyETvoWsr6vnrmW+X+KmuK3gV/w5EWnT37w=="
   "resolved" "https://registry.npmmirror.com/postcss-pseudo-class-any-link/-/postcss-pseudo-class-any-link-7.1.6.tgz"
   "version" "7.1.6"
@@ -12964,13 +12879,6 @@
   "version" "5.0.0"
   dependencies:
     "balanced-match" "^1.0.0"
-
-"postcss-selector-not@^6.0.1":
-  "integrity" "sha512-1i9affjAe9xu/y9uqWH+tD4r6/hDaXJruk8xn2x1vzxC2U3J3LKO3zJW4CyxlNhA56pADJ/djpEwpH1RClI2rQ=="
-  "resolved" "https://registry.npmmirror.com/postcss-selector-not/-/postcss-selector-not-6.0.1.tgz"
-  "version" "6.0.1"
-  dependencies:
-    "postcss-selector-parser" "^6.0.10"
 
 "postcss-selector-parser@^6.0.10", "postcss-selector-parser@^6.0.11", "postcss-selector-parser@^6.0.2", "postcss-selector-parser@^6.0.4", "postcss-selector-parser@^6.0.5", "postcss-selector-parser@^6.0.9":
   "integrity" "sha512-zbARubNdogI9j7WY4nQJBiNqQf3sLS3wCP4WfOidu+p28LofJqDH1tcXypGrcmMHhDk2t9wGhCsYe/+szLTy1g=="
@@ -13820,7 +13728,7 @@
 
 "react-dom@*", "react-dom@^16.6.0 || ^17.0.0 || ^18.0.0", "react-dom@^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.8.0", "react-dom@>=16.0.0", "react-dom@>=16.11.0", "react-dom@>=16.8", "react-dom@>=16.8.0", "react-dom@>=16.9.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
-  "resolved" "https://registry.npmmirror.com/react-dom/-/react-dom-18.2.0.tgz"
+  "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
   dependencies:
     "loose-envify" "^1.1.0"
@@ -13935,7 +13843,7 @@
 
 "react-scripts@5.0.1":
   "integrity" "sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ=="
-  "resolved" "https://registry.npmmirror.com/react-scripts/-/react-scripts-5.0.1.tgz"
+  "resolved" "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz"
   "version" "5.0.1"
   dependencies:
     "@babel/core" "^7.16.0"
@@ -13990,7 +13898,7 @@
 
 "react@*", "react@^15.3.0 || 16 || 17 || 18", "react@^16.6.0 || ^17.0.0 || ^18.0.0", "react@^16.6.0 || 17 || 18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.2.0", "react@>= 16", "react@>= 16.8.0", "react@>=0.14.9", "react@>=16", "react@>=16.0.0", "react@>=16.11.0", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.8", "react@>=16.8.0", "react@>=16.9.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
-  "resolved" "https://registry.npmmirror.com/react/-/react-18.2.0.tgz"
+  "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
   dependencies:
     "loose-envify" "^1.1.0"
@@ -16161,20 +16069,20 @@
   dependencies:
     "minimatch" "^3.0.4"
 
-"typescript@^3.2.1 || ^4", "typescript@^4.9.5":
-  "integrity" "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="
-  "resolved" "https://registry.npmmirror.com/typescript/-/typescript-4.9.5.tgz"
-  "version" "4.9.5"
+"typescript@^3.2.1 || ^4", "typescript@^4.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=2.9", "typescript@>=3.6.5", "typescript@>3.6.0", "typescript@~4.8.4":
+  "integrity" "sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ=="
+  "resolved" "https://registry.npmmirror.com/typescript/-/typescript-4.8.4.tgz"
+  "version" "4.8.4"
 
 "typescript@^4.6.4 || ^5.0.0", "typescript@>=2.7", "typescript@>=3":
   "integrity" "sha512-xv8mOEDnigb/tN9PSMTwSEqAnUvkoXMQlicOb0IUVDBSQCgBSaAAROUZYy2IcUy5qU6XajK5jjjO7TMWqBTKZA=="
   "resolved" "https://registry.npmmirror.com/typescript/-/typescript-5.0.3.tgz"
   "version" "5.0.3"
 
-"typescript@^4.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=2.9", "typescript@>=3.6.5", "typescript@>3.6.0", "typescript@~4.8.4":
-  "integrity" "sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ=="
-  "resolved" "https://registry.npmmirror.com/typescript/-/typescript-4.8.4.tgz"
-  "version" "4.8.4"
+"typescript@^4.9.5":
+  "integrity" "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="
+  "resolved" "https://registry.npmmirror.com/typescript/-/typescript-4.9.5.tgz"
+  "version" "4.9.5"
 
 "typescript@>= 2.7":
   "version" "4.9.5"
@@ -16616,7 +16524,7 @@
 
 "web-vitals@^2.1.4":
   "integrity" "sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg=="
-  "resolved" "https://registry.npmmirror.com/web-vitals/-/web-vitals-2.1.4.tgz"
+  "resolved" "https://registry.npmjs.org/web-vitals/-/web-vitals-2.1.4.tgz"
   "version" "2.1.4"
 
 "webidl-conversions@^4.0.2":

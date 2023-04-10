@@ -27,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "@infte/demo": "^0.1.0",
     "@infte/utils": "^1.0.0",
     "@infte/web3-utils": "^1.0.0",
     "@infte/web3modal-react": "^1.0.4",
