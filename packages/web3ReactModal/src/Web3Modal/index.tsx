@@ -24,7 +24,7 @@ const WalletProiderData: WalletProiderType = {
 type catchMsgType = dataType<string>;
 
 const catchMsg: catchMsgType = {
-  '-32002': '请确认您在MetaMask中的操作',
+  '-32002': 'Please confirm your actions in MetaMask',
 };
 
 interface web3HookType {
@@ -50,7 +50,7 @@ type initialState = {
   locale?: localeKeys; // 语言
 };
 
-const BaseLocale = 'zh_cn';
+const BaseLocale = config.BaseLocale;
 const BaseinitialState: initialState = {
   chainsList: config.chainsList,
   reload: false,
@@ -188,7 +188,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
           return null;
         } catch (e: any) {
-          const messgae = catchMsg[e.message] ?? e.message;
+          const messgae = t(catchMsg[e.message]) ?? e.message;
           message.error(messgae);
           return messgae;
         }
@@ -287,7 +287,7 @@ interface Web3ModalType {
 export function Web3Modal(props: Web3ModalType) {
   const { children, ethereumClient } = props;
   return (
-    <Storage.Provider>
+    <Storage.Provider initialState={ethereumClient}>
       <Web3Hook.Provider initialState={ethereumClient}>
         {children}
       </Web3Hook.Provider>

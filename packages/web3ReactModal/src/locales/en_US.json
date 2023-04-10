@@ -1,5 +1,6 @@
 {
   "Unsupported network, need to switch to supported network:": "Unsupported network, need to switch to supported network:",
   "You denied the \"Switch network\" request": "You denied the \"Switch network\" request",
-  "A \"Switch Network\" request has been sent,Please confirm in your wallet.": "A \"Switch Network\" request has been sent,\nPlease confirm in your wallet."
+  "A \"Switch Network\" request has been sent,Please confirm in your wallet.": "A \"Switch Network\" request has been sent,\nPlease confirm in your wallet.",
+  "Please confirm your actions in MetaMask": "Please confirm your actions in MetaMask"
 }

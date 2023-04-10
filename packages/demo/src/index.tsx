@@ -1,17 +1,15 @@
-import { a, Web3Modal } from '@infte/web3modal-react';
+import { Web3Modal } from '@infte/web3modal-react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
-console.log(a, 'res');
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   // <React.StrictMode>
-  <Web3Modal ethereumClient={{ locale: 'zh_hk' }}>
+  <Web3Modal ethereumClient={{ locale: 'zh_hk', network_id: 65 }}>
     <App />,
   </Web3Modal>,
   // </React.StrictMode>,

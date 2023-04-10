@@ -1,3 +1,4 @@
+import { localeKeys } from '../locales/index';
 import chains from '../Web3Modal/network.chains.list.json';
 
 export interface contractsType {
@@ -8,10 +9,12 @@ export interface chainsType {
   chainId: number;
   networkId: number;
   contracts: contractsType;
+  explorers: any[];
+  location_id: number;
 }
 interface BaseDataType {
-  BASE_NETWORK_ID: number;
   chainsList: chainsType[];
+  BaseLocale: localeKeys;
 }
 
 const BaseData: any = {
@@ -19,13 +22,12 @@ const BaseData: any = {
   CHAIN_ID: chains[0].chainId,
   chainsList: chains,
 };
-const { CHAIN_ID, chainsList } = BaseData;
+const { chainsList } = BaseData;
 const config: BaseDataType = {
   // 环境
-  // BaseLocale: 'zh_cn', // 默认语言
+  BaseLocale: 'zh_cn', // 默认语言
 
   // 钱包
-  BASE_NETWORK_ID: CHAIN_ID,
   chainsList, // 支持链
   // 主网
 };
