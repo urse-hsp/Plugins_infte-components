@@ -2025,7 +2025,7 @@
 
 "@infte/web3-utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3Utils":
   "resolved" "file:packages/web3Utils"
-  "version" "1.0.1"
+  "version" "1.0.2"
   dependencies:
     "ethers" "5.7.2"
 
@@ -2033,8 +2033,6 @@
   "resolved" "file:packages/web3ReactModal"
   "version" "1.0.11"
   dependencies:
-    "@infte/utils" "^1.0.0"
-    "@infte/web3-utils" "^1.0.0"
     "@metamask/detect-provider" "^2.0.0"
     "unstated-next" "^1.1.0"
 

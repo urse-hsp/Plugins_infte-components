@@ -13,6 +13,20 @@ export function isAddress(value: any, isAddress = true): string {
   }
 }
 
+export const urf8_fex = (str: any) => {
+  if (
+    ethers.utils.isBytes(str) ||
+    ethers.utils.isBytesLike(str) ||
+    ethers.utils.isHexString(str)
+  ) {
+    const Uint8Array = ethers.utils.arrayify(str);
+    return ethers.utils.toUtf8String(Uint8Array);
+  } else {
+    const hex = ethers.utils.hexlify(ethers.utils.toUtf8Bytes(str));
+    return hex;
+  }
+};
+
 export function address_formatter(
   address: string,
   before: number = 6,
