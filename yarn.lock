@@ -2025,7 +2025,7 @@
 
 "@infte/web3-utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3Utils":
   "resolved" "file:packages/web3Utils"
-  "version" "1.0.2"
+  "version" "1.0.3"
   dependencies:
     "ethers" "5.7.2"
 

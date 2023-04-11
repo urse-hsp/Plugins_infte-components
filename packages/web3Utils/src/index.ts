@@ -1,5 +1,7 @@
 import { ethers } from 'ethers';
 
+export { ethers };
+
 // 判断地址是否正确
 export function isAddress(value: any, isAddress = true): string {
   try {
