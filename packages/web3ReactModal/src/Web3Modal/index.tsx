@@ -27,7 +27,7 @@ interface web3HookType {
   web3Provider: any; // Web3Provider
   WalletProider: any; // Provider 链实例
   chainId: number | undefined; // chainId
-  account: string; // 账户
+  account: string; // 账户ox
   active: boolean; // 是否链接
   loading: boolean; // loading
   connect: (network_id?: number, wallet_type?: WalletType) => any;
@@ -220,22 +220,24 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   // 监听登录
   useEffect(() => {
     if (!WalletProider?.on) return;
-    // 切换
+
     WalletProider.on('accountsChanged', (_accounts: any) => {
       if (!_accounts.length) return;
       if (account === _accounts[0]) return;
       const networkId: string = isAddress(_accounts[0]) ?? '';
+
       setAccount(networkId);
       if (reload) window.location.reload();
     });
 
-    // chainChanged
-    WalletProider.on('chainChanged', async (chainId: any) => {
+    // 切换
+    WalletProider.on('chainChanged', (chainId: any) => {
       const chainIdValue = setProviderChainId(chainId);
       const network: any = chainsList.find((element: any) => {
         return element.chainId === Number(chainIdValue);
       });
       setNetworkId(network.networkId);
+      setChainId(network.networkId);
       if (reload) window.location.reload();
     });
 

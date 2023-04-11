@@ -3,7 +3,7 @@ import { useWeb3Provider } from '@infte/web3modal-react';
 import './App.css';
 
 function App() {
-  const { connect, account, disconnect } = useWeb3Provider();
+  const { connect, account, disconnect, chainId } = useWeb3Provider();
 
   return (
     <div className="App">
@@ -15,7 +15,7 @@ function App() {
         链接
       </button>
       <button onClick={disconnect}>退出</button>
-      {account}
+      {account}*****{chainId}
       <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
