@@ -16,8 +16,6 @@
     "dev": "father dev"
   },
   "dependencies": {
-    "@infte/utils": "^1.0.0",
-    "@infte/web3-utils": "^1.0.0",
     "@metamask/detect-provider": "^2.0.0",
     "unstated-next": "^1.1.0"
   }
