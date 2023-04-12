@@ -2019,11 +2019,11 @@
     "kolorist" "^1.6.0"
     "local-pkg" "^0.4.2"
 
-"@infte/utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\utils":
+"@infte/utils@*", "@infte/utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\utils":
   "resolved" "file:packages/utils"
   "version" "1.0.0"
 
-"@infte/web3-utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3Utils":
+"@infte/web3-utils@*", "@infte/web3-utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3Utils":
   "resolved" "file:packages/web3Utils"
   "version" "1.0.3"
   dependencies:
@@ -2031,8 +2031,10 @@
 
 "@infte/web3modal-react@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.11"
+  "version" "1.0.12"
   dependencies:
+    "@infte/utils" "^1.0.0"
+    "@infte/web3-utils" "^1.0.3"
     "@metamask/detect-provider" "^2.0.0"
     "unstated-next" "^1.1.0"
 
