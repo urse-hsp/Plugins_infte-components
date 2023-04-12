@@ -1,4 +1,3 @@
-import { isAddress } from '@infte/web3-utils';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { message } from 'antd';
 import { ethers } from 'ethers';
@@ -110,7 +109,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
               })
             )[0];
           } else {
-            if (!auto_connect) message.error(`Please install ${wallet_type} !`);
+            if (!auto_connect) {
+              message.error(`Please install ${wallet_type} !`);
+            }
+            setLoading(false);
             return;
           }
 
@@ -144,13 +146,16 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
                     params: [params],
                   });
                 } catch (addError: any) {
+                  setLoading(false);
                   message.error(addError.message);
                   return addError.message;
                 }
               } else if (switchError.code === 4001) {
+                setLoading(false);
                 message.error(t('You denied the "Switch network" request'));
                 return;
               } else if (switchError.code === -32002) {
+                setLoading(false);
                 message.destroy(
                   t(
                     'A "Switch Network" request has been sent,Please confirm in your wallet.',
@@ -158,6 +163,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
                 );
                 return;
               } else {
+                setLoading(false);
                 message.error(switchError.message);
                 return switchError.message;
               }
@@ -181,11 +187,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           setWalletType(wallet_type);
           return null;
         } catch (e: any) {
+          setLoading(false);
           const messgae = t(catchMsg[e.message]) ?? e.message;
           message.error(messgae);
           return messgae;
         }
       } else {
+        setLoading(false);
         message.error(
           `${t(
             'Unsupported network, need to switch to supported network:',
@@ -221,14 +229,14 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   useEffect(() => {
     if (!WalletProider?.on) return;
 
-    WalletProider.on('accountsChanged', (_accounts: any) => {
-      if (!_accounts.length) return;
-      if (account === _accounts[0]) return;
-      const networkId: string = isAddress(_accounts[0]) ?? '';
+    // WalletProider.on('accountsChanged', (_accounts: any) => {
+    //   if (!_accounts.length) return;
+    //   if (account === _accounts[0]) return;
+    //   const networkId: string = isAddress(_accounts[0]) ?? '';
 
-      setAccount(networkId);
-      if (reload) window.location.reload();
-    });
+    //   setAccount(networkId);
+    //   if (reload) window.location.reload();
+    // });
 
     // 切换
     WalletProider.on('chainChanged', (chainId: any) => {
@@ -251,7 +259,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       WalletProider,
       chainId,
       account,
-      active: !!account,
+      active: !!account && !loading && !!chainId && !!networkChainsInfo,
       connect,
       disconnect,
       networkChainsInfo,
