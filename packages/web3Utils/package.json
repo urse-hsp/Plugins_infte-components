@@ -1,6 +1,6 @@
 {
   "name": "@infte/web3-utils",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "license": "ISC",
   "author": "",
@@ -17,6 +17,7 @@
     "public": "npm run build && npm version patch && npm publish --access public"
   },
   "dependencies": {
-    "ethers": "5.7.2"
+    "ethers": "5.7.2",
+    "nft.storage": "^7.0.3"
   }
 }
