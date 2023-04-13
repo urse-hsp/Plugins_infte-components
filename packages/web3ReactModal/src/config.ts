@@ -1,6 +1,6 @@
 import detectEthereumProvider from '@metamask/detect-provider';
-import bitkeep from './assets/images/bitkeep.png';
-import metamask from './assets/images/metamask.png';
+import bitkeep from './images/bitkeep.png';
+import metamask from './images/metamask.png';
 import { localeKeys } from './locales/index';
 import chains from './Web3Modal/network.chains.list.json';
 import { getProvider as getBitKeepProvider } from './Web3Modal/Provider/BitKeep';
@@ -23,7 +23,7 @@ interface BaseDataType {
   BaseWalletType: WalletType;
 }
 
-export type WalletType = 'MetaMask' | 'BitKeep';
+export type WalletType = 'MetaMask' | 'BitKeep' | string;
 
 export const WalletList: Record<
   WalletType,
