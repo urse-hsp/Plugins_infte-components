@@ -4,8 +4,6 @@
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "jsx": "react",
-    "baseUrl": "./",
-    "paths": {}
+    "jsx": "react"
   }
 }

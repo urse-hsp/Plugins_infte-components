@@ -2029,20 +2029,20 @@
     "kolorist" "^1.6.0"
     "local-pkg" "^0.4.2"
 
-"@infte/utils@*", "@infte/utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\utils":
+"@infte/utils@*", "@infte/utils@file:D:\\study\\infte-components123\\packages\\utils":
   "resolved" "file:packages/utils"
   "version" "1.0.0"
 
-"@infte/web3-utils@*", "@infte/web3-utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3Utils":
+"@infte/web3-utils@*", "@infte/web3-utils@file:D:\\study\\infte-components123\\packages\\web3Utils":
   "resolved" "file:packages/web3Utils"
   "version" "1.0.6"
   dependencies:
     "ethers" "5.7.2"
     "nft.storage" "^7.0.3"
 
-"@infte/web3modal-react@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3ReactModal":
+"@infte/web3modal-react@file:D:\\study\\infte-components123\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.30"
+  "version" "1.0.31"
   dependencies:
     "@infte/utils" "*"
     "@infte/web3-utils" "*"
@@ -6703,7 +6703,7 @@
   "resolved" "https://registry.npmjs.org/delegates/-/delegates-1.0.0.tgz"
   "version" "1.0.0"
 
-"demo@file:D:\\study\\demo\\infte\\infte-components\\packages\\demo":
+"demo@file:D:\\study\\infte-components123\\packages\\demo":
   "resolved" "file:packages/demo"
   "version" "0.1.0"
   dependencies:
