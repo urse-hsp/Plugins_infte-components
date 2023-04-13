@@ -9,13 +9,13 @@ const WALLET_TYPE_NAME = 'WALLET_TYPE';
 
 export type storageInitialStates = {
   network_id?: number | string | null; // 默认链
-  wallet_type?: WalletType | string; // 钱包类型
+  wallet_type?: WalletType; // 钱包类型
   locale?: localeKeys; // 语言
 };
 
 interface StorageType {
   networkId: number;
-  walletType: storageInitialStates['wallet_type'];
+  walletType: WalletType;
   setNetworkId: (t: number) => any;
   setWalletType: (s: WalletType) => any;
   t: (str: string) => string;
@@ -39,7 +39,7 @@ function useStorage(customInitialStates?: storageInitialStates): StorageType {
     storageInitialStates['network_id']
   >(initStates.network_id ?? null);
 
-  const [walletType, setWalletType] = useState<WalletType | string>(
+  const [walletType, setWalletType] = useState<WalletType>(
     initStates?.wallet_type ?? config.BaseWalletType,
   );
 

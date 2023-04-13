@@ -2,7 +2,7 @@ import en_us from './en-US.json';
 import zh_cn from './zh-CN.json';
 import zh_hk from './zh-HK.json';
 
-export type localeKeys = 'en-us' | 'zh-cn' | 'zh-hk';
+export type localeKeys = 'en-us' | 'zh-cn' | 'zh-hk' | string;
 
 const resources: Record<localeKeys, any> = {
   'en-us': en_us,

@@ -47,7 +47,7 @@ export function hash_formatter(
   return `${hash.slice(0, before)}...${hash.slice(-after)}`;
 }
 
-export type ethScanPathType = 'transaction' | 'token' | 'address';
+export type ethScanPathType = 'transaction' | 'token' | 'address' | 'block';
 export function getEthScanPath(
   url: string,
   data: string,
@@ -60,6 +60,9 @@ export function getEthScanPath(
     }
     case 'token': {
       return `${prefix}/token/${data}`;
+    }
+    case 'block': {
+      return `${prefix}/block/${data}`;
     }
     case 'address':
     default: {

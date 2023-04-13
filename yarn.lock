@@ -2035,14 +2035,14 @@
 
 "@infte/web3-utils@*", "@infte/web3-utils@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3Utils":
   "resolved" "file:packages/web3Utils"
-  "version" "1.0.5"
+  "version" "1.0.6"
   dependencies:
     "ethers" "5.7.2"
     "nft.storage" "^7.0.3"
 
 "@infte/web3modal-react@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.29"
+  "version" "1.0.30"
   dependencies:
     "@infte/utils" "*"
     "@infte/web3-utils" "*"
