@@ -1,3 +1,4 @@
+import { isAddress } from '@infte/web3-utils';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { message } from 'antd';
 import { ethers } from 'ethers';
@@ -155,7 +156,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
                 message.error(t('You denied the "Switch network" request'));
                 return;
               } else if (switchError.code === -32002) {
-                setLoading(false);
                 message.destroy(
                   t(
                     'A "Switch Network" request has been sent,Please confirm in your wallet.',
@@ -187,7 +187,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           setWalletType(wallet_type);
           return null;
         } catch (e: any) {
-          setLoading(false);
           const messgae = t(catchMsg[e.message]) ?? e.message;
           message.error(messgae);
           return messgae;
@@ -229,16 +228,16 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   useEffect(() => {
     if (!WalletProider?.on) return;
 
-    // WalletProider.on('accountsChanged', (_accounts: any) => {
-    //   if (!_accounts.length) return;
-    //   if (account === _accounts[0]) return;
-    //   const networkId: string = isAddress(_accounts[0]) ?? '';
+    // 切换账户
+    WalletProider.on('accountsChanged', (_accounts: any) => {
+      if (!_accounts.length) return;
+      if (account === _accounts[0]) return;
+      const networkId: string = isAddress(_accounts[0]) ?? '';
+      setAccount(networkId);
+      if (reload) window.location.reload();
+    });
 
-    //   setAccount(networkId);
-    //   if (reload) window.location.reload();
-    // });
-
-    // 切换
+    // 切换链
     WalletProider.on('chainChanged', (chainId: any) => {
       const chainIdValue = setProviderChainId(chainId);
       const network: any = chainsList.find((element: any) => {
@@ -259,7 +258,8 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       WalletProider,
       chainId,
       account,
-      active: !!account && !loading && !!chainId && !!networkChainsInfo,
+      // active: !!account && !loading && !!chainId && !!networkChainsInfo,
+      active: !!account,
       connect,
       disconnect,
       networkChainsInfo,

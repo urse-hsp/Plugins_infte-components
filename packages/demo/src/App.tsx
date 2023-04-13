@@ -3,17 +3,21 @@ import { useWeb3Provider } from '@infte/web3modal-react';
 import './App.css';
 
 function App() {
-  const { connect, account, disconnect, chainId } = useWeb3Provider();
+  const { connect, account, disconnect, chainId, loading } = useWeb3Provider();
 
   return (
     <div className="App">
-      <button
-        onClick={() => {
-          connect?.(12306);
-        }}
-      >
-        链接
-      </button>
+      {loading ? (
+        'loading'
+      ) : (
+        <button
+          onClick={() => {
+            connect?.(12306);
+          }}
+        >
+          链接
+        </button>
+      )}
       <button onClick={disconnect}>退出</button>
       {account}*****{chainId}
       <header className="App-header">
