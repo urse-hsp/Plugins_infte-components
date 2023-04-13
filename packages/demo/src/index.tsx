@@ -9,7 +9,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-  <Web3Modal ethereumClient={{ locale: 'zh_hk', network_id: 12306 }}>
+  <Web3Modal
+    ethereumClient={{
+      locale: 'zh-hk',
+      network_id: 12306,
+      wallet_type: 'BitKeep',
+    }}
+  >
     <App />,
   </Web3Modal>,
   // </React.StrictMode>,

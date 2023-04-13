@@ -1,24 +1,24 @@
 import { localStorage } from '@infte/utils';
 import { useMemo, useState } from 'react';
 import { createContainer } from 'unstated-next';
-import { type WalletType } from '.';
-import config from './config';
-
-export type dataType<T> = Record<string, T>;
-
+import config, { type WalletType } from '../config';
+import resources from '../locales';
+import { localeKeys } from '../locales/index';
 const NETWORK_ID_NAME = 'NETWORK_ID';
 const WALLET_TYPE_NAME = 'WALLET_TYPE';
 
 export type storageInitialStates = {
   network_id?: number | string | null; // 默认链
-  wallet_type?: string; // 钱包类型
+  wallet_type?: WalletType | string; // 钱包类型
+  locale?: localeKeys; // 语言
 };
 
 interface StorageType {
   networkId: number;
-  walletType: WalletType;
+  walletType: storageInitialStates['wallet_type'];
   setNetworkId: (t: number) => any;
   setWalletType: (s: WalletType) => any;
+  t: (str: string) => string;
 }
 
 function useStorage(customInitialStates?: storageInitialStates): StorageType {
@@ -31,16 +31,21 @@ function useStorage(customInitialStates?: storageInitialStates): StorageType {
     wallet_type:
       localStorage(WALLET_TYPE_NAME) ??
       customInitialStates?.wallet_type ??
-      'MetaMask',
+      config.BaseWalletType,
   };
+  const { locale = config.BaseLocale } = initStates;
 
   const [networkId, setNetworkId] = useState<
     storageInitialStates['network_id']
   >(initStates.network_id ?? null);
 
-  const [walletType, setWalletType] = useState<string>(
-    initStates?.wallet_type ?? 'MetaMask',
+  const [walletType, setWalletType] = useState<WalletType | string>(
+    initStates?.wallet_type ?? config.BaseWalletType,
   );
+
+  const t = (str: string) => {
+    return resources[locale][str];
+  };
 
   return {
     networkId: Number(networkId),
@@ -53,6 +58,7 @@ function useStorage(customInitialStates?: storageInitialStates): StorageType {
       localStorage(WALLET_TYPE_NAME, payload);
       setWalletType(payload);
     },
+    t,
   };
 }
 

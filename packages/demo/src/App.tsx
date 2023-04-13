@@ -1,4 +1,8 @@
-import { useWeb3Provider } from '@infte/web3modal-react';
+import {
+  ConnectButton,
+  useWeb3Provider,
+  Web3Button,
+} from '@infte/web3modal-react';
 
 import './App.css';
 
@@ -7,12 +11,14 @@ function App() {
 
   return (
     <div className="App">
+      <ConnectButton />
+      <Web3Button />
       {loading ? (
         'loading'
       ) : (
         <button
           onClick={() => {
-            connect?.(12306);
+            connect?.(12306, 'BitKeep');
           }}
         >
           链接

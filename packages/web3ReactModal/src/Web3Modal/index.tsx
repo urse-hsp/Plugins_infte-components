@@ -1,21 +1,20 @@
 import { isAddress } from '@infte/web3-utils';
-import detectEthereumProvider from '@metamask/detect-provider';
 import { message } from 'antd';
 import { ethers } from 'ethers';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { createContainer } from 'unstated-next';
-import resources from '../locales';
+import config, {
+  WalletList,
+  WalletType,
+  type chainsType,
+  type contractsType,
+} from '../config';
 import { localeKeys } from '../locales/index';
-import config, { type chainsType, type contractsType } from './config';
 import Storage, { storageInitialStates } from './storage';
 
 export type dataType<T> = Record<string, T>;
 
-export type WalletType = string;
-type WalletProiderType = Record<WalletType, any>;
-const WalletProiderData: WalletProiderType = {
-  MetaMask: detectEthereumProvider,
-};
+const WalletProiderData = WalletList;
 
 type catchMsgType = dataType<string>;
 
@@ -30,7 +29,12 @@ interface web3HookType {
   account: string; // 账户ox
   active: boolean; // 是否链接
   loading: boolean; // loading
-  connect: (network_id?: number, wallet_type?: WalletType) => any;
+  connect: (
+    network_id?: number,
+    wallet_type?: WalletType,
+    auto_connect?: boolean,
+    fn?: () => void,
+  ) => any;
   disconnect: () => any;
   networkChainsInfo: chainsType | undefined;
   contracts: contractsType | undefined;
@@ -39,19 +43,17 @@ interface web3HookType {
 type initialState = {
   chainsList?: chainsType[]; // 支持的链
   reload?: boolean; // 刷新页面
-  locale?: localeKeys; // 语言
 };
 
 const BaseLocale = config.BaseLocale;
 const BaseinitialState: initialState = {
   chainsList: config.chainsList,
   reload: false,
-  locale: BaseLocale,
 };
 
 const useWeb3Hook = (props?: initialState): web3HookType => {
   const initialData: initialState = Object.assign({}, BaseinitialState, props);
-  const { chainsList = [], reload, locale = BaseLocale } = initialData;
+  const { chainsList = [], reload } = initialData;
 
   // Web3
   const [web3Provider, setWeb3Provider] = useState<any>(null);
@@ -66,12 +68,8 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     undefined,
   );
 
-  const { walletType, networkId, setNetworkId, setWalletType } =
+  const { walletType, networkId, setNetworkId, setWalletType, t } =
     Storage.useContainer();
-
-  const t = (str: string) => {
-    return resources[locale][str];
-  };
 
   const setProviderChainId = (chainId: string) => {
     return Number(
@@ -84,13 +82,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       chainsId: number,
       wallet_type: WalletType,
       auto_connect?: boolean,
+      fn?: () => void,
     ) => {
       setLoading(true);
       const network_id: number = Number(chainsId);
-
       // 限制支持链
       const chainsInfo: any = chainsList.find(
-        (item: any) => item.networkId === Number(network_id),
+        (item: any) => item?.networkId === Number(network_id),
       );
 
       if (chainsInfo) {
@@ -100,7 +98,15 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           let account: any = []; // ox账户
 
           // WalletProider
-          providerInstance = await WalletProiderData?.[wallet_type](); // eth实例 window.ethereum
+          if (WalletProiderData?.[wallet_type]) {
+            providerInstance = await WalletProiderData?.[
+              wallet_type
+            ].provider(); // eth实例 window.ethereum
+          } else {
+            providerInstance = await WalletProiderData?.[
+              config.BaseWalletType
+            ].provider(); // eth实例 window.ethereum
+          }
 
           // 解锁 MateMask
           if (providerInstance) {
@@ -175,6 +181,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           );
           const Account = await web3instance._getAddress(account); // ethers.utils.getAddress
 
+          fn?.();
           // set
           setWeb3Provider(web3instance);
           setWalletProider(providerInstance);
@@ -187,6 +194,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           setWalletType(wallet_type);
           return null;
         } catch (e: any) {
+          setLoading(false);
           const messgae = t(catchMsg[e.message]) ?? e.message;
           message.error(messgae);
           return messgae;
@@ -203,9 +211,14 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     [],
   );
 
-  const connect = (id = networkId, type = walletType) => {
+  const connect = (
+    id = networkId,
+    type = walletType,
+    auto_connect?: boolean,
+    fn?: () => void,
+  ) => {
     if (id && type) {
-      connector(id, type);
+      connector(id, type, auto_connect, fn);
     }
   };
 
@@ -225,7 +238,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   }, []);
 
   // 监听登录
-  useEffect(() => {
+  function handleAccountsChainChanged() {
     if (!WalletProider?.on) return;
 
     // 切换账户
@@ -249,7 +262,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     });
 
     // disconnect
-    // WalletProider?.on('disconnect', disconnect);
+    WalletProider?.on('disconnect', disconnect);
+  }
+  useEffect(() => {
+    handleAccountsChainChanged();
   }, [WalletProider, account, disconnect, setNetworkId]);
 
   return useMemo(() => {
@@ -258,7 +274,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       WalletProider,
       chainId,
       account,
-      // active: !!account && !loading && !!chainId && !!networkChainsInfo,
       active: !!account,
       connect,
       disconnect,
@@ -299,9 +314,13 @@ interface Web3ModalType {
 
 export function Web3Modal(props: Web3ModalType) {
   const { children, ethereumClient } = props;
+  const baseEthereumClient = {
+    locale: BaseLocale,
+    ...ethereumClient,
+  };
   return (
-    <Storage.Provider initialState={ethereumClient}>
-      <Web3Hook.Provider initialState={ethereumClient}>
+    <Storage.Provider initialState={baseEthereumClient}>
+      <Web3Hook.Provider initialState={baseEthereumClient}>
         {children}
       </Web3Hook.Provider>
     </Storage.Provider>
