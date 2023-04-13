@@ -275,6 +275,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     disconnect,
     networkChainsInfo,
     contracts,
+    loading,
   ]);
 };
 
