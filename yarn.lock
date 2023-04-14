@@ -2042,7 +2042,7 @@
 
 "@infte/web3modal-react@file:D:\\study\\demo\\infte\\infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.32"
+  "version" "1.0.44"
   dependencies:
     "@infte/utils" "*"
     "@infte/web3-utils" "*"
@@ -3346,7 +3346,7 @@
   "resolved" "https://registry.npmmirror.com/@types/ms/-/ms-0.7.31.tgz"
   "version" "0.7.31"
 
-"@types/node@*", "@types/node@^16.18.23", "@types/node@>= 14", "@types/node@>=13.7.0":
+"@types/node@*", "@types/node@>= 14", "@types/node@>=13.7.0":
   "integrity" "sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q=="
   "resolved" "https://registry.npmmirror.com/@types/node/-/node-18.15.11.tgz"
   "version" "18.15.11"
@@ -3408,7 +3408,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^18.0.0", "@types/react@^18.0.29", "@types/react@^18.0.33", "@types/react@16 || 17 || 18":
+"@types/react@*", "@types/react@^18.0.0", "@types/react@^18.0.29", "@types/react@16 || 17 || 18":
   "integrity" "sha512-sHxzVxeanvQyQ1lr8NSHaj0kDzcNiGpILEVt69g9S31/7PfMvNCKLKcsHw4lYKjs3cGNJjXSP4mYzX43QlnjNA=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.33.tgz"
   "version" "18.0.33"
@@ -17503,7 +17503,7 @@
   dependencies:
     "minimatch" "^3.0.4"
 
-"typescript@^3.2.1 || ^4", "typescript@^4.7", "typescript@^4.9.5", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=2.9", "typescript@>=3.6.5", "typescript@>3.6.0", "typescript@~4.8.4":
+"typescript@^3.2.1 || ^4", "typescript@^4.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=2.9", "typescript@>=3.6.5", "typescript@>3.6.0", "typescript@~4.8.4":
   "integrity" "sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ=="
   "resolved" "https://registry.npmmirror.com/typescript/-/typescript-4.8.4.tgz"
   "version" "4.8.4"
@@ -17512,6 +17512,9 @@
   "integrity" "sha512-xv8mOEDnigb/tN9PSMTwSEqAnUvkoXMQlicOb0IUVDBSQCgBSaAAROUZYy2IcUy5qU6XajK5jjjO7TMWqBTKZA=="
   "resolved" "https://registry.npmmirror.com/typescript/-/typescript-5.0.3.tgz"
   "version" "5.0.3"
+
+"typescript@^4.9.5":
+  "version" "4.9.5"
 
 "typescript@>= 2.7":
   "version" "4.9.5"

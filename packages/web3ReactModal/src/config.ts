@@ -9,6 +9,12 @@ export type dataType<T> = Record<string, T>;
 export interface contractsType {
   social: string;
 }
+
+type Token = {
+  name: string;
+  symbol: string;
+  decimals: number;
+};
 export interface chainsType {
   name: string;
   chainId: number;
@@ -16,6 +22,8 @@ export interface chainsType {
   contracts: contractsType;
   explorers: any[];
   location_id: number;
+  rpc: string[];
+  nativeCurrency: Token;
 }
 interface BaseDataType {
   chainsList: chainsType[];

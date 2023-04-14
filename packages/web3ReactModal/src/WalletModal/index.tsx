@@ -36,7 +36,11 @@ export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
   );
 };
 
-export const Web3Button: React.FC = () => {
+type Web3ButtonProps = {
+  type?: 'connect' | 'change';
+};
+export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
+  const { type = 'connect' } = props;
   const { t, walletType, networkId } = useWeb3Storage();
   const { connect, active, loading } = useWeb3Provider();
 
@@ -52,7 +56,15 @@ export const Web3Button: React.FC = () => {
 
   return (
     <>
-      <ConnectButton onClick={() => setIsModalOpen(true)} />
+      {type === 'connect' && (
+        <ConnectButton onClick={() => setIsModalOpen(true)} />
+      )}
+      {type === 'change' && (
+        <Button onClick={() => setIsModalOpen(true)}>
+          {t('Switch Wallet')}
+        </Button>
+      )}
+
       <Modal
         title={t('Connect Wallet')}
         open={isModalOpen}

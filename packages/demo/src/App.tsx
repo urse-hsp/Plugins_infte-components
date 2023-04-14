@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <Web3Button />
+      <Web3Button type="change" />
       {loading ? (
         'loading'
       ) : (

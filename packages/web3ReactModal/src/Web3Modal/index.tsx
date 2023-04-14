@@ -9,9 +9,9 @@ import config, {
   type chainsType,
   type contractsType,
 } from '../config';
+import resources from '../locales';
 import { localeKeys } from '../locales/index';
 import Storage, { storageInitialStates } from './storage';
-
 export type dataType<T> = Record<string, T>;
 
 const WalletProiderData = WalletList;
@@ -59,8 +59,9 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   const [web3Provider, setWeb3Provider] = useState<any>(null);
   const [WalletProider, setWalletProider] = useState<any>(null);
   const [account, setAccount] = useState<string>('');
-  const [chainId, setChainId] = useState<number | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
+  const [chainId, setChainId] = useState<number | undefined>(undefined);
+
   const [networkChainsInfo, setNetworkChainsInfo] = useState<
     chainsType | undefined
   >(undefined);
@@ -77,6 +78,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     );
   };
 
+  const setNetworkData = (data: chainsType) => {
+    setChainId(data.chainId);
+    setNetworkId(data.networkId);
+    setContracts(data.contracts);
+    setNetworkChainsInfo(data);
+  };
+
   const connector = useCallback(
     async (
       chainsId: number,
@@ -84,11 +92,14 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       auto_connect?: boolean,
       fn?: () => void,
     ) => {
+      if (loading) return;
       setLoading(true);
       const network_id: number = Number(chainsId);
       // 限制支持链
-      const chainsInfo: any = chainsList.find(
-        (item: any) => item?.networkId === Number(network_id),
+      const chainsInfo: chainsType | undefined = chainsList.find(
+        (item: chainsType) => {
+          return item?.networkId === Number(network_id);
+        },
       );
 
       if (chainsInfo) {
@@ -115,13 +126,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
             return;
           }
 
-          // 切换网络
+          // 获取当前在线网络
           const walletChainId = await providerInstance.request({
             method: 'eth_chainId',
           });
           const providerChainId: number = setProviderChainId(walletChainId);
 
-          // Change to current network/更改为当前网络
+          // 更改为当前网络
           if (network_id !== providerChainId) {
             const chainId_to16 = `0x${network_id.toString(16)}`;
             try {
@@ -132,6 +143,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
             } catch (switchError: any) {
               // This error code indicates that the chain has not been added to MetaMask./此错误代码表示链尚未添加到MetaMask。
               if (switchError.code === 4902) {
+                // 添加网络
                 try {
                   const params = {
                     chainId: chainId_to16,
@@ -177,13 +189,12 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           // set
           setWeb3Provider(web3instance);
           setWalletProider(providerInstance);
-          setAccount(Account);
-          setChainId(providerChainId);
-          setContracts(chainsInfo.contracts);
-          setNetworkChainsInfo(chainsInfo);
           setLoading(false);
-          setNetworkId(providerChainId);
+
+          setAccount(Account);
           setWalletType(wallet_type);
+          setNetworkData(chainsInfo);
+
           return null;
         } catch (e: any) {
           setLoading(false);
@@ -192,12 +203,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           return messgae;
         }
       } else {
-        setLoading(false);
+        // 不支持的网络
         message.error(
-          `${t(
+          `chainId：${network_id}，${t(
             'Unsupported network, need to switch to supported network:',
-          )}${network_id}`,
+          )}`,
         );
+        connector(chainsList[0].chainId, walletType);
       }
     },
     [],
@@ -210,20 +222,63 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     fn?: () => void,
   ) => {
     if (id && type) {
-      connector(id, type, auto_connect, fn);
+      const network: any = chainsList.find(
+        (element: any) => element.chainId === Number(id),
+      )?.networkId;
+      connector(network ?? chainsList[0].chainId, type, auto_connect, fn);
     }
   };
 
-  const disconnect = () => {
-    setWeb3Provider(null);
+  const disconnect = async () => {
     setWeb3Provider(null);
     setWalletProider(null);
     setAccount('');
-    setChainId(undefined);
-    setLoading(false);
     setNetworkChainsInfo(undefined);
     setContracts(undefined);
+
+    // setLoading(false);
   };
+
+  // 监听登录
+  function handleAccountsChainChanged() {
+    if (!WalletProider?.on) return;
+
+    // 切换账户
+    WalletProider?.on('accountsChanged', (_accounts: any) => {
+      if (!_accounts.length) return;
+      if (account === _accounts[0]) return;
+      setAccount(isAddress(_accounts[0]));
+      console.log('切换账户');
+      if (reload) window.location.reload();
+    });
+
+    // 切换链
+    WalletProider?.on('chainChanged', (chainId: any) => {
+      const chainIdValue = setProviderChainId(chainId);
+      const network: chainsType | undefined = chainsList.find(
+        (element: chainsType) => {
+          return element.chainId === Number(chainIdValue);
+        },
+      );
+      if (network) {
+        setNetworkData(network);
+      } else {
+        setChainId(chainIdValue);
+        setNetworkId(chainIdValue);
+        setContracts(undefined);
+        setNetworkChainsInfo(undefined);
+        connector(chainIdValue, walletType);
+      }
+      console.log('切换链');
+      if (reload) window.location.reload();
+    });
+
+    // disconnect
+    // WalletProider?.on('disconnect', () => disconnect);
+  }
+  useEffect(() => {
+    handleAccountsChainChanged();
+  }, [WalletProider]);
 
   useEffect(() => {
     if (networkId && walletType) {
@@ -231,44 +286,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     }
   }, []);
 
-  // 监听登录
-  function handleAccountsChainChanged() {
-    if (!WalletProider?.on) return;
-
-    // 切换账户
-    WalletProider.on('accountsChanged', (_accounts: any) => {
-      if (!_accounts.length) return;
-      if (account === _accounts[0]) return;
-      const networkId: string = isAddress(_accounts[0]) ?? '';
-      setAccount(networkId);
-      if (reload) window.location.reload();
-    });
-
-    // 切换链
-    WalletProider.on('chainChanged', (chainId: any) => {
-      const chainIdValue = setProviderChainId(chainId);
-      const network: any = chainsList.find((element: any) => {
-        return element.chainId === Number(chainIdValue);
-      });
-      setNetworkId(network.networkId);
-      setChainId(network.networkId);
-      if (reload) window.location.reload();
-    });
-
-    // disconnect
-    WalletProider?.on('disconnect', disconnect);
-  }
-  useEffect(() => {
-    handleAccountsChainChanged();
-  }, [WalletProider, account, disconnect, setNetworkId]);
-
   return useMemo(() => {
     return {
       web3Provider,
       WalletProider,
       chainId,
       account,
-      active: !!account,
+      active: !!account && !!chainId,
       connect,
       disconnect,
       networkChainsInfo,
@@ -281,7 +305,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     chainId,
     account,
     connect,
-    disconnect,
     networkChainsInfo,
     contracts,
     loading,
@@ -309,8 +332,11 @@ interface Web3ModalType {
 export function Web3Modal(props: Web3ModalType) {
   const { children, ethereumClient } = props;
   const baseEthereumClient = {
-    locale: BaseLocale,
     ...ethereumClient,
+    locale:
+      ethereumClient?.locale && resources[ethereumClient?.locale]
+        ? ethereumClient?.locale
+        : BaseLocale,
   };
   return (
     <Storage.Provider initialState={baseEthereumClient}>
