@@ -2,6 +2,7 @@ import { Web3Modal } from '@infte/web3modal-react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
+import list from './network.chains_support.json';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -13,7 +14,8 @@ root.render(
     ethereumClient={{
       locale: 'zh-hk',
       network_id: 12306,
-      wallet_type: 'BitKeep',
+      chainsList: list,
+      // wallet_type: 'BitKeep',
     }}
   >
     <App />,

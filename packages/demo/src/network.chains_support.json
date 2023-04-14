@@ -1,0 +1,52 @@
+[
+  {
+    "name": "FIBO",
+    "chainId": 12306,
+    "shortName": "fibo",
+    "chain": "FIBO",
+    "network": "fibochain",
+    "networkId": 12306,
+    "nativeCurrency": { "name": "FIBO", "symbol": "FIBO", "decimals": 18 },
+    "rpc": ["https://network.hzroc.art"],
+    "faucets": [],
+    "explorers": [
+      {
+        "name": "FIBO",
+        "url": "https://scan.fibochain.org",
+        "standard": "EIP3091"
+      }
+    ],
+    "infoURL": "https://ethereum.org",
+    "contracts": {
+      "social": "0x79323e44b7188b14a718DA992184D9aB5ED1f79c"
+    },
+    "location_id": 1
+  },
+  {
+    "name": "OEC Testnet",
+    "chainId": 65,
+    "shortName": "tokt",
+    "chain": "okexchain",
+    "network": "testnet",
+    "networkId": 65,
+    "nativeCurrency": {
+      "name": "OEC Global Utility Token in testnet",
+      "symbol": "OKT",
+      "decimals": 18
+    },
+    "rpc": ["https://exchaintestrpc.okex.org"],
+    "faucets": ["https://www.okex.com/drawdex"],
+    "explorers": [
+      {
+        "name": "OKLink",
+        "url": "https://www.oklink.com/oktc-test",
+        "standard": "EIP3091"
+      }
+    ],
+    "infoURL": "https://www.okex.com/okexchain",
+    "contracts": {
+      "social": "0x5044335945b25D296991f49E7643Ef525f35bC0D"
+    },
+    "location_id": 65
+  }
+]

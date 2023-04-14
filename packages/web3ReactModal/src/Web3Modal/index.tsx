@@ -98,15 +98,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           let account: any = []; // ox账户
 
           // WalletProider
-          if (WalletProiderData?.[wallet_type]) {
-            providerInstance = await WalletProiderData?.[
-              wallet_type
-            ].provider(); // eth实例 window.ethereum
-          } else {
-            providerInstance = await WalletProiderData?.[
-              config.BaseWalletType
-            ].provider(); // eth实例 window.ethereum
-          }
+          providerInstance = await WalletProiderData?.[wallet_type].provider(); // eth实例 window.ethereum
 
           // 解锁 MateMask
           if (providerInstance) {
@@ -224,11 +216,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
   const disconnect = () => {
     setWeb3Provider(null);
-    setWalletProider(null);
     setWeb3Provider(null);
     setWalletProider(null);
     setAccount('');
     setChainId(undefined);
+    setLoading(false);
+    setNetworkChainsInfo(undefined);
+    setContracts(undefined);
   };
 
   useEffect(() => {
