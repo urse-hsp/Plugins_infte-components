@@ -1,7 +1,7 @@
 import { isAddress } from '@infte/web3-utils';
 import { message } from 'antd';
 import { ethers } from 'ethers';
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { createContainer } from 'unstated-next';
 import config, {
   WalletList,
@@ -87,135 +87,132 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     setNetworkChainsInfo(data);
   };
 
-  const connector = useCallback(
-    async (
-      chainsId: number,
-      wallet_type: WalletType,
-      auto_connect?: boolean,
-      fn?: () => void,
-    ) => {
-      if (loading) return;
-      setLoading(true);
-      const network_id: number = Number(chainsId);
-      // 限制支持链
-      const chainsInfo: chainsType | undefined = chainsList.find(
-        (item: chainsType) => {
-          return item?.networkId === Number(network_id);
-        },
-      );
+  const connector = async (
+    chainsId: number,
+    wallet_type: WalletType,
+    auto_connect?: boolean,
+    fn?: () => void,
+  ) => {
+    if (loading) return;
+    setLoading(true);
+    const network_id: number = Number(chainsId);
+    // 限制支持链
+    const chainsInfo: chainsType | undefined = chainsList.find(
+      (item: chainsType) => {
+        return item?.networkId === Number(network_id);
+      },
+    );
 
-      if (chainsInfo) {
-        // 匹配对应钱包Provider
-        try {
-          let providerInstance: any = null; // 钱包实例 provider
-          let account: any = []; // ox账户
+    if (chainsInfo) {
+      // 匹配对应钱包Provider
+      try {
+        let providerInstance: any = null; // 钱包实例 provider
+        let account: any = []; // ox账户
 
-          // WalletProider
-          providerInstance = await WalletProiderData?.[wallet_type].provider(); // eth实例 window.ethereum
+        // WalletProider
+        providerInstance = await WalletProiderData?.[wallet_type].provider(); // eth实例 window.ethereum
 
-          // 解锁 MateMask
-          if (providerInstance) {
-            account = (
-              await providerInstance.request({
-                method: 'eth_requestAccounts',
-              })
-            )[0];
-          } else {
-            if (!auto_connect) {
-              message.error(`Please install ${wallet_type} !`);
-            }
-            setLoading(false);
-            return;
+        // 解锁 MateMask
+        if (providerInstance) {
+          account = (
+            await providerInstance.request({
+              method: 'eth_requestAccounts',
+            })
+          )[0];
+        } else {
+          if (!auto_connect) {
+            message.error(`Please install ${wallet_type} !`);
           }
-
-          // 获取当前在线网络
-          const walletChainId = await providerInstance.request({
-            method: 'eth_chainId',
-          });
-          const providerChainId: number = setProviderChainId(walletChainId);
-
-          // 更改为当前网络
-          if (network_id !== providerChainId) {
-            const chainId_to16 = `0x${network_id.toString(16)}`;
-            try {
-              await providerInstance.request({
-                method: 'wallet_switchEthereumChain',
-                params: [{ chainId: chainId_to16 }],
-              });
-            } catch (switchError: any) {
-              // This error code indicates that the chain has not been added to MetaMask./此错误代码表示链尚未添加到MetaMask。
-              if (switchError.code === 4902) {
-                // 添加网络
-                try {
-                  const params = {
-                    chainId: chainId_to16,
-                    chainName: chainsInfo.name,
-                    nativeCurrency: chainsInfo.nativeCurrency,
-                    rpcUrls: chainsInfo.rpc,
-                    blockExplorerUrls: [chainsInfo.explorers[0]?.url],
-                  };
-                  await providerInstance.request({
-                    method: 'wallet_addEthereumChain',
-                    params: [params],
-                  });
-                } catch (addError: any) {
-                  setLoading(false);
-                  message.error(addError.message);
-                  return addError.message;
-                }
-              } else if (switchError.code === 4001) {
-                setLoading(false);
-                message.error(t('You denied the Switch network request'));
-                return;
-              } else if (switchError.code === -32002) {
-                message.destroy(
-                  t(
-                    'A Switch Network request has been sent,Please confirm in your wallet.',
-                  ),
-                );
-                return;
-              } else {
-                setLoading(false);
-                message.error(switchError.message);
-                return switchError.message;
-              }
-            }
-          }
-
-          const web3instance = new ethers.providers.Web3Provider(
-            providerInstance,
-          );
-          const Account = await web3instance._getAddress(account); // ethers.utils.getAddress
-
-          fn?.();
-          // set
-          setWeb3Provider(web3instance);
-          setWalletProider(providerInstance);
           setLoading(false);
-
-          setAccount(Account);
-          setWalletType(wallet_type);
-          setNetworkData(chainsInfo);
-
-          return null;
-        } catch (e: any) {
-          setLoading(false);
-          const messgae = t(catchMsg[e.message]) ?? e.message;
-          message.error(messgae);
-          return messgae;
+          return;
         }
-      } else {
-        // 不支持的网络
-        message.error(
-          `chainId：${network_id}，${t(
-            'Unsupported network, need to switch to supported network:',
-          )}`,
+
+        // 获取当前在线网络
+        const walletChainId = await providerInstance.request({
+          method: 'eth_chainId',
+        });
+        const providerChainId: number = setProviderChainId(walletChainId);
+
+        // 更改为当前网络
+        if (network_id !== providerChainId) {
+          const chainId_to16 = `0x${network_id.toString(16)}`;
+          try {
+            await providerInstance.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: chainId_to16 }],
+            });
+          } catch (switchError: any) {
+            // This error code indicates that the chain has not been added to MetaMask./此错误代码表示链尚未添加到MetaMask。
+            if (switchError.code === 4902) {
+              // 添加网络
+              try {
+                const params = {
+                  chainId: chainId_to16,
+                  chainName: chainsInfo.name,
+                  nativeCurrency: chainsInfo.nativeCurrency,
+                  rpcUrls: chainsInfo.rpc,
+                  blockExplorerUrls: [chainsInfo.explorers[0]?.url],
+                };
+                await providerInstance.request({
+                  method: 'wallet_addEthereumChain',
+                  params: [params],
+                });
+              } catch (addError: any) {
+                setLoading(false);
+                message.error(addError.message);
+                return addError.message;
+              }
+            } else if (switchError.code === 4001) {
+              setLoading(false);
+              message.error(t('You denied the Switch network request'));
+              return;
+            } else if (switchError.code === -32002) {
+              message.destroy(
+                t(
+                  'A Switch Network request has been sent,Please confirm in your wallet.',
+                ),
+              );
+              return;
+            } else {
+              setLoading(false);
+              message.error(switchError.message);
+              return switchError.message;
+            }
+          }
+        }
+
+        const web3instance = new ethers.providers.Web3Provider(
+          providerInstance,
         );
-        connector(chainsList[0].chainId, walletType);
+        const Account = await web3instance._getAddress(account); // ethers.utils.getAddress
+
+        fn?.();
+        // set
+        setWeb3Provider(web3instance);
+        setWalletProider(providerInstance);
+        setLoading(false);
+
+        setAccount(Account);
+        setWalletType(wallet_type);
+        setNetworkData(chainsInfo);
+
+        return null;
+      } catch (e: any) {
+        setLoading(false);
+        const messgae = t(catchMsg[e.message]) ?? e.message;
+        message.error(messgae);
+        return messgae;
       }
-    },
-    [],
-  );
+    } else {
+      // 不支持的网络
+      message.error(
+        `chainId：${network_id}，${t(
+          'Unsupported network, need to switch to supported network:',
+        )}`,
+      );
+      connector(chainsList[0].chainId, walletType);
+    }
+  };
 
   const connect = (
     id = networkId,

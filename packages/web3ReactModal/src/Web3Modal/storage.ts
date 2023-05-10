@@ -1,5 +1,5 @@
 import { localStorage } from '@infte/utils';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { createContainer } from 'unstated-next';
 import config, { type WalletType } from '../config';
 import resources from '../locales';
@@ -66,9 +66,7 @@ const useStorages = createContainer(useStorage);
 
 export const useWeb3Storage = (): StorageType => {
   const data = useStorages.useContainer();
-  return useMemo(() => {
-    return data;
-  }, [data]);
+  return data;
 };
 
 export default useStorages;
