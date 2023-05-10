@@ -43,17 +43,19 @@ interface web3HookType {
 type initialState = {
   chainsList?: chainsType[]; // 支持的链
   reload?: boolean; // 刷新页面
+  autoConnector?: boolean;
 };
 
 const BaseLocale = config.BaseLocale;
 const BaseinitialState: initialState = {
   chainsList: config.chainsList,
   reload: false,
+  autoConnector: false,
 };
 
 const useWeb3Hook = (props?: initialState): web3HookType => {
   const initialData: initialState = Object.assign({}, BaseinitialState, props);
-  const { chainsList = [], reload } = initialData;
+  const { chainsList = [], reload, autoConnector } = initialData;
 
   // Web3
   const [web3Provider, setWeb3Provider] = useState<any>(null);
@@ -163,12 +165,12 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
                 }
               } else if (switchError.code === 4001) {
                 setLoading(false);
-                message.error(t('You denied the "Switch network" request'));
+                message.error(t('You denied the Switch network request'));
                 return;
               } else if (switchError.code === -32002) {
                 message.destroy(
                   t(
-                    'A "Switch Network" request has been sent,Please confirm in your wallet.',
+                    'A Switch Network request has been sent,Please confirm in your wallet.',
                   ),
                 );
                 return;
@@ -281,7 +283,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   }, [WalletProider]);
 
   useEffect(() => {
-    if (networkId && walletType) {
+    if (networkId && walletType && autoConnector) {
       connector(networkId, walletType, false);
     }
   }, []);

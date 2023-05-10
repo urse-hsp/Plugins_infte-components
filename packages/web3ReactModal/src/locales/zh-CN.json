@@ -1,7 +1,7 @@
 {
   "Unsupported network, need to switch to supported network:": "不支持的网络，需要切换到支持的网络",
-  "You denied the \"Switch network\" request": "你拒绝了 \"切换网络\" 的请求",
-  "A \"Switch Network\" request has been sent,Please confirm in your wallet.": "已发送了 \"切换网络\" 的请求，\n请在钱包内确认",
+  "You denied the Switch network request": "你拒绝了 \"切换网络\" 的请求",
+  "A Switch Network request has been sent,Please confirm in your wallet.": "已发送了 \"切换网络\" 的请求，\n请在钱包内确认",
   "Please confirm your actions in MetaMask": "请确认您在MetaMask中的操作",
   "Connect Wallet": "连接钱包",
   "Switch Wallet": "切换钱包"
