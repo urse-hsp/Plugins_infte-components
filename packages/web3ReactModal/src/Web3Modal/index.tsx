@@ -1,4 +1,3 @@
-import { isAddress } from '@infte/web3-utils';
 import { message } from 'antd';
 import { ethers } from 'ethers';
 import { ReactNode, useEffect, useMemo, useState } from 'react';
@@ -244,9 +243,11 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
     // 切换账户
     WalletProider?.on('accountsChanged', (_accounts: any) => {
-      if (!_accounts.length) return;
+      console.log(_accounts, '_accounts1');
+      // if (!_accounts.length) return;
       if (account === _accounts[0]) return;
-      setAccount(isAddress(_accounts[0]));
+      // setAccount(isAddress(_accounts[0]));
+      setAccount(_accounts[0]);
       console.log('切换账户');
       if (reload) window.location.reload();
     });
@@ -272,8 +273,9 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       if (reload) window.location.reload();
     });
 
-    // disconnect
-    // WalletProider?.on('disconnect', () => disconnect);
+    // WalletProider?.on('disconnect', () => {
+    //   disconnect();
+    // });
   }
   useEffect(() => {
     handleAccountsChainChanged();
