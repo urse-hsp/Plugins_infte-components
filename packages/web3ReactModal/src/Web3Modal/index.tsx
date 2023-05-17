@@ -1,3 +1,4 @@
+import { isAddress } from '@infte/web3-utils';
 import { message } from 'antd';
 import { ethers } from 'ethers';
 import { ReactNode, useEffect, useMemo, useState } from 'react';
@@ -11,6 +12,7 @@ import config, {
 import resources from '../locales';
 import { localeKeys } from '../locales/index';
 import Storage, { storageInitialStates } from './storage';
+
 export type dataType<T> = Record<string, T>;
 
 const WalletProiderData = WalletList;
@@ -245,9 +247,15 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     WalletProider?.on('accountsChanged', (_accounts: any) => {
       console.log(_accounts, '_accounts1');
       // if (!_accounts.length) return;
-      if (account === _accounts[0]) return;
+      if (account === _accounts[0]) return; // 当前账号
+
+      // 有账号并且是正确的地址
+      if (isAddress(_accounts[0]) && _accounts.length) {
+        setAccount(_accounts[0]);
+      } else {
+        disconnect();
+      }
       // setAccount(isAddress(_accounts[0]));
-      setAccount(_accounts[0]);
       console.log('切换账户');
       if (reload) window.location.reload();
     });
