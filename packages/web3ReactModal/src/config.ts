@@ -28,7 +28,7 @@ export interface chainsType {
 interface BaseDataType {
   chainsList: chainsType[];
   BaseLocale: localeKeys;
-  BaseWalletType: WalletType;
+  // BaseWalletType: WalletType;
 }
 
 export type WalletType = 'MetaMask' | 'BitKeep' | string;
@@ -62,7 +62,7 @@ const config: BaseDataType = {
 
   // 钱包
   chainsList, // 支持链
-  BaseWalletType: 'MetaMask',
+  // BaseWalletType: 'MetaMask',
   // 主网
 };
 export default config;

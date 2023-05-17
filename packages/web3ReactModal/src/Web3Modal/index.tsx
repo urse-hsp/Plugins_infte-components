@@ -43,19 +43,19 @@ interface web3HookType {
 type initialState = {
   chainsList?: chainsType[]; // 支持的链
   reload?: boolean; // 刷新页面
-  autoConnector?: boolean;
+  // autoConnector?: boolean;
 };
 
 const BaseLocale = config.BaseLocale;
 const BaseinitialState: initialState = {
   chainsList: config.chainsList,
   reload: false,
-  autoConnector: false,
+  // autoConnector: false,
 };
 
 const useWeb3Hook = (props?: initialState): web3HookType => {
   const initialData: initialState = Object.assign({}, BaseinitialState, props);
-  const { chainsList = [], reload, autoConnector } = initialData;
+  const { chainsList = [], reload } = initialData;
 
   // Web3
   const [web3Provider, setWeb3Provider] = useState<any>(null);
@@ -234,7 +234,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     setAccount('');
     setNetworkChainsInfo(undefined);
     setContracts(undefined);
-
+    setWalletType('');
     // setLoading(false);
   };
 
@@ -280,8 +280,9 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   }, [WalletProider]);
 
   useEffect(() => {
-    if (networkId && walletType && autoConnector) {
-      connector(networkId, walletType, false);
+    console.log(networkId, walletType, '222');
+    if (networkId && walletType) {
+      connector(networkId, walletType, true);
     }
   }, []);
 
