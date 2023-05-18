@@ -250,9 +250,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       if (account === _accounts[0]) return; // 当前账号
 
       // 有账号并且是正确的地址
-      if (isAddress(_accounts[0]) && _accounts.length) {
+      if (isAddress(_accounts[0]) && _accounts?.length) {
         setAccount(_accounts[0]);
-      } else {
+      }
+      if (_accounts?.length === 0 && account) {
         disconnect();
       }
       // setAccount(isAddress(_accounts[0]));
