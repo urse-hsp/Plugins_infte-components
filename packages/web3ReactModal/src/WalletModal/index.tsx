@@ -1,6 +1,6 @@
 import { Avatar, Button, ButtonProps, Modal, Space } from 'antd';
 import React, { useState } from 'react';
-import config, { WalletList, WalletType } from '../config';
+import { WalletList, WalletType } from '../config';
 import { useWeb3Provider } from '../Web3Modal';
 import { useWeb3Storage } from '../Web3Modal/storage';
 import style from './index.module.scss';
@@ -38,6 +38,7 @@ export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
 
 type Web3ButtonProps = {
   type?: 'connect' | 'change';
+  btnProps?: ButtonProps;
 };
 export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
   const { type = 'connect' } = props;
@@ -46,7 +47,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [wallet_Type, setWallet_Type] = useState<WalletType | any>(
-    walletType ?? config.BaseWalletType,
+    walletType, // ?? config.BaseWalletType,
   );
 
   const handleCancel = () => {
@@ -57,10 +58,13 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
   return (
     <>
       {type === 'connect' && (
-        <ConnectButton onClick={() => setIsModalOpen(true)} />
+        <ConnectButton
+          {...props.btnProps}
+          onClick={() => setIsModalOpen(true)}
+        />
       )}
       {type === 'change' && (
-        <Button onClick={() => setIsModalOpen(true)}>
+        <Button {...props.btnProps} onClick={() => setIsModalOpen(true)}>
           {t('Switch Wallet')}
         </Button>
       )}

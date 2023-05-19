@@ -291,7 +291,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   }, [WalletProider]);
 
   useEffect(() => {
-    console.log(networkId, walletType, '222');
     if (networkId && walletType) {
       connector(networkId, walletType, true);
     }
