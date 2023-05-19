@@ -6,7 +6,6 @@ import { useWeb3Storage } from '../Web3Modal/storage';
 import style from './index.module.scss';
 
 const list = Object.entries(WalletList).map(([label, value]): any => {
-  console.log(value, label);
   return {
     label,
     logo: value.logo,

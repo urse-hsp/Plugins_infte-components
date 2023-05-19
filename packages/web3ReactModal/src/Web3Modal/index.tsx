@@ -245,7 +245,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
     // 切换账户
     WalletProider?.on('accountsChanged', (_accounts: any) => {
-      console.log(_accounts, '_accounts1');
       // if (!_accounts.length) return;
       if (account === _accounts[0]) return; // 当前账号
 
@@ -256,8 +255,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       if (_accounts?.length === 0 && account) {
         disconnect();
       }
-      // setAccount(isAddress(_accounts[0]));
-      console.log('切换账户');
+      // console.log('切换账户');
       if (reload) window.location.reload();
     });
 
@@ -278,7 +276,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         setNetworkChainsInfo(undefined);
         connector(chainIdValue, walletType);
       }
-      console.log('切换链');
+      // console.log('切换链');
       if (reload) window.location.reload();
     });
 

@@ -10,6 +10,4 @@ const resources: Record<localeKeys, any> = {
   'zh-hk': zh_hk,
 };
 
-// console.log(resources['zh-cn']);
-
 export default resources;
