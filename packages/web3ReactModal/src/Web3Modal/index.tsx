@@ -321,12 +321,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
 const Web3Hook = createContainer(useWeb3Hook);
 
-export const useWeb3Provider = (): web3HookType => {
-  const data = Web3Hook.useContainer();
-  return useMemo(() => {
-    return data;
-  }, [data]);
-};
+export const useWeb3Provider = Web3Hook.useContainer;
 
 interface ethereumClient extends initialState, storageInitialStates {
   locale?: localeKeys; // 语言
