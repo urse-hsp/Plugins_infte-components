@@ -41,13 +41,12 @@ type Web3ButtonProps = {
 };
 export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
   const { type = 'connect' } = props;
-  const { t, walletType, networkId } = useWeb3Storage();
   const { connect, active, loading } = useWeb3Provider();
+  const { t, network_id, wallet_type }: any = useWeb3Storage();
+  const walletType = wallet_type;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [wallet_Type, setWallet_Type] = useState<WalletType | any>(
-    walletType, // ?? config.BaseWalletType,
-  );
+  const [wallet_Type, setWallet_Type] = useState<WalletType | any>(walletType);
 
   const handleCancel = () => {
     if (loading) return;
@@ -96,7 +95,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                 onClick={() => {
                   if (loading) return;
                   setWallet_Type(item.label);
-                  connect(networkId, item.label, false, () => {
+                  connect(network_id, item.label, false, () => {
                     handleCancel();
                   });
                 }}

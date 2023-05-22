@@ -11,7 +11,7 @@ import config, {
 } from '../config';
 import resources from '../locales';
 import { localeKeys } from '../locales/index';
-import Storage, { storageInitialStates } from './storage';
+import Storage, { storageInitialStates, useWeb3Storage } from './storage';
 
 export type dataType<T> = Record<string, T>;
 
@@ -72,8 +72,8 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     undefined,
   );
 
-  const { walletType, networkId, setNetworkId, setWalletType, t } =
-    Storage.useContainer();
+  const { wallet_type, network_id, setNetworkId, setWalletType, t } =
+    useWeb3Storage();
 
   const setProviderChainId = (chainId: string) => {
     return Number(
@@ -211,13 +211,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           'Unsupported network, need to switch to supported network:',
         )}`,
       );
-      connector(chainsList[0].chainId, walletType);
+      connector(chainsList[0].chainId, wallet_type);
     }
   };
 
   const connect = (
-    id = networkId,
-    type = walletType,
+    id = network_id,
+    type = wallet_type,
     auto_connect?: boolean,
     fn?: () => void,
   ) => {
@@ -274,12 +274,11 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         setNetworkId(chainIdValue);
         setContracts(undefined);
         setNetworkChainsInfo(undefined);
-        connector(chainIdValue, walletType);
+        connector(chainIdValue, wallet_type);
       }
       // console.log('切换链');
       if (reload) window.location.reload();
     });
-
     // WalletProider?.on('disconnect', () => {
     //   disconnect();
     // });
@@ -289,8 +288,8 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   }, [WalletProider]);
 
   useEffect(() => {
-    if (networkId && walletType) {
-      connector(networkId, walletType, true);
+    if (network_id && wallet_type) {
+      connector(network_id, wallet_type, true);
     }
   }, []);
 
