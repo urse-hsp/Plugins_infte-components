@@ -95,8 +95,9 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     fn?: () => void,
   ) => {
     if (loading) return;
-    setLoading(true);
     const network_id: number = Number(chainsId);
+    if (network_id === chainId) return;
+    setLoading(true);
     // 限制支持链
     const chainsInfo: chainsType | undefined = chainsList.find(
       (item: chainsType) => {
@@ -225,6 +226,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       const network: any = chainsList.find(
         (element: any) => element.chainId === Number(id),
       )?.networkId;
+
       connector(network ?? chainsList[0].chainId, type, auto_connect, fn);
     }
   };

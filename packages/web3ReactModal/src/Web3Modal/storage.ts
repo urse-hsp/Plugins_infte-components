@@ -46,8 +46,6 @@ function useStorage(customInitialStates?: storageInitialStates): StorageType {
       data?.[WALLET_TYPE_NAME] ?? customInitialStates?.wallet_type,
   };
 
-  console.log(initStates, 'initStates');
-
   const [state, dispatch] = useReducer(reducer, initStates);
   const { locale = config.BaseLocale } = initStates;
 

@@ -19,10 +19,10 @@ function App() {
       ) : (
         <button
           onClick={() => {
-            connect?.(12306, 'BitKeep');
+            connect?.(12306);
           }}
         >
-          链接
+          链接2
         </button>
       )}
       <button onClick={disconnect}>退出</button>
