@@ -17,13 +17,22 @@ function App() {
       {loading ? (
         'loading'
       ) : (
-        <button
-          onClick={() => {
-            connect?.(12306);
-          }}
-        >
-          链接2
-        </button>
+        <>
+          <button
+            onClick={() => {
+              connect?.(12306);
+            }}
+          >
+            12306
+          </button>
+          <button
+            onClick={() => {
+              connect?.(65);
+            }}
+          >
+            65
+          </button>
+        </>
       )}
       <button onClick={disconnect}>退出</button>
       {account}*****{chainId}

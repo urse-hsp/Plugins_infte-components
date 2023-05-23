@@ -9,6 +9,7 @@ const list = Object.entries(WalletList).map(([label, value]): any => {
   return {
     label,
     logo: value.logo,
+    key: label,
   };
 });
 
@@ -95,7 +96,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                 onClick={() => {
                   if (loading) return;
                   setWallet_Type(item.label);
-                  connect(network_id, item.label, false, () => {
+                  connect(network_id, item.key, false, () => {
                     handleCancel();
                   });
                 }}

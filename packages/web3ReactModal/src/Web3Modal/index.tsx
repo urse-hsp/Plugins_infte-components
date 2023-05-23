@@ -235,10 +235,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     setWeb3Provider(null);
     setWalletProider(null);
     setAccount('');
+    setChainId(undefined);
     setNetworkChainsInfo(undefined);
     setContracts(undefined);
     setWalletType('');
-    // setLoading(false);
   };
 
   // 监听登录
