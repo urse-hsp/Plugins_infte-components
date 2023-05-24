@@ -90,13 +90,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
   const connector = async (
     chainsId: number,
-    wallet_type: WalletType,
+    WALLET_TYPE: WalletType,
     auto_connect?: boolean,
     fn?: () => void,
   ) => {
     if (loading) return;
     const network_id: number = Number(chainsId);
-    if (network_id === chainId) return;
+    if (network_id === chainId && WALLET_TYPE === wallet_type) return;
     setLoading(true);
     // 限制支持链
     const chainsInfo: chainsType | undefined = chainsList.find(
@@ -112,7 +112,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         let account: any = []; // ox账户
 
         // WalletProider
-        providerInstance = await WalletProiderData?.[wallet_type].provider(); // eth实例 window.ethereum
+        providerInstance = await WalletProiderData?.[WALLET_TYPE].provider(); // eth实例 window.ethereum
 
         // 解锁 MateMask
         if (providerInstance) {
@@ -123,7 +123,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           )[0];
         } else {
           if (!auto_connect) {
-            message.error(`Please install ${wallet_type} !`);
+            message.error(`Please install ${WALLET_TYPE} !`);
           }
           setLoading(false);
           return;
@@ -195,7 +195,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         setLoading(false);
 
         setAccount(Account);
-        setWalletType(wallet_type);
+        setWalletType(WALLET_TYPE);
         setNetworkData(chainsInfo);
 
         return null;
@@ -212,7 +212,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           'Unsupported network, need to switch to supported network:',
         )}`,
       );
-      connector(chainsList[0].chainId, wallet_type);
+      connector(chainsList[0].chainId, WALLET_TYPE);
     }
   };
 
@@ -276,7 +276,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         setNetworkId(chainIdValue);
         setContracts(undefined);
         setNetworkChainsInfo(undefined);
-        connector(chainIdValue, wallet_type);
+        connect(chainIdValue, wallet_type);
       }
       // console.log('切换链');
       if (reload) window.location.reload();
@@ -291,7 +291,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
   useEffect(() => {
     if (network_id && wallet_type) {
-      connector(network_id, wallet_type, true);
+      connect(network_id, wallet_type, true);
     }
   }, []);
 

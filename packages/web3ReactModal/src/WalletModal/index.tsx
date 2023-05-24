@@ -1,6 +1,6 @@
 import { Avatar, Button, ButtonProps, Modal, Space } from 'antd';
 import React, { useState } from 'react';
-import { WalletList, WalletType } from '../config';
+import { WalletList } from '../config';
 import { useWeb3Provider } from '../Web3Modal';
 import { useWeb3Storage } from '../Web3Modal/storage';
 import style from './index.module.scss';
@@ -44,10 +44,9 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
   const { type = 'connect' } = props;
   const { connect, active, loading } = useWeb3Provider();
   const { t, network_id, wallet_type }: any = useWeb3Storage();
-  const walletType = wallet_type;
-
+  const RecommendWalletName = 'MetaMask';
+  const walletType = wallet_type ? wallet_type : RecommendWalletName;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [wallet_Type, setWallet_Type] = useState<WalletType | any>(walletType);
 
   const handleCancel = () => {
     if (loading) return;
@@ -78,7 +77,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
       >
         <Space direction="vertical" style={{ width: '100%', margin: '15px 0' }}>
           {list.map((item) => {
-            const isSelect = wallet_Type === item.label;
+            const isSelect = walletType === item.label;
             return (
               <Button
                 size="large"
@@ -92,10 +91,11 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                   height: '50px',
                   alignItems: 'center',
                 }}
-                type={isSelect ? 'default' : 'dashed'}
+                type={isSelect ? 'dashed' : 'text'}
                 onClick={() => {
+                  console.log(loading, 'loading', network_id, item.key);
+
                   if (loading) return;
-                  setWallet_Type(item.label);
                   connect(network_id, item.key, false, () => {
                     handleCancel();
                   });
@@ -104,8 +104,15 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                 disabled={isSelect ? false : loading}
               >
                 <div className={style.walletModalContent}>
-                  {item.label}
-                  <Avatar src={item.logo} size={'small'} shape="square" />
+                  <Space>
+                    <Avatar src={item.logo} size={'small'} shape="square" />
+                    {item.label}
+                  </Space>
+                  {item.key === RecommendWalletName && !active && (
+                    <span className={style.walletModalRecommend}>
+                      {t('Recommend')}
+                    </span>
+                  )}
                 </div>
               </Button>
             );

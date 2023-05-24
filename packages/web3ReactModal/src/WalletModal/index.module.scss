@@ -1,17 +1,23 @@
 .walletModal {
   &AvtiveBtn {
-    &::before {
+    &::after {
       content: '';
       height: 8px;
       width: 8px;
       margin-right: 8px;
       background-color: rgb(39, 174, 96);
       border-radius: 50%;
+      position: absolute;
+      right: 10px;
     }
   }
   &Content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex: 1;
+  }
+  &Recommend {
+    font-size: 14px;
   }
 }

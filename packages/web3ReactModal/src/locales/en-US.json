@@ -4,5 +4,6 @@
   "A Switch Network request has been sent,Please confirm in your wallet.": "A \"Switch Network\" request has been sent,\nPlease confirm in your wallet.",
   "Please confirm your actions in MetaMask": "Please confirm your actions in MetaMask",
   "Connect Wallet": "Connect Wallet",
-  "Switch Wallet": "Switch Wallet"
+  "Switch Wallet": "Switch Wallet",
+  "Recommend": "Recommend"
 }

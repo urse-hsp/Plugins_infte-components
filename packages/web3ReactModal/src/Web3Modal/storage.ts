@@ -42,10 +42,10 @@ function useStorage(customInitialStates?: storageInitialStates): StorageType {
       data?.[NETWORK_ID_NAME] ??
       customInitialStates?.network_id ??
       config.chainsList[0].chainId,
-    [WALLET_TYPE_NAME]:
-      data?.[WALLET_TYPE_NAME] ?? customInitialStates?.wallet_type,
+    [WALLET_TYPE_NAME]: data?.[WALLET_TYPE_NAME]
+      ? data?.[WALLET_TYPE_NAME]
+      : customInitialStates?.wallet_type,
   };
-
   const [state, dispatch] = useReducer(reducer, initStates);
   const { locale = config.BaseLocale } = initStates;
 

@@ -1,8 +1,4 @@
-import {
-  ConnectButton,
-  useWeb3Provider,
-  Web3Button,
-} from '@infte/web3modal-react';
+import { useWeb3Provider, Web3Button } from '@infte/web3modal-react';
 
 import './App.css';
 
@@ -11,8 +7,8 @@ function App() {
 
   return (
     <div className="App">
-      <ConnectButton />
       <Web3Button />
+      *****
       <Web3Button type="change" />
       {loading ? (
         'loading'
