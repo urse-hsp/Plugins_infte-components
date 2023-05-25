@@ -77,7 +77,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
   const setProviderChainId = (chainId: string) => {
     return Number(
-      chainId.toString().indexOf('0x') === 0 ? parseInt(chainId, 16) : chainId,
+      chainId?.toString().indexOf('0x') === 0 ? parseInt(chainId, 16) : chainId,
     );
   };
 
@@ -94,9 +94,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     auto_connect?: boolean,
     fn?: () => void,
   ) => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     const network_id: number = Number(chainsId);
-    if (network_id === chainId && WALLET_TYPE === wallet_type) return;
+    if (network_id === chainId && WALLET_TYPE === wallet_type) {
+      return;
+    }
     setLoading(true);
     // 限制支持链
     const chainsInfo: chainsType | undefined = chainsList.find(

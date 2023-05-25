@@ -41,7 +41,7 @@ type Web3ButtonProps = {
   btnProps?: ButtonProps;
 };
 export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
-  const { type = 'connect' } = props;
+  const { type = 'connect', btnProps = {} } = props;
   const { connect, active, loading } = useWeb3Provider();
   const { t, network_id, wallet_type }: any = useWeb3Storage();
   const RecommendWalletName = 'MetaMask';
@@ -56,13 +56,10 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
   return (
     <>
       {type === 'connect' && (
-        <ConnectButton
-          {...props.btnProps}
-          onClick={() => setIsModalOpen(true)}
-        />
+        <ConnectButton {...btnProps} onClick={() => setIsModalOpen(true)} />
       )}
       {type === 'change' && (
-        <Button {...props.btnProps} onClick={() => setIsModalOpen(true)}>
+        <Button {...btnProps} onClick={() => setIsModalOpen(true)}>
           {t('Switch Wallet')}
         </Button>
       )}
@@ -93,8 +90,6 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                 }}
                 type={isSelect ? 'dashed' : 'text'}
                 onClick={() => {
-                  console.log(loading, 'loading', network_id, item.key);
-
                   if (loading) return;
                   connect(network_id, item.key, false, () => {
                     handleCancel();
