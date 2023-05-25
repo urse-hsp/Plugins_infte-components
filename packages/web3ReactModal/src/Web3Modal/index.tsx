@@ -251,13 +251,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     WalletProider?.on('accountsChanged', (_accounts: any) => {
       // 当前账号
       const accountsAddress = isAddress(_accounts[0]);
-      // 判断重复
-      if (accountsAddress && account === accountsAddress) return;
       // 切换
-      if (accountsAddress && _accounts?.length) {
+      if (accountsAddress && account) {
         setAccount(accountsAddress);
       }
-
       // 退出
       if (_accounts?.length === 0 && account) {
         disconnect();
