@@ -44,14 +44,12 @@ interface web3HookType {
 type initialState = {
   chainsList?: chainsType[]; // 支持的链
   reload?: boolean; // 刷新页面
-  // autoConnector?: boolean;
 };
 
 const BaseLocale = config.BaseLocale;
 const BaseinitialState: initialState = {
   chainsList: config.chainsList,
   reload: false,
-  // autoConnector: false,
 };
 
 const useWeb3Hook = (props?: initialState): web3HookType => {
@@ -251,17 +249,19 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
     // 切换账户
     WalletProider?.on('accountsChanged', (_accounts: any) => {
-      // if (!_accounts.length) return;
-      if (account === _accounts[0]) return; // 当前账号
-
-      // 有账号并且是正确的地址
-      if (isAddress(_accounts[0]) && _accounts?.length) {
-        setAccount(_accounts[0]);
+      // 当前账号
+      const accountsAddress = isAddress(_accounts[0]);
+      // 判断重复
+      if (accountsAddress && account === accountsAddress) return;
+      // 切换
+      if (accountsAddress && _accounts?.length) {
+        setAccount(accountsAddress);
       }
+
+      // 退出
       if (_accounts?.length === 0 && account) {
         disconnect();
       }
-      // console.log('切换账户');
       if (reload) window.location.reload();
     });
 
