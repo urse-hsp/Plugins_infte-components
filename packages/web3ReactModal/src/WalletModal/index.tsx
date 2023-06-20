@@ -29,7 +29,7 @@ export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
           }}
           loading={loading}
         >
-          {t('Connect Wallet')}
+          {props?.children ?? t('Connect Wallet')}
         </Button>
       )}
     </>
@@ -39,6 +39,7 @@ export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
 type Web3ButtonProps = {
   type?: 'connect' | 'change';
   btnProps?: ButtonProps;
+  children?: any;
 };
 export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
   const { type = 'connect', btnProps = {} } = props;
@@ -56,7 +57,9 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
   return (
     <>
       {type === 'connect' && (
-        <ConnectButton {...btnProps} onClick={() => setIsModalOpen(true)} />
+        <ConnectButton {...btnProps} onClick={() => setIsModalOpen(true)}>
+          {props?.children}
+        </ConnectButton>
       )}
       {type === 'change' && (
         <Button {...btnProps} onClick={() => setIsModalOpen(true)}>

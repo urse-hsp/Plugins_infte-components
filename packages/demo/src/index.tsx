@@ -12,7 +12,7 @@ root.render(
   // <React.StrictMode>
   <Web3Modal
     ethereumClient={{
-      locale: 'en-us',
+      locale: 'zh-cn',
       network_id: 12306,
       chainsList: list,
       wallet_type: 'BitKeep',
