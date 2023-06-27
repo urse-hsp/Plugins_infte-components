@@ -2,6 +2,10 @@
   "name": "@infte/web3modal-react",
   "version": "1.0.72",
   "description": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
   "license": "ISC",
   "author": "",
   "main": "dist/index.js",
