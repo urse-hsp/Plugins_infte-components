@@ -3,7 +3,16 @@ import { useWeb3Provider, Web3Button } from '@infte/web3modal-react';
 import './App.css';
 
 function App() {
-  const { connect, account, disconnect, chainId, loading } = useWeb3Provider();
+  const {
+    connect,
+    account,
+    disconnect,
+    chainId,
+    loading,
+    web3Provider: provider,
+  } = useWeb3Provider();
+
+  console.log(provider, 65);
 
   return (
     <div className="App">

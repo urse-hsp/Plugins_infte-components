@@ -73,6 +73,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   const { wallet_type, network_id, setNetworkId, setWalletType, t } =
     useWeb3Storage();
 
+  // 根据进制数据转换阿拉伯数字
   const setProviderChainId = (chainId: string) => {
     return Number(
       chainId?.toString().indexOf('0x') === 0 ? parseInt(chainId, 16) : chainId,
@@ -264,14 +265,16 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
     // 切换链
     WalletProider?.on('chainChanged', (chainId: any) => {
+      // 切换的chainid
       const chainIdValue = setProviderChainId(chainId);
+      // 支持的链信息
       const network: chainsType | undefined = chainsList.find(
         (element: chainsType) => {
           return element.chainId === Number(chainIdValue);
         },
       );
       if (network) {
-        setNetworkData(network);
+        connect(network.chainId, wallet_type);
       } else {
         setChainId(chainIdValue);
         setNetworkId(chainIdValue);
