@@ -10,9 +10,8 @@ function App() {
     chainId,
     loading,
     web3Provider: provider,
-  } = useWeb3Provider();
-
-  console.log(provider, 65);
+    IDDDD,
+  }: any = useWeb3Provider();
 
   return (
     <div className="App">
@@ -40,7 +39,9 @@ function App() {
         </>
       )}
       <button onClick={disconnect}>退出</button>
-      {account}*****{chainId}
+      {account} ***** {chainId}
+      --------------
+      {IDDDD}
       <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

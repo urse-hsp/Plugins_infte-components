@@ -15,7 +15,6 @@ root.render(
       locale: 'zh-cn',
       network_id: 12306,
       chainsList: list,
-      wallet_type: 'BitKeep',
     }}
   >
     <App />,

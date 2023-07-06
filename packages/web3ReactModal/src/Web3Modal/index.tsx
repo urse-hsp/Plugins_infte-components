@@ -73,10 +73,16 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   const { wallet_type, network_id, setNetworkId, setWalletType, t } =
     useWeb3Storage();
 
+  // useEffect(() => {
+  //   console.log(loading, 'loading');
+  // }, [loading]);
+
   // 根据进制数据转换阿拉伯数字
-  const setProviderChainId = (chainId: string) => {
+  const setProviderChainId = (chain_id: string) => {
     return Number(
-      chainId?.toString().indexOf('0x') === 0 ? parseInt(chainId, 16) : chainId,
+      chain_id?.toString().indexOf('0x') === 0
+        ? parseInt(chain_id, 16)
+        : chainId,
     );
   };
 
@@ -88,23 +94,26 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   };
 
   const connector = async (
-    chainsId: number,
+    CHAINS_ID: number,
     WALLET_TYPE: WalletType,
     auto_connect?: boolean,
     fn?: () => void,
   ) => {
+    console.log(loading, 'loading');
+
     if (loading) {
       return;
     }
-    const network_id: number = Number(chainsId);
-    if (network_id === chainId && WALLET_TYPE === wallet_type) {
+    const network_chainsId: number = Number(CHAINS_ID);
+    // 当前链当前钱包不做操作
+    if (network_chainsId === chainId && WALLET_TYPE === wallet_type) {
       return;
     }
     setLoading(true);
     // 限制支持链
     const chainsInfo: chainsType | undefined = chainsList.find(
       (item: chainsType) => {
-        return item?.networkId === Number(network_id);
+        return item?.networkId === Number(network_chainsId);
       },
     );
 
@@ -126,7 +135,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
           )[0];
         } else {
           if (!auto_connect) {
-            message.error(`Please install ${WALLET_TYPE} !`);
+            message.error(`${t('Please install')} ${WALLET_TYPE} !`);
           }
           setLoading(false);
           return;
@@ -139,8 +148,8 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         const providerChainId: number = setProviderChainId(walletChainId);
 
         // 更改为当前网络
-        if (network_id !== providerChainId) {
-          const chainId_to16 = `0x${network_id.toString(16)}`;
+        if (network_chainsId !== providerChainId) {
+          const chainId_to16 = `0x${network_chainsId.toString(16)}`;
           try {
             await providerInstance.request({
               method: 'wallet_switchEthereumChain',
@@ -163,13 +172,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
                   params: [params],
                 });
               } catch (addError: any) {
-                setLoading(false);
                 message.error(addError.message);
+                setLoading(false);
                 return addError.message;
               }
             } else if (switchError.code === 4001) {
-              setLoading(false);
               message.error(t('You denied the Switch network request'));
+              setLoading(false);
               return;
             } else if (switchError.code === -32002) {
               message.destroy(
@@ -181,7 +190,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
             } else {
               setLoading(false);
               message.error(switchError.message);
-              return switchError.message;
+              return;
             }
           }
         }
@@ -191,7 +200,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         );
         const Account = await web3instance._getAddress(account); // ethers.utils.getAddress
 
-        fn?.();
         // set
         setWeb3Provider(web3instance);
         setWalletProider(providerInstance);
@@ -200,7 +208,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         setAccount(Account);
         setWalletType(WALLET_TYPE);
         setNetworkData(chainsInfo);
-
+        fn?.();
         return null;
       } catch (e: any) {
         setLoading(false);
@@ -210,11 +218,13 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       }
     } else {
       // 不支持的网络
-      message.error(
-        `chainId：${network_id}，${t(
-          'Unsupported network, need to switch to supported network:',
-        )}`,
-      );
+      const content = `chainId：${network_chainsId}，${t(
+        'Unsupported network, need to switch to supported network:',
+      )}`;
+      message.error({
+        content,
+        key: content,
+      });
       connector(chainsList[0].chainId, WALLET_TYPE);
     }
   };
@@ -225,13 +235,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     auto_connect?: boolean,
     fn?: () => void,
   ) => {
-    if (id && type) {
-      const network: any = chainsList.find(
-        (element: any) => element.chainId === Number(id),
-      )?.networkId;
-
-      connector(network ?? chainsList[0].chainId, type, auto_connect, fn);
-    }
+    connector(id, type, auto_connect, fn);
   };
 
   const disconnect = async () => {
@@ -267,22 +271,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     WalletProider?.on('chainChanged', (chainId: any) => {
       // 切换的chainid
       const chainIdValue = setProviderChainId(chainId);
-      // 支持的链信息
-      const network: chainsType | undefined = chainsList.find(
-        (element: chainsType) => {
-          return element.chainId === Number(chainIdValue);
-        },
-      );
-      if (network) {
-        connect(network.chainId, wallet_type);
-      } else {
-        setChainId(chainIdValue);
-        setNetworkId(chainIdValue);
-        setContracts(undefined);
-        setNetworkChainsInfo(undefined);
-        connect(chainIdValue, wallet_type);
-      }
-      // console.log('切换链');
+      connect(chainIdValue, wallet_type);
       if (reload) window.location.reload();
     });
     // WalletProider?.on('disconnect', () => {
@@ -291,7 +280,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   }
   useEffect(() => {
     handleAccountsChainChanged();
-  }, [WalletProider]);
+  }, [WalletProider, chainId, account, disconnect]);
 
   useEffect(() => {
     if (network_id && wallet_type) {
