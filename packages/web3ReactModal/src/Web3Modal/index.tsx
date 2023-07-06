@@ -73,10 +73,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   const { wallet_type, network_id, setNetworkId, setWalletType, t } =
     useWeb3Storage();
 
-  // useEffect(() => {
-  //   console.log(loading, 'loading');
-  // }, [loading]);
-
   // 根据进制数据转换阿拉伯数字
   const setProviderChainId = (chain_id: string) => {
     return Number(
@@ -99,8 +95,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     auto_connect?: boolean,
     fn?: () => void,
   ) => {
-    console.log(loading, 'loading');
-
     if (loading) {
       return;
     }
