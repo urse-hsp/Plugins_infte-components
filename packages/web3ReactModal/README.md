@@ -31,3 +31,11 @@
    wallet_type?: WalletType = 'MetaMask' | 'BitKeep' | string;; // 指定钱包类型，默认链接。不指定需要手动选择
 
 ### useWeb3Storage web3 本地存储实例
+
+# 打包报错
+
+打包报错 升级 @infte/utils @infte/web3-utils
+
+包
+"module": "dist/index.js",
+"types": "dist/index.d.ts",

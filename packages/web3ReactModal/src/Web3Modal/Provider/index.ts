@@ -1,0 +1,21 @@
+import detectEthereumProvider from '@metamask/detect-provider';
+import { getProvider as getBitKeepProvider } from './BitKeep';
+import metamask from './images/metamask.png';
+export type WalletType = 'MetaMask' | 'BitKeep' | string;
+
+export const WalletList: Record<
+  WalletType,
+  {
+    logo: string;
+    provider: any;
+  }
+> = {
+  MetaMask: {
+    logo: metamask,
+    provider: detectEthereumProvider,
+  },
+  BitKeep: {
+    logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAgVBMVEUAAAB2JPl0JPd0I/l1JPlwI/d1I/l4JPdwIP91JPl0I/l1JPl1JPl0JPh0JPh0JPd0I/h0JfZ1JPp1JPl0JPl1JPn////u5P738v6YWvuGQPrCn/yGP/l9Mfmpdvu5kfvdyP7cyP3Lrf26kvyxhPx9MvqPTfrUu/2gaPvl1v7k1f7gMQ4kAAAAFXRSTlMA30CQ7yDgIBDAoLCAYL9wUDDPz9DN+EXWAAAEkElEQVR42tWb63LUMAyFnTib696L4t1kLyUtFHj/B4R2CoEuPrKshA7f/x1pfM7KsuyYKBbbja3XSUIvJHfrxm7SnfknLFb2LqO/kq3tdmHmpExtQgx3dWpmIq0zCiKrt2ZydsuMBOT1tFqkaxKzTmcOz5Ov5g8/fwqLNalodF4ol6RmWSpWP6EJyGPdWFqaCBunfkKTkUc4YZXRhGQbI8TSxCxl8jc0OU0pkH9PAvRG0NtPn4E+vj4DfXx9Bvr4+gzKhGZlXxpMQxJOvWvdcCIBjYEsScD5emhfuEpSsAawIQGXQ/sTd6FwVsCAgvp//Nj+jjtSKJnfiOEGPD21bwm3Qu4zohWJf0t/0tkgpUAeb8JLrZDCCsCL78d9iRdhGSY+CD9aIaY7WISJ3wIkVrj9JzQR4iusUN20gAHiu5ZjtILYh4lUfK0VKtkCnPsWEGWFVLIAN4VHZgV+CVKN+LwV+CVYxxae9jA41gr8EixixT88Pm/LLtIK41yvRrsO4OETPdP1cVZYshY8uRZw39FPugGm4FmEzLyyjYn/9c8O5ItDGZyBDYECAxT/DdAKV/or9WsCvkbMecO/ij/CWMF5NChxEWDEH+GtAEtBLUvg/oj2S08CsDfznsWB+NKq4euMcBUC4kv7BdSXbMMTeOrglvGt9YIOKZZ8APGF/YJDDfo6LIHDJb5ZPHh3xTtQBYh04o/0/t9mxuzIS7D4eMv4DLtj1IvoxecPrVt0Ih+30+h+4YEYNuhEGiD+lROfw5oGJjDoxOepUTv48AQF/MyLz1P5dwLdSWGgMHKTEwI1i5jrmULIDTHw4uumFSAB5qTA40YXMgnEi6+fVhiV+DzXkzoB2H3rrWB04uutIPgbnoc2kitbB/Ti39+3gCP5O5I1BXFhy3731Hr5CEpxrRffHbkkD+D6wBLLaQjd8x99KYDteKMUv/8UcjgDDcmWvZaQ7Pk+K4BBUaESP9SvaEyToWsJScOHrADacrOfvtun7mtgAhU8mkHxZc0iOpqtIhJw0pOC/1hggAvBgEh6TCQPhflBLkygjzgmgrMpMEGM+N9EhajGQ6oY8WOGVCUY04nEl4/pmEHlQ/sn8TOCASgANDg70T/fj+t8f0JmVNq5cTTMiR8RPwm4s7w4hfjjdAcrAMc052cjzDQjKMwvKvLTXWaaEVSCi3PdjAAVAX4JZhsQJYK3AyrxwZSWXwKF+B1hEv75RFyzOFYNdgHYJVDcJrI05i0FAaS3iTyF4hEVf5vIs9Q8Yzui8EcKISlVz3guDovPkyofMnU92nV4rP4tYTeACyWOxPgoMoocV43i82SF8bIiARcX95xvM9mD6q4fxQ9nOeWTzm44tK7vSEBjMOWedPAVgKFIaEaSwhhdBvr4ugz08XUZ6OO/Zwb74v/5wAF0B9FYI2Qz7UcuKyOmSCa337t9aWPLd/3UK0n/34/dflA0pKIqjJZVogg/rr4uBWV4PWmlDK+nqEXLkC13ZnK2wR8+z/nx9QdiyG1amjkptrbyffz+wa4W5p+wSze2qT7k9EKeV7XdbONifwe0FzRuuKJthwAAAABJRU5ErkJggg==',
+    provider: getBitKeepProvider,
+  },
+};
