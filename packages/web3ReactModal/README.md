@@ -1,10 +1,10 @@
 # web3ReactModal 说明文档
 
-## Web3Button
+<!-- ## Web3Button -->
 
 ### Web3Button 组件 负责链接钱包与切换卡包
 
-参数
+参数:
 
 1. type?: 'connect' | 'change'; 链接/切换
 
@@ -15,20 +15,20 @@
 参数
 
 1. ethereumClient
-   locale?: 'en-us' | 'zh-cn' | 'zh-hk' | string; // 语言
-   chainsList?: {
-   name: string;
-   chainId: number;
-   networkId: number;
-   contracts: contractsType;
-   explorers: any[];
-   location_id: number;
-   rpc: string[];
-   nativeCurrency: Token;
-   }[]; // 支持的链
-   reload?: boolean; // 刷新页面
-   network_id?: number | string | null; // 默认链
-   wallet_type?: WalletType = 'MetaMask' | 'BitKeep' | string;; // 指定钱包类型，默认链接。不指定需要手动选择
+   - locale?: 'en-us' | 'zh-cn' | 'zh-hk' | string; // 语言
+   - chainsList?: {
+     - name: string;
+     - chainId: number;
+     - networkId: number;
+     - contracts: contractsType;
+     - explorers: any[];
+     - location_id: number;
+     - rpc: string[];
+     - nativeCurrency: Token;
+   - }[]; // 支持的链
+   - reload?: boolean; // 刷新页面
+   - network_id?: number | string | null; // 默认链
+   - wallet_type?: WalletType = 'MetaMask' | 'BitKeep' | string;; // 指定钱包类-型，- 默认链接。不指定需要手动选择
 
 ### useWeb3Storage web3 本地存储实例
 
