@@ -3,15 +3,10 @@ import { useWeb3Provider, Web3Button } from '@infte/web3modal-react';
 import './App.css';
 
 function App() {
-  const {
-    connect,
-    account,
-    disconnect,
-    chainId,
-    loading,
-    web3Provider: provider,
-    IDDDD,
-  }: any = useWeb3Provider();
+  const { connect, account, disconnect, chainId, loading }: any =
+    useWeb3Provider();
+
+  // const { getSigner } = useAccountOperation();
 
   return (
     <div className="App">
@@ -38,10 +33,10 @@ function App() {
           </button>
         </>
       )}
-      <button onClick={disconnect}>退出</button>
+      <button onClick={disconnect}>退出1</button>
       {account} ***** {chainId}
       --------------
-      {IDDDD}
+      {/* <div onClick={getSigner}>签名</div> */}
       <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

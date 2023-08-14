@@ -11,6 +11,7 @@ import config, {
 } from '../config';
 import resources from '../locales';
 import { localeKeys } from '../locales/index';
+import AppHashState from './appHashState';
 import Storage, { storageInitialStates, useWeb3Storage } from './storage';
 
 export type dataType<T> = Record<string, T>;
@@ -332,7 +333,8 @@ export function Web3Modal(props: Web3ModalType) {
   return (
     <Storage.Provider initialState={baseEthereumClient}>
       <Web3Hook.Provider initialState={baseEthereumClient}>
-        {children}
+        <AppHashState.Provider>{children}</AppHashState.Provider>
+        {/* {children} */}
       </Web3Hook.Provider>
     </Storage.Provider>
   );

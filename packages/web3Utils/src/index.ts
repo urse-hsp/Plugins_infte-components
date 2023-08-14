@@ -29,6 +29,7 @@ export const urf8_fex = (str: any) => {
   }
 };
 
+// 省略地址
 export function address_formatter(
   address: string,
   before: number = 6,
@@ -38,6 +39,7 @@ export function address_formatter(
   return `${address.slice(0, before)}...${address.slice(-after)}`;
 }
 
+// 省略hash
 export function hash_formatter(
   hash: string,
   before: number = 8,

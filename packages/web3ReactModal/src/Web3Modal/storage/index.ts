@@ -1,9 +1,9 @@
 import { localStorage } from '@infte/utils';
 import { useMemo, useReducer } from 'react';
 import { createContainer } from 'unstated-next';
-import config, { type WalletType } from '../config';
-import resources from '../locales';
-import { localeKeys } from '../locales/index';
+import config, { type WalletType } from '../../config';
+import resources from '../../locales';
+import { localeKeys } from '../../locales/index';
 
 const WALLET_STORAGE = 'WALLET_STORAGE'; // useStorage-KEY
 
