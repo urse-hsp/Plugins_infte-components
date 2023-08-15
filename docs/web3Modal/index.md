@@ -5,12 +5,12 @@
 npm install @infte/web3modal-react
 
 ```jsx
-import {Web3Modal} from '@infte/web3modal-react';
 import { useEffect, useState } from 'react';
 import {
   useAppHashState,
   useWeb3Provider,
   Web3Button,
+  Web3Modal
 } from '@infte/web3modal-react';
 import { Button } from 'antd';
 
