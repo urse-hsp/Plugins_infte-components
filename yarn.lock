@@ -2040,22 +2040,22 @@
 
 "@infte/web3-utils@file:D:\\study\\my\\infte\\Plugins_infte-components\\packages\\web3Utils":
   "resolved" "file:packages/web3Utils"
-  "version" "1.0.8"
+  "version" "1.0.10"
   dependencies:
     "ethers" "5.7.2"
     "nft.storage" "^7.0.3"
 
 "@infte/web3-utils@latest":
-  "integrity" "sha512-hJ9exJwWwq9dYHc2BcFTIPfi1zJdzkRrzT4kSyma26PQvx2eVvQyHLBNFlgHMLyj7fjJmVJcxzKkBEFpNQYu5g=="
-  "resolved" "https://registry.npmjs.org/@infte/web3-utils/-/web3-utils-1.0.6.tgz"
-  "version" "1.0.6"
+  "integrity" "sha512-pC20BrAX+8dxQDmXfD3bCsc81U7BHbukWow804QtgA+/FAq6Ed+aGezJON+Es/BNPEy0oEq5x4ryf8DqKJJA3w=="
+  "resolved" "https://registry.npmjs.org/@infte/web3-utils/-/web3-utils-1.0.9.tgz"
+  "version" "1.0.9"
   dependencies:
     "ethers" "5.7.2"
     "nft.storage" "^7.0.3"
 
 "@infte/web3modal-react@file:D:\\study\\my\\infte\\Plugins_infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.83"
+  "version" "1.0.84"
   dependencies:
     "@infte/utils" "latest"
     "@infte/web3-utils" "latest"

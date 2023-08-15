@@ -78,8 +78,6 @@ function useAppHashStateData(init: any): defaultStatesType {
 
   const [state, dispatch] = useReducer(reducer, initialStates);
 
-  console.log(state, 'state');
-
   const setState = (data: any) => {
     if (!openStorage) {
       return console.error('hash未开启本地存储');

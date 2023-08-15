@@ -1,5 +1,5 @@
 const STORAGE_PREFIX = '_';
-export function localStorage(key: string, value?: any) {
+export function localStorage(key: string, value?: any): any {
   if (value !== undefined) {
     window.localStorage.setItem(STORAGE_PREFIX + key, value);
     return;
@@ -8,7 +8,7 @@ export function localStorage(key: string, value?: any) {
 }
 
 // 判断字节长度
-export const byteLength = (str: string) => {
+export const byteLength = (str: string): number => {
   // return str.replace(/[^\u0000-\u00ff]/g, 'aa').length;
   let templen = 0;
   for (let i = 0; i < str.length; i++) {
@@ -51,14 +51,14 @@ export const substringLength = (str: string, len = 12, suffix = '...') => {
 };
 
 // 判断url
-export function isUrl(str: string) {
+export function isUrl(str: string): boolean {
   const v =
     /^(?!mailto:)(?:(?:http|https|ftp):\/\/|\/\/)(?:\S+(?::\S*)?@)?(?:(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))|localhost)(?::\d{2,5})?(?:(\/|\?|#)[^\s]*)?$/i;
   return v.test(str);
 }
 
 // 判断资源类型
-export function getFileType(name: string) {
+export function getFileType(name: string): any {
   if (!name) return false;
   const index1 = name.lastIndexOf('.');
   const index2 = name.length;

@@ -1,6 +1,7 @@
 import { ethers } from 'ethers';
-
-export { ethers };
+import * as mintNFT from './MintNFT';
+export * from './MintNFT';
+export { ethers, mintNFT };
 
 // 判断地址是否正确
 export function isAddress(value: any, isAddress = true): string {
@@ -34,7 +35,7 @@ export function address_formatter(
   address: string,
   before: number = 6,
   after: number = 4,
-) {
+): string {
   if (!address) return address;
   return `${address.slice(0, before)}...${address.slice(-after)}`;
 }
@@ -44,7 +45,7 @@ export function hash_formatter(
   hash: string,
   before: number = 8,
   after: number = 4,
-) {
+): string {
   if (hash?.length <= 12 || !hash) return hash;
   return `${hash.slice(0, before)}...${hash.slice(-after)}`;
 }
