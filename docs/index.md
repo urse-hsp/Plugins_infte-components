@@ -1,12 +1,12 @@
 ---
 hero:
-  title: library
-  description: A react library developed with dumi
+  title: infte
+  description: pc组件，移动端组件，web3，utils工具包等
   actions:
-    - text: Hello
-      link: /
-    - text: World
-      link: /
+    - text: 立即上手
+      link: /components
+    - text: GetHub
+      link: https://github.com/urse-hsp/Plugins_infte-components
 features:
   - title: Hello
     emoji: 💎

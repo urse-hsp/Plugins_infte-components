@@ -1,14 +1,9 @@
-# web3ReactModal 说明文档
-
-<!-- ## Web3Button -->
+## web3ReactModal 说明文档
 
 ### Web3Button 组件
 
-负责链接钱包与切换卡包
-
-参数:
-
-1. type?: 'connect' | 'change'; 链接/切换
+- 负责链接钱包与切换卡包
+- 参数: type?: 'connect' | 'change'; 链接/切换
 
 ### Web3Modal
 
@@ -46,7 +41,7 @@ web3 Provider 实例
 
 交易哈希本地缓存实例
 
-### hooks 文件
+## hooks
 
 1. useEthScanPath
 
@@ -94,7 +89,7 @@ web3 Provider 实例
 - 类型： getContract(address: string, // 合约地址 ABI: any,library: any,account?: string): Contract
 - 创建合约
 
-### hooks/useAccountOperation 文件
+## hooks/useAccountOperation
 
 1. useAccountOperation
 
@@ -104,26 +99,4 @@ web3 Provider 实例
   - loading,
 - }
 
-### hooks、userContract 文件
-
-1. useContract
-
-- 类型 useContract(address: string | undefined,ABI: any,withSignerIfPossible?: boolean, // 签名): Contract | null
-- 创建合约
-
-2. useErcContract
-
-- erc20 合约
-
-3. useTokenContract
-
-- 类型：useTokenContract(tokenAddress?: string,withSignerIfPossible?: boolean)
-- erc20 用户合约（用户查询 token 合约。）
-
-# 打包报错
-
-打包报错 升级 @infte/utils @infte/web3-utils
-
-包
-"module": "dist/index.js",
-"types": "dist/index.d.ts",
+## hooks/userContract
