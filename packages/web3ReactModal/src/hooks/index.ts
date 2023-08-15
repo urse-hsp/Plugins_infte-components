@@ -107,8 +107,9 @@ export const useHashMessage = () => {
   };
 
   useEffect(() => {
+    const lists: any = hashLoadingAddress;
     // eslint-disable-next-line array-callback-return
-    hashLoadingAddress?.map((item) => {
+    lists.map((item: any) => {
       if (ethers.utils?.isHexString(item)) {
         HashMessage(item);
       } else {

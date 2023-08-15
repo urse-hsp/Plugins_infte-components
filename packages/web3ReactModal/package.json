@@ -1,6 +1,6 @@
 {
   "name": "@infte/web3modal-react",
-  "version": "1.0.77",
+  "version": "1.0.83",
   "description": "",
   "repository": {
     "type": "",
@@ -18,7 +18,7 @@
   "scripts": {
     "build": "father build",
     "dev": "father dev",
-    "public": "npm install && npm run build && npm version patch && npm publish --access public"
+    "public": "npm run build && npm version patch && npm publish --access public"
   },
   "dependencies": {
     "@infte/utils": "latest",

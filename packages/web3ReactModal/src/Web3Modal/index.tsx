@@ -319,10 +319,11 @@ interface ethereumClient extends initialState, storageInitialStates {
 interface Web3ModalType {
   children: ReactNode;
   ethereumClient: ethereumClient;
+  openHashStorage?: boolean; // 开启hash本地缓存
 }
 
 export function Web3Modal(props: Web3ModalType) {
-  const { children, ethereumClient } = props;
+  const { children, ethereumClient, openHashStorage = true } = props;
   const baseEthereumClient = {
     ...ethereumClient,
     locale:
@@ -330,11 +331,17 @@ export function Web3Modal(props: Web3ModalType) {
         ? ethereumClient?.locale
         : BaseLocale,
   };
+
+  const AppHashState_init = {
+    openStorage: openHashStorage,
+  };
+
   return (
     <Storage.Provider initialState={baseEthereumClient}>
       <Web3Hook.Provider initialState={baseEthereumClient}>
-        <AppHashState.Provider>{children}</AppHashState.Provider>
-        {/* {children} */}
+        <AppHashState.Provider initialState={AppHashState_init}>
+          {children}
+        </AppHashState.Provider>
       </Web3Hook.Provider>
     </Storage.Provider>
   );

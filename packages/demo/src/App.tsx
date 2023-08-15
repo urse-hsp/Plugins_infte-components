@@ -1,12 +1,36 @@
-import { useWeb3Provider, Web3Button } from '@infte/web3modal-react';
+import {
+  useAppHashState,
+  useWeb3Provider,
+  Web3Button,
+} from '@infte/web3modal-react';
+import { useEffect } from 'react';
 
 import './App.css';
 
 function App() {
   const { connect, account, disconnect, chainId, loading }: any =
     useWeb3Provider();
+  const {
+    hashAddress,
+    hashLoadingAddress,
+    setHashAddress,
+    setLoadingHashAddress,
+    changeHashAddress,
+  } = useAppHashState();
+  // console.log(hashAddress, 'hashAddress', hashLoadingAddress);
 
-  // const { getSigner } = useAccountOperation();
+  useEffect(() => {
+    // setHashAddress('0x573aa0650be86d1c8d254adf462d3077072649f885bd3bd39d97249ccb5650ca')
+
+    setLoadingHashAddress(
+      '0x573aa0650be86d1c8d254adf462d3077072649f885bd3bd39d97249ccb5650ca',
+    );
+    setTimeout(() => {
+      changeHashAddress(
+        '0x573aa0650be86d1c8d254adf462d3077072649f885bd3bd39d97249ccb5650ca',
+      );
+    }, 2000);
+  }, [account]);
 
   return (
     <div className="App">
