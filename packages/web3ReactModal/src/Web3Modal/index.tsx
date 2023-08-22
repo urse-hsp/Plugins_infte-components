@@ -24,7 +24,7 @@ const catchMsg: catchMsgType = {
   '-32002': 'Please confirm your actions in MetaMask',
 };
 
-interface web3HookType {
+export interface web3HookType {
   web3Provider: any; // Web3Provider
   WalletProider: any; // Provider 链实例
   chainId: number | undefined; // chainId

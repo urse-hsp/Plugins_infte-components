@@ -5,13 +5,21 @@ import { useWeb3Provider } from '../Web3Modal';
 import { useWeb3Storage } from '../Web3Modal/storage';
 import style from './index.module.scss';
 
-const list = Object.entries(WalletList).map(([label, value]): any => {
-  return {
-    label,
-    logo: value.logo,
-    key: label,
-  };
-});
+type WalletItem = {
+  label: string;
+  logo: string;
+  key: string;
+  onClick?: (done: () => any) => any;
+};
+const list: WalletItem[] = Object.entries(WalletList).map(
+  ([label, value]): any => {
+    return {
+      label,
+      logo: value.logo,
+      key: label,
+    };
+  },
+);
 
 type ConnectButtonProps = ButtonProps;
 export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
@@ -40,9 +48,10 @@ type Web3ButtonProps = {
   type?: 'connect' | 'change';
   btnProps?: ButtonProps;
   children?: any;
+  pushWalletlist?: WalletItem[];
 };
 export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
-  const { type = 'connect', btnProps = {} } = props;
+  const { type = 'connect', btnProps = {}, pushWalletlist = [] } = props;
   const { connect, active, loading } = useWeb3Provider();
   const { t, network_id, wallet_type }: any = useWeb3Storage();
   const RecommendWalletName = 'MetaMask';
@@ -76,7 +85,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
         className={style.walletModal}
       >
         <Space direction="vertical" style={{ width: '100%', margin: '15px 0' }}>
-          {list.map((item) => {
+          {[...list, ...pushWalletlist].map((item) => {
             const isSelect = walletType === item.label;
             return (
               <Button
@@ -94,6 +103,10 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                 type={isSelect ? 'dashed' : 'text'}
                 onClick={() => {
                   if (loading) return;
+                  if (item?.onClick) {
+                    item.onClick?.(handleCancel);
+                    return;
+                  }
                   connect(network_id, item.key, false, () => {
                     handleCancel();
                   });

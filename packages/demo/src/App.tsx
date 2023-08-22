@@ -4,12 +4,15 @@ import {
   Web3Button,
 } from '@infte/web3modal-react';
 import { useEffect } from 'react';
-
+// import {
+//   useWallet,
+// } from '@suiet/wallet-kit'
 import './App.css';
 
 function App() {
   const { connect, account, disconnect, chainId, loading }: any =
     useWeb3Provider();
+
   const {
     hashAddress,
     hashLoadingAddress,
@@ -34,7 +37,20 @@ function App() {
 
   return (
     <div className="App">
-      <Web3Button />
+      <Web3Button
+        pushWalletlist={[
+          {
+            label: '123',
+            logo: 'https://tse3-mm.cn.bing.net/th/id/OIP-C.XpnLCXvNjh1PjkvAr-t6nAAAAA?w=194&h=194&c=7&r=0&o=5&pid=1.7',
+            key: '123',
+            onClick: (done) => {
+              console.log(123);
+              done();
+            },
+            // loading:true
+          },
+        ]}
+      />
       *****
       <Web3Button type="change" />
       {loading ? (
