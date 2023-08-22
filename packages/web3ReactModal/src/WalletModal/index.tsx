@@ -5,13 +5,13 @@ import { useWeb3Provider } from '../Web3Modal';
 import { useWeb3Storage } from '../Web3Modal/storage';
 import style from './index.module.scss';
 
-type WalletItem = {
+export type WalletItem = {
   label: string;
   logo: string;
   key: string;
   onClick?: (done: () => any) => any;
 };
-const list: WalletItem[] = Object.entries(WalletList).map(
+export const list: WalletItem[] = Object.entries(WalletList).map(
   ([label, value]): any => {
     return {
       label,
@@ -44,7 +44,7 @@ export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
   );
 };
 
-type Web3ButtonProps = {
+export type Web3ButtonProps = {
   type?: 'connect' | 'change';
   btnProps?: ButtonProps;
   children?: any;
