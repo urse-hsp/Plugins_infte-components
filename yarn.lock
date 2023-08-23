@@ -2029,6 +2029,10 @@
     "kolorist" "^1.6.0"
     "local-pkg" "^0.4.2"
 
+"@infte/hooks-react@file:D:\\study\\my\\infte\\Plugins_infte-components\\packages\\hooks":
+  "resolved" "file:packages/hooks"
+  "version" "0.0.2"
+
 "@infte/utils@file:D:\\study\\my\\infte\\Plugins_infte-components\\packages\\utils":
   "resolved" "file:packages/utils"
   "version" "1.0.2"
@@ -2514,10 +2518,10 @@
   dependencies:
     "bs58" "^5.0.0"
 
-"@mysten/sui.js@0.40.0":
-  "integrity" "sha512-PEGdMe+QgpIdDIpyO4/yb+CK4x3Hki+kYPbQ5n3DVsWyb2ztFwB+5oYdc7qG3QkniO1lnCrlSHqZ5mN+x3RzrQ=="
-  "resolved" "https://registry.npmjs.org/@mysten/sui.js/-/sui.js-0.40.0.tgz"
-  "version" "0.40.0"
+"@mysten/sui.js@^0.41.0", "@mysten/sui.js@0.41.0":
+  "integrity" "sha512-IVxlo7qoxDFsE/WiJiLW3gmqftS6QI7LrTHqsDs7YGsBd69cqp95RH3OerJ3Wrbl8bMsQyG+HByX3c3zN6G97A=="
+  "resolved" "https://registry.npmjs.org/@mysten/sui.js/-/sui.js-0.41.0.tgz"
+  "version" "0.41.0"
   dependencies:
     "@mysten/bcs" "0.7.3"
     "@noble/curves" "^1.1.0"
@@ -2530,10 +2534,10 @@
     "superstruct" "^1.0.3"
     "tweetnacl" "^1.0.3"
 
-"@mysten/sui.js@0.41.0":
-  "integrity" "sha512-IVxlo7qoxDFsE/WiJiLW3gmqftS6QI7LrTHqsDs7YGsBd69cqp95RH3OerJ3Wrbl8bMsQyG+HByX3c3zN6G97A=="
-  "resolved" "https://registry.npmjs.org/@mysten/sui.js/-/sui.js-0.41.0.tgz"
-  "version" "0.41.0"
+"@mysten/sui.js@0.40.0":
+  "integrity" "sha512-PEGdMe+QgpIdDIpyO4/yb+CK4x3Hki+kYPbQ5n3DVsWyb2ztFwB+5oYdc7qG3QkniO1lnCrlSHqZ5mN+x3RzrQ=="
+  "resolved" "https://registry.npmjs.org/@mysten/sui.js/-/sui.js-0.40.0.tgz"
+  "version" "0.40.0"
   dependencies:
     "@mysten/bcs" "0.7.3"
     "@noble/curves" "^1.1.0"
@@ -7075,6 +7079,7 @@
   "resolved" "file:packages/demo"
   "version" "0.1.0"
   dependencies:
+    "@mysten/sui.js" "^0.41.0"
     "@suiet/wallet-kit" "^0.2.18"
     "@testing-library/jest-dom" "^5.16.5"
     "@testing-library/react" "^13.4.0"

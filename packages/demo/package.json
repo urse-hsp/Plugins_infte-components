@@ -27,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "@mysten/sui.js": "^0.41.0",
     "@suiet/wallet-kit": "^0.2.18",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

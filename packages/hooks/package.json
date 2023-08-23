@@ -1,0 +1,16 @@
+{
+  "name": "@infte/hooks-react",
+  "version": "0.0.2",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "father build",
+    "dev": "father dev",
+    "public": "npm run build && npm version patch && npm publish --access public"
+  }
+}
