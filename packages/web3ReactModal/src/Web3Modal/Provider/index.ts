@@ -1,6 +1,6 @@
 import detectEthereumProvider from '@metamask/detect-provider';
 import { getProvider as getBitKeepProvider } from './BitKeep';
-import metamask from './images/metamask.png';
+import metamask from './images/metamask.svg';
 export type WalletType = 'MetaMask' | 'BitKeep' | string;
 
 export const WalletList: Record<

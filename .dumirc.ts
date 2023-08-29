@@ -10,4 +10,12 @@ export default defineConfig({
   //   { id: 'zh-CN', name: '中文' },
   //   { id: 'en-US', name: 'English' },
   // ],
+
+  // 🟢 换压缩器
+  //  jsMinifier: 'terser',
+
+  // 🟢 提高压缩产物版本 / web3包打包报错处理
+  jsMinifierOptions: {
+    target: ['chrome80', 'es2020'],
+  },
 });
