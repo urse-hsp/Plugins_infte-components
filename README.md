@@ -38,3 +38,7 @@ $ yarn run doctor
 ## LICENSE
 
 MIT
+
+远程仓库的 master 分支下有了 docs-dist 这个文件夹，里面就是打包编译之后的文件。我们接着在终端输入以下命令：
+
+git subtree push --prefix=docs-dist origin docs
