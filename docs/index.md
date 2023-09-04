@@ -1,4 +1,5 @@
 ---
+title: infte
 hero:
   title: infte
   description: pc组件，移动端组件，web3，utils工具包等
