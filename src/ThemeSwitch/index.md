@@ -1,9 +1,9 @@
 # ThemeSwitch
 
-This is an example component.123
+主题切换开关
 
 ```jsx
-import ThemeSwitch from './index.tsx';
+import { ThemeSwitch } from '@infte/components';
 import { useEffect, useState } from 'react';
 import { Button } from 'antd';
 

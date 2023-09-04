@@ -1,6 +1,6 @@
 {
   "name": "@infte/components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A react library developed with dumi",
   "license": "MIT",
   "main": "dist/index.js",
@@ -25,10 +25,11 @@
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "public": "npm run build && npm version patch && npm publish --access public",
+    "public": "npm version patch && npm publish --access public",
     "start": "npm run dev",
     "starta": "npm run dev",
-    "subtree": "git subtree push --prefix=docs-dist origin docs"
+    "subtree": "git subtree push --prefix=docs-dist origin doce",
+    "update docs": "npm run docs:build && npm run deploy"
   },
   "commitlint": {
     "extends": [

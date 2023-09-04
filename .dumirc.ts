@@ -1,5 +1,8 @@
 import { defineConfig } from 'dumi';
 
+// github page 静态资源404路径问题
+const repo = 'Plugins_infte-components'; // 项目名(也就是你的仓库名)
+
 export default defineConfig({
   outputPath: 'docs-dist',
   themeConfig: {
@@ -22,4 +25,7 @@ export default defineConfig({
   jsMinifierOptions: {
     target: ['chrome80', 'es2020'],
   },
+
+  base: process.env.NODE_ENV === 'production' ? `/${repo}/` : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? `/${repo}/` : '/',
 });

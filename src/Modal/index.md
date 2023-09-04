@@ -1,9 +1,9 @@
 # Modal
 
-This is an example component.123
+Modal 对话框
 
 ```jsx
-import Modal from './index.tsx';
+import { Modal } from '@infte/components';
 import { useEffect, useState } from 'react';
 import { Button } from 'antd';
 

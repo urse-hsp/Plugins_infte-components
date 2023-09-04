@@ -3,12 +3,13 @@
 ```tsx
 import { Button, Space } from 'antd';
 import { useEffect, useState } from 'react';
+
 import {
   Loader,
   Loading,
   LoadingElement,
   LoadingElementWrapper,
-} from './index.tsx';
+} from '@infte/components';
 
 export default () => {
   const [loading, setLoading] = useState(false);

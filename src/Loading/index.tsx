@@ -40,9 +40,11 @@ export const LoadingElementWrapper = React.createElement(
 export function Loader({
   size = '20px',
   stroke,
+  color = '#1677ff',
 }: {
   size?: string;
   stroke?: string;
+  color?: string;
 }) {
   return (
     <svg
@@ -61,9 +63,8 @@ export function Loader({
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        style={{ stroke: color }}
       />
     </svg>
   );
 }
-
-export default Loader;
