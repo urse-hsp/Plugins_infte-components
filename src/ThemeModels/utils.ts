@@ -38,7 +38,6 @@ function useAppUtils(
     ...defaultStates,
     ...customInitialStates,
   };
-  console.log(customInitialStates, 'customInitialStates');
 
   const [theme, setThemeProp] = useState<string>(initialStates.theme ?? '');
 
