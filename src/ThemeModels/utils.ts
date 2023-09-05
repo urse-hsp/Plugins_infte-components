@@ -1,6 +1,15 @@
-import { localStorage } from '@infte/utils';
+// import { localStorage } from '../../packages/utils/dist';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createContainer } from 'unstated-next';
+
+const STORAGE_PREFIX = '_';
+export function localStorage(key: string, value?: any): any {
+  if (value !== undefined) {
+    window.localStorage.setItem(STORAGE_PREFIX + key, value);
+    return;
+  }
+  return window.localStorage.getItem(STORAGE_PREFIX + key);
+}
 
 type themeColor = 'light' | 'dark';
 interface defaultStatesType {
