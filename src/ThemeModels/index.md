@@ -14,7 +14,9 @@
 - children: ReactNode;
 - ColorVariables?: (r: HTMLElement, token: GlobalToken) => any; // 配置 css 主题颜色变量
 - isFollowTheSystem?: boolean;
-- ...ConfigProviderProps/ConfigProvider 全局化配置参数一致
+- ...ConfigProviderProps / ConfigProvider 全局化配置参数一致
+
+## demo
 
 ```jsx
 import { ThemeConfigProvider } from '@infte/components';
