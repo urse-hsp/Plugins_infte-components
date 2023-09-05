@@ -2065,7 +2065,6 @@
     "@infte/utils" "latest"
     "@infte/web3-utils" "latest"
     "@metamask/detect-provider" "^2.0.0"
-    "unstated-next" "^1.1.0"
 
 "@ipld/car@^3.0.1", "@ipld/car@^3.2.3":
   "integrity" "sha512-rezKd+jk8AsTGOoJKqzfjLJ3WVft7NZNH95f0pfPbicROvzTyvHCNy567HzSUd6gRXZ9im29z5ZEv9Hw49jSYw=="
@@ -18307,7 +18306,7 @@
 
 "unstated-next@^1.1.0":
   "integrity" "sha512-AAn47ZncPvgBGOvMcn8tSRxsrqwf2VdAPxLASTuLJvZt4rhKfDvUkmYZLGfclImSfTVMv7tF4ynaVxin0JjDCA=="
-  "resolved" "https://registry.npmmirror.com/unstated-next/-/unstated-next-1.1.0.tgz"
+  "resolved" "https://registry.npmjs.org/unstated-next/-/unstated-next-1.1.0.tgz"
   "version" "1.1.0"
 
 "unzip-response@^2.0.1":

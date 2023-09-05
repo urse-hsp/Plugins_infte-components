@@ -23,7 +23,6 @@
   "dependencies": {
     "@infte/utils": "latest",
     "@infte/web3-utils": "latest",
-    "@metamask/detect-provider": "^2.0.0",
-    "unstated-next": "^1.1.0"
+    "@metamask/detect-provider": "^2.0.0"
   }
 }

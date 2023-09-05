@@ -7,4 +7,4 @@
 // } from './Loading';
 export * from './Loading';
 export { default as Modal } from './Modal';
-export { default as ThemeSwitch } from './ThemeSwitch';
+export { default as ThemeConfigProvider } from './ThemeModels';
