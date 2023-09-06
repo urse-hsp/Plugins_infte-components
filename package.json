@@ -1,6 +1,6 @@
 {
   "name": "@infte/components",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "A react library developed with dumi",
   "license": "MIT",
   "main": "dist/index.js",
