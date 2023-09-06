@@ -78,6 +78,6 @@ function useAppUtils(
 }
 
 const Utils = createContainer(useAppUtils);
-export const useUtils = Utils.useContainer;
+export const useTheme = Utils.useContainer;
 
 export default Utils;

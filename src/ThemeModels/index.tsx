@@ -6,7 +6,7 @@ import { ConfigProvider, GlobalToken, theme } from 'antd';
 import { ConfigProviderProps } from 'antd/es/config-provider';
 import React, { useLayoutEffect, type ReactNode } from 'react';
 import ThemeSwitch from './ThemeSwitch';
-import utils from './utils';
+import utils, { useTheme } from './useTheme';
 
 const { useToken } = theme;
 
@@ -55,8 +55,6 @@ const App: React.FC<AppPageType> = (props) => {
 
   return <>{props.children}</>;
 };
-
-export const themeColor = 'red';
 
 interface ThemeProps extends AppPageType, ConfigProviderProps {
   children: ReactNode;
@@ -111,4 +109,6 @@ const ThemeConfigProvider = (props: ThemeConfigProviderProps) => {
 };
 
 ThemeConfigProvider.ThemeSwitch = ThemeSwitch;
+
+export { useTheme };
 export default ThemeConfigProvider;

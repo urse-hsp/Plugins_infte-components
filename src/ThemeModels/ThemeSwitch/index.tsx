@@ -1,7 +1,7 @@
 import { theme } from 'antd';
 import classNames from 'classnames';
 import React from 'react';
-import { useUtils } from '../utils';
+import { useTheme } from '../useTheme';
 import dark_img from './images/dark.png';
 import light_img from './images/light.png';
 import style from './index.module.scss';
@@ -10,7 +10,7 @@ const { useToken } = theme;
 
 const ThemeSwitch = () => {
   const { token } = useToken();
-  const { setTheme, darkMode } = useUtils();
+  const { setTheme, darkMode } = useTheme();
   return (
     <div
       className={classNames(style.themeSwitch, 'cursor')}

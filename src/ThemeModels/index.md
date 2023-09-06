@@ -8,6 +8,7 @@
 
 - ThemeConfigProvider 包裹在最外层提供 Provider
 - ThemeSwitch 按钮进行切换黑夜与明亮
+- useTheme 控制主题切换，需要在注册的 ThemeConfigProvider 下使用
 
 ## 入参
 
@@ -20,20 +21,35 @@
 
 ```jsx
 import { ThemeConfigProvider } from '@infte/components';
+import { useTheme } from '@infte/components/dist/ThemeModels';
+
 import { useEffect, useState } from 'react';
 import { Button, Card, Space } from 'antd';
 
 const { ThemeSwitch } = ThemeConfigProvider;
+
+const App = () => {
+  const { setTheme, darkMode } = useTheme();
+  return (
+    <div>
+      <Button onClick={() => setTheme()}>
+        切换 {!darkMode ? '黑夜' : '明亮'}
+      </Button>
+    </div>
+  );
+};
 
 export default () => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
     <ThemeConfigProvider>
-      <div>
+      <Space>
         <ThemeSwitch />
-      </div>
-
+        <App />
+      </Space>
+      <br />
+      <br />
       <Space direction="vertical" size={16}>
         <Card
           title="Default size card"
