@@ -3,12 +3,7 @@ import { message } from 'antd';
 import { ethers } from 'ethers';
 import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { createContainer } from 'unstated-next';
-import config, {
-  WalletList,
-  WalletType,
-  type chainsType,
-  type contractsType,
-} from '../config';
+import config, { WalletList, WalletType, type chainsType } from '../config';
 import resources from '../locales';
 import { localeKeys } from '../locales/index';
 import AppHashState from './appHashState';
@@ -39,7 +34,7 @@ export interface web3HookType {
   ) => any;
   disconnect: () => any;
   networkChainsInfo: chainsType | undefined;
-  contracts: contractsType | undefined;
+  contracts: any;
 }
 
 type initialState = {

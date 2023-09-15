@@ -9,9 +9,6 @@ export type WalletType = WalletTypes;
 export const WalletList = WalletLists;
 
 export type dataType<T> = Record<string, T>;
-export interface contractsType {
-  social: string;
-}
 
 type Token = {
   name: string;
@@ -22,7 +19,7 @@ export interface chainsType {
   name: string;
   chainId: number;
   networkId: number;
-  contracts: contractsType;
+  contracts: any;
   explorers: any[];
   rpc: string[];
   nativeCurrency: Token;

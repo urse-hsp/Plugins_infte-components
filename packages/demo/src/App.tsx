@@ -1,5 +1,6 @@
 import {
   useAppHashState,
+  useSingleResult,
   useWeb3Provider,
   Web3Button,
 } from '@infte/web3modal-react';
@@ -34,6 +35,13 @@ function App() {
       );
     }, 2000);
   }, [account]);
+
+  const { web3Provider } = useWeb3Provider();
+  const getBalance = useSingleResult(web3Provider ?? undefined, 'getBalance', [
+    '0x77a0D5685Ed444b38e1e4f6198fe4D837F6c45F9',
+  ]); // 用户的余额
+
+  console.log(getBalance, 'getBalance123', web3Provider);
 
   return (
     <div className="App">

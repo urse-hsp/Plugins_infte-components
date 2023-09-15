@@ -45,14 +45,14 @@ export function useSingleResult(
   const { hashAddress } = useAppHashState();
   const [data, setData] = useState<MethodArg | undefined>(undefined);
 
-  const fragment = useMemo(
-    () => contract?.interface?.getFunction(methodName.trim()),
-    [contract, methodName],
-  );
+  // const fragment = useMemo(
+  //   () => contract?.interface?.getFunction(methodName.trim()),
+  //   [contract, methodName],
+  // );
 
   useEffect(() => {
     (async () => {
-      if (!fragment) return null;
+      if (!contract?.[methodName.trim()]) return null;
       try {
         const res = await contract?.[methodName.trim()](...(inputs ?? []));
         setData(res);

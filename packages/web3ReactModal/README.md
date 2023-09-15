@@ -17,7 +17,7 @@
      - name: string;
      - chainId: number;
      - networkId: number;
-     - contracts: contractsType;
+     - contracts: any;
      - explorers: any[];
      - location_id: number;
      - rpc: string[];
