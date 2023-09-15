@@ -24,7 +24,6 @@ export interface chainsType {
   networkId: number;
   contracts: contractsType;
   explorers: any[];
-  location_id: number;
   rpc: string[];
   nativeCurrency: Token;
 }
