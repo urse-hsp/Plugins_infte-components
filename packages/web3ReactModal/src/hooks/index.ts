@@ -66,11 +66,12 @@ export function useSingleResult(
 }
 
 interface implementResultProps {
-  singleContract: any;
-  params?: any[];
-  successText?: string;
-  success_fn?: () => void;
-  error_fn?: (err: any) => void;
+  singleContract: any; // 合约
+  params?: any[]; // 参数
+  successText?: string; // 成功文案
+  success_fn?: () => void; // 成功调用
+  error_fn?: (err: any) => void; // 失败调用
+  getHash?: (str: any) => void; // 立即执行函数返回hash
 }
 // message
 export const useHashMessage = () => {
@@ -125,6 +126,7 @@ export const useHashMessage = () => {
       successText = successText_msg,
       success_fn,
       error_fn,
+      getHash,
     } = props;
 
     if (!singleContract) return;
@@ -132,6 +134,7 @@ export const useHashMessage = () => {
     try {
       const res = await singleContract?.(...params);
       const hash = res?.hash;
+      getHash?.(hash);
       if (hash) {
         setLoadingHashAddress(hash);
         HashMessage(hash, success_fn, successText);
