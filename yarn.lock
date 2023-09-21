@@ -2067,7 +2067,7 @@
 
 "@infte/web3modal-react@file:D:\\study\\infte\\Plugins_infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.92"
+  "version" "1.0.94"
   dependencies:
     "@infte/utils" "latest"
     "@infte/web3-utils" "latest"
