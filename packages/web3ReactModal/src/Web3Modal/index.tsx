@@ -62,9 +62,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
   const [networkChainsInfo, setNetworkChainsInfo] = useState<
     chainsType | undefined
   >(undefined);
-  const [contracts, setContracts] = useState<contractsType | undefined>(
-    undefined,
-  );
+  const [contracts, setContracts] = useState<any | undefined>(undefined);
 
   const { wallet_type, network_id, setNetworkId, setWalletType, t } =
     useWeb3Storage();
