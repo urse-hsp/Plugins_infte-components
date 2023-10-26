@@ -90,16 +90,14 @@ const INVALID_CALL_STATE: ReturnState = {
 };
 // 状态
 export function toReturnState(
-  value: MethodArg | undefined = undefined,
+  value: MethodArg | boolean,
   methodName?: string,
 ): ReturnState {
-  if (!value) return INVALID_CALL_STATE;
+  if ((value ?? '') !== '') {
+    const obj_data = Object.entries(value)
+      .map((item) => item[1])
+      .some((item) => (item ?? '') !== ''); // (item ?? '') !== '' // 判断是否是对象，并且属性是否有值[兼容字符串等]
 
-  const obj_data = Object.entries(value)
-    .map((item) => item[1])
-    .some((item) => (item ?? '') !== ''); // (item ?? '') !== '' // 判断是否是对象，并且属性是否有值[兼容字符串等]
-
-  if (value) {
     const data: ReturnState = {
       loading: obj_data,
       error: false,
