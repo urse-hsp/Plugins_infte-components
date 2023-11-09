@@ -294,7 +294,6 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     WalletProider,
     chainId,
     account,
-    connect,
     networkChainsInfo,
     contracts,
     loading,
