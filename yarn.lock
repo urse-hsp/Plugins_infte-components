@@ -2073,7 +2073,7 @@
 
 "@infte/web3modal-react@file:D:\\study\\infte\\Plugins_infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.0.95"
+  "version" "1.0.96"
   dependencies:
     "@infte/utils" "latest"
     "@infte/web3-utils" "latest"
@@ -5409,6 +5409,11 @@
   "integrity" "sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ=="
   "resolved" "https://registry.npmmirror.com/big.js/-/big.js-5.2.2.tgz"
   "version" "5.2.2"
+
+"bignumber.js@^9.1.2":
+  "integrity" "sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug=="
+  "resolved" "https://registry.npmjs.org/bignumber.js/-/bignumber.js-9.1.2.tgz"
+  "version" "9.1.2"
 
 "binary-extensions@^2.0.0":
   "integrity" "sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA=="

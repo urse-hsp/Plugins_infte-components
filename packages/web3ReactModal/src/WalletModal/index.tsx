@@ -63,15 +63,20 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
     setIsModalOpen(false);
   };
 
+  const onClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    setIsModalOpen(true);
+  };
+
   return (
     <>
       {type === 'connect' && (
-        <ConnectButton {...btnProps} onClick={() => setIsModalOpen(true)}>
+        <ConnectButton {...btnProps} onClick={onClick}>
           {props?.children}
         </ConnectButton>
       )}
       {type === 'change' && (
-        <Button {...btnProps} onClick={() => setIsModalOpen(true)}>
+        <Button {...btnProps} onClick={onClick}>
           {t('Switch Wallet')}
         </Button>
       )}
