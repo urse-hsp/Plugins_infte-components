@@ -66,7 +66,7 @@ export function useSingleResult(
 
   useEffect(() => {
     if (JSON.stringify(inputs) !== JSON.stringify(inputs_)) {
-      setInputs(inputs_);
+      setInputs(inputs ?? []);
       getVlues();
     }
   }, [inputs]);
