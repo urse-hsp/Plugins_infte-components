@@ -44,14 +44,12 @@ export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
   );
 };
 
-export type Web3ButtonProps = {
-  type?: 'connect' | 'change';
-  btnProps?: ButtonProps;
+export interface Web3ButtonProps extends ButtonProps {
   children?: any;
   pushWalletlist?: WalletItem[];
-};
+}
 export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
-  const { type = 'connect', btnProps = {}, pushWalletlist = [] } = props;
+  const { pushWalletlist = [] } = props;
   const { connect, active, loading } = useWeb3Provider();
   const { t, network_id, wallet_type }: any = useWeb3Storage();
   const RecommendWalletName = 'MetaMask';
@@ -63,23 +61,12 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
     setIsModalOpen(false);
   };
 
-  const onClick = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation();
-    setIsModalOpen(true);
-  };
+  const newProps = props;
+  delete newProps.pushWalletlist;
 
   return (
     <>
-      {type === 'connect' && (
-        <ConnectButton {...btnProps} onClick={onClick}>
-          {props?.children}
-        </ConnectButton>
-      )}
-      {type === 'change' && (
-        <Button {...btnProps} onClick={onClick}>
-          {t('Switch Wallet')}
-        </Button>
-      )}
+      <ConnectButton {...newProps} onClick={() => setIsModalOpen(true)} />
 
       <Modal
         title={t('Connect Wallet')}

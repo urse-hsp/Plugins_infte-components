@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Web3Button />
       *****
-      <Web3Button type="change" />
+      <Web3Button  />
 
       <br/>
       <br/>

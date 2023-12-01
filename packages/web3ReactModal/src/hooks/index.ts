@@ -45,20 +45,35 @@ export function useSingleResult(
   const { hashAddress } = useAppHashState();
   const [data, setData] = useState<MethodArg | undefined>(undefined);
 
+  const [inputs_, setInputs] = useState<MethodArg[]>([]);
+
   // const fragment = useMemo(
   //   () => contract?.interface?.getFunction(methodName.trim()),
   //   [contract, methodName],
   // );
 
+  const getVlues = async () => {
+    if (!contract?.[methodName.trim()]) return null;
+    try {
+      const res = await contract?.[methodName.trim()](...(inputs ?? []));
+      setData(res);
+    } catch (error) {}
+  };
+
   useEffect(() => {
-    (async () => {
-      if (!contract?.[methodName.trim()]) return null;
-      try {
-        const res = await contract?.[methodName.trim()](...(inputs ?? []));
-        setData(res);
-      } catch (error) {}
-    })();
-  }, [contract, inputs?.length, hashAddress.length]);
+    getVlues();
+  }, [contract, methodName]);
+
+  useEffect(() => {
+    if (JSON.stringify(inputs) !== JSON.stringify(inputs_)) {
+      setInputs(inputs_);
+      getVlues();
+    }
+  }, [inputs]);
+
+  useEffect(() => {
+    getVlues();
+  }, [hashAddress.length]);
 
   return useMemo(() => {
     return toReturnState(data, methodName);

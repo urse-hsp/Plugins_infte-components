@@ -60,7 +60,7 @@ function App() {
         ]}
       />
       *****
-      <Web3Button type="change" />
+      <Web3Button />
       {loading ? (
         'loading'
       ) : (
