@@ -12,9 +12,10 @@ import { useWeb3Provider } from '../Web3Modal';
 
 import { ethers, type ethers as ethersType } from '@infte/web3-utils';
 import { useAppHashState } from '../Web3Modal/appHashState';
-type Contract = ethersType.Contract;
-
+export * from './useToken';
 export { useWeb3Provider };
+
+type Contract = ethersType.Contract;
 
 // to hash
 export const useEthScanPath = () => {

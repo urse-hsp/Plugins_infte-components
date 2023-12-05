@@ -47,9 +47,10 @@ export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
 export interface Web3ButtonProps extends ButtonProps {
   children?: any;
   pushWalletlist?: WalletItem[];
+  connectSuccessFn?: () => any;
 }
 export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
-  const { pushWalletlist = [] } = props;
+  const { pushWalletlist = [], connectSuccessFn } = props;
   const { connect, active, loading } = useWeb3Provider();
   const { t, network_id, wallet_type }: any = useWeb3Storage();
   const RecommendWalletName = 'MetaMask';
@@ -61,8 +62,9 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
     setIsModalOpen(false);
   };
 
-  const newProps = props;
-  delete newProps.pushWalletlist;
+  const newProps: any = props;
+  delete newProps?.pushWalletlist;
+  delete newProps?.connectSuccessFn;
 
   return (
     <>
@@ -101,6 +103,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                   }
                   connect(network_id, item.key, false, () => {
                     handleCancel();
+                    connectSuccessFn?.();
                   });
                 }}
                 loading={isSelect ? loading : false}

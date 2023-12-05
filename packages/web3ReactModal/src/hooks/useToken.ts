@@ -6,6 +6,7 @@ import { useSingleResult, useWeb3Provider } from './index';
 import { useTokenContract } from './userContract';
 
 export function useToken(tokenAddress?: string): ReturnState {
+  // const address = isAddress(tokenAddress);
   const TokenContract = useTokenContract(tokenAddress);
   const { symbol } = useSingleResult(TokenContract, 'symbol');
   const { decimals } = useSingleResult(TokenContract, 'decimals');
