@@ -45,26 +45,29 @@ export const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
 };
 
 export interface Web3ButtonProps extends ButtonProps {
-  children?: any;
-  pushWalletlist?: WalletItem[];
-  connectSuccessFn?: () => any;
+  connectsuccess?: () => any;
 }
 export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
-  const { pushWalletlist = [], connectSuccessFn } = props;
+  const { connectsuccess } = props;
   const { connect, active, loading } = useWeb3Provider();
   const { t, network_id, wallet_type }: any = useWeb3Storage();
   const RecommendWalletName = 'MetaMask';
   const walletType = wallet_type ? wallet_type : RecommendWalletName;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [props_, setProps] = useState({});
+  // useEffect(() => {
+  //   const newProps: any = {...props};
+  //   delete newProps['connectsuccess'];
+  //   setProps(newProps);
+  // }, [props]);
+
+  const newProps: any = { ...props };
+  delete newProps['connectsuccess'];
 
   const handleCancel = () => {
     if (loading) return;
     setIsModalOpen(false);
   };
-
-  const newProps: any = props;
-  delete newProps?.pushWalletlist;
-  delete newProps?.connectSuccessFn;
 
   return (
     <>
@@ -79,7 +82,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
         className={style.walletModal}
       >
         <Space direction="vertical" style={{ width: '100%', margin: '15px 0' }}>
-          {[...list, ...pushWalletlist].map((item) => {
+          {list.map((item) => {
             const isSelect = walletType === item.label;
             return (
               <Button
@@ -103,7 +106,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                   }
                   connect(network_id, item.key, false, () => {
                     handleCancel();
-                    connectSuccessFn?.();
+                    connectsuccess?.();
                   });
                 }}
                 loading={isSelect ? loading : false}
