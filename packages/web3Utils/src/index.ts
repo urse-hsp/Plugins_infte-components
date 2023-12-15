@@ -53,23 +53,23 @@ export function hash_formatter(
 export type ethScanPathType = 'transaction' | 'token' | 'address' | 'block';
 export function getEthScanPath(
   url: string,
-  data: string,
+  address: string,
   type: ethScanPathType,
 ): string {
   const prefix = url;
   switch (type) {
     case 'transaction': {
-      return `${prefix}/tx/${data}`;
+      return `${prefix}/tx/${address}`;
     }
     case 'token': {
-      return `${prefix}/token/${data}`;
+      return `${prefix}/token/${address}`;
     }
     case 'block': {
-      return `${prefix}/block/${data}`;
+      return `${prefix}/block/${address}`;
     }
     case 'address':
     default: {
-      return `${prefix}/address/${data}`;
+      return `${prefix}/address/${address}`;
     }
   }
 }

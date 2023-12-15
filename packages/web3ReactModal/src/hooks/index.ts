@@ -17,16 +17,21 @@ export { useWeb3Provider };
 
 type Contract = ethersType.Contract;
 
-// to hash
+// 当前链接链的浏览器地址 to hash
 export const useEthScanPath = () => {
   const { networkChainsInfo } = useWeb3Provider();
+
+  // 返回当前链接的地址 hash
   const link = (hash: string, type: ethScanPathType): string => {
     return getEthScanPath(networkChainsInfo?.explorers[0].url, hash, type);
   };
+
+  // 跳转到
   const blank = (hash: string, type: ethScanPathType) => {
     window.open(link(hash, type), '_blank');
   };
 
+  // 自定义路径跳转
   const details_blank = (url: string, hash: string, type: ethScanPathType) => {
     window.open(getEthScanPath(url, hash, type), '_blank');
   };
