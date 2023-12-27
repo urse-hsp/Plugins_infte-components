@@ -13,8 +13,9 @@ root.render(
   <Web3Modal
     ethereumClient={{
       locale: 'zh-cn',
-      network_id: 12306,
+      // network_id: 12306,
       chainsList: list,
+      // wallet_type: 'MetaMask',
     }}
   >
     <App />,

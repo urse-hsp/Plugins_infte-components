@@ -54,12 +54,6 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
   const RecommendWalletName = 'MetaMask';
   const walletType = wallet_type ? wallet_type : RecommendWalletName;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [props_, setProps] = useState({});
-  // useEffect(() => {
-  //   const newProps: any = {...props};
-  //   delete newProps['connectsuccess'];
-  //   setProps(newProps);
-  // }, [props]);
 
   const newProps: any = { ...props };
   delete newProps['connectsuccess'];
@@ -104,7 +98,7 @@ export const Web3Button: React.FC<Web3ButtonProps> = (props) => {
                     item.onClick?.(handleCancel);
                     return;
                   }
-                  connect(network_id, item.key, false, () => {
+                  connect(network_id, item.key, () => {
                     handleCancel();
                     connectsuccess?.();
                   });

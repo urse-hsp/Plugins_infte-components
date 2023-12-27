@@ -61,6 +61,7 @@ export function usePopupHooks(isVisible?: any, onClose?: any): popupType {
       notification.warning({
         message: '提示',
         description,
+        key: description,
       });
     };
 
@@ -119,6 +120,7 @@ export function usePopupHooks(isVisible?: any, onClose?: any): popupType {
         notification.warning({
           message: '提示',
           description: '请传入数据',
+          key: '请传入数据',
         });
       }
     }

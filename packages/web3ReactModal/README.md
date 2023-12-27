@@ -12,8 +12,8 @@
 参数
 
 1. ethereumClient
-   - locale?: 'en-us' | 'zh-cn' | 'zh-hk' | string; // 语言
-   - chainsList?: {
+   - locale?: 'en-us' | 'zh-cn' | 'zh-hk' | string; // 默认语言
+   - chainsList?: { // 支持的链列表
      - name: string;
      - chainId: number;
      - networkId: number;
@@ -23,11 +23,13 @@
      - rpc: string[];
      - nativeCurrency: Token;
    - }[]; // 支持的链
-   - reload?: boolean; // 刷新页面
-   - network_id?: number | string | null; // 默认链
+   - network_id?: number | string | null; // 默认链接的链
    - wallet_type?: WalletType = 'MetaMask' | 'BitKeep' | string;; // 指定钱包类-型，- 默认链接。不指定需要手动选择
 2. openHashStorage 开启校验哈希本地缓存
-3. children dom
+3. children
+
+- 其他配置：
+- 默认自动链接 同时传入 network_id 与 wallet_type 参数，打开 app 就会自动链接钱包
 
 ### useWeb3Storage
 

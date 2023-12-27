@@ -41,8 +41,6 @@ function App() {
     '0x77a0D5685Ed444b38e1e4f6198fe4D837F6c45F9',
   ]); // 用户的余额
 
-  console.log(getBalance, 'getBalance123', web3Provider);
-
   return (
     <div className="App">
       <Web3Button
@@ -65,26 +63,23 @@ function App() {
       />
       *****
       <Web3Button />
-      {loading ? (
-        'loading'
-      ) : (
-        <>
-          <button
-            onClick={() => {
-              connect?.(12306);
-            }}
-          >
-            12306
-          </button>
-          <button
-            onClick={() => {
-              connect?.(65);
-            }}
-          >
-            65
-          </button>
-        </>
-      )}
+      {loading && 'loading'}
+      <>
+        <button
+          onClick={() => {
+            connect?.(12306);
+          }}
+        >
+          12306
+        </button>
+        <button
+          onClick={() => {
+            connect?.(65);
+          }}
+        >
+          65
+        </button>
+      </>
       <button onClick={disconnect}>退出1</button>
       {account} ***** {chainId}
       --------------

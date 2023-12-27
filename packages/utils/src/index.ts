@@ -1,10 +1,14 @@
 const STORAGE_PREFIX = '_';
-export function localStorage(key: string, value?: any): any {
-  if (value !== undefined) {
-    window.localStorage.setItem(STORAGE_PREFIX + key, value);
+export function localStorage(
+  key: string,
+  value?: any,
+  type: 'localStorage' | 'sessionStorage' = 'localStorage',
+): any {
+  if ((value ?? '') !== '') {
+    window[type].setItem(STORAGE_PREFIX + key, value);
     return;
   }
-  return window.localStorage.getItem(STORAGE_PREFIX + key);
+  return window[type].getItem(STORAGE_PREFIX + key);
 }
 
 // 判断字节长度

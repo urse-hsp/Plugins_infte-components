@@ -2049,12 +2049,12 @@
 
 "@infte/utils@file:D:\\study\\infte\\Plugins_infte-components\\packages\\utils":
   "resolved" "file:packages/utils"
-  "version" "1.0.2"
+  "version" "1.0.4"
 
 "@infte/utils@latest":
-  "integrity" "sha512-IJDKFEYCksaRxUrbni5tMUaai4L34E8eqoJxs54lSzx6aHjxwqK3QYahwK6vwRwpJfkx62cPP0CZkimjUVODRg=="
-  "resolved" "https://registry.npmjs.org/@infte/utils/-/utils-1.0.0.tgz"
-  "version" "1.0.0"
+  "integrity" "sha512-yi3LoQOhKoMAzHbEHZuh9Q1f0Z9qKPvCz6Zy6aD1tftP0SVHJFMde6tSNqT5+d81acMonvhOdUHkifS9o2NfLQ=="
+  "resolved" "https://registry.npmjs.org/@infte/utils/-/utils-1.0.4.tgz"
+  "version" "1.0.4"
 
 "@infte/web3-utils@file:D:\\study\\infte\\Plugins_infte-components\\packages\\web3Utils":
   "resolved" "file:packages/web3Utils"
@@ -2073,7 +2073,7 @@
 
 "@infte/web3modal-react@file:D:\\study\\infte\\Plugins_infte-components\\packages\\web3ReactModal":
   "resolved" "file:packages/web3ReactModal"
-  "version" "1.1.7"
+  "version" "1.1.14"
   dependencies:
     "@infte/utils" "latest"
     "@infte/web3-utils" "latest"

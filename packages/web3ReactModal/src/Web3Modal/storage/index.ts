@@ -11,9 +11,9 @@ export const NETWORK_ID_NAME: any = 'network_id'; // 默认链
 export const WALLET_TYPE_NAME: any = 'wallet_type'; // 指定钱包类型，默认链接。不指定需要手动选择
 
 export type storageInitialStates = {
-  network_id?: number | string | null; // 默认链
+  network_id?: number | string | null; // 支持的链列表
   wallet_type?: WalletType; // 指定钱包类型，默认链接。不指定需要手动选择
-  locale?: localeKeys; // 语言
+  locale?: localeKeys; // 默认语言
 };
 
 interface StorageType {
