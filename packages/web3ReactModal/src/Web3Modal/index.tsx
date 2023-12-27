@@ -83,7 +83,7 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     setNetworkChainsInfo(data);
   };
   // 限制支持链
-  const getChainsInfo: chainsType | undefined | any = (chainId_: number) => {
+  const getChainsInfo = (chainId_: number): chainsType | undefined => {
     return chainsList.find((item: chainsType) => item?.networkId === chainId_);
   };
 
