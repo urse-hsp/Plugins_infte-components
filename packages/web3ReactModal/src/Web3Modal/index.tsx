@@ -145,10 +145,9 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
 
         // 更改为当前要链接的网络
         if (network_chainsId !== providerChainId) {
-          // 获取当前钱包已经链接的chainid是否是支持的网络
-          const chainsInfo = getChainsInfo(providerChainId);
-          // 不是支持网络改变NotSupport参数
-          if (!chainsInfo) {
+          // 获取当前钱包已经链接的chainid是否是支持的网络 不是支持网络改变NotSupport参数
+          const currentChain = getChainsInfo(providerChainId);
+          if (!currentChain) {
             setNotSupport(true);
           }
 
