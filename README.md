@@ -62,3 +62,11 @@ npm login 登录
 运行 npm unpublish 包名 --force 命令，即可从 npm 删除已发布的包。
 
 shaoping ggshaoping@gmail.com
+
+/\*\* \*/
+
+<!-- scripts脚本命令 -->
+
+"deploy": "gh-pages -d docs-dist", // 上传到 githunPage
+"docs:build": "dumi build", // 打包文档
+"update docs": "npm run docs:build && npm run deploy" // 打包文档并且更新 github 页面
