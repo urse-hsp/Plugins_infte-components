@@ -36,13 +36,56 @@ function App() {
     }, 2000);
   }, [account]);
 
-  const { web3Provider } = useWeb3Provider();
+  const { web3Provider, WalletProider: okxwallet } = useWeb3Provider();
   const getBalance = useSingleResult(web3Provider ?? undefined, 'getBalance', [
     '0x77a0D5685Ed444b38e1e4f6198fe4D837F6c45F9',
   ]); // 用户的余额
 
+  const onB = async () => {
+    try {
+      let res = await okxwallet?.bitcoin.getAccounts();
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const onB2 = async () => {
+    try {
+      await okxwallet.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0xf00' }],
+      });
+    } catch (switchError: any) {
+      // This error code indicates that the chain has not been added to OKX.
+      if (switchError.code === 4902) {
+        try {
+          await okxwallet.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+              {
+                chainId: '0xf00',
+                chainName: '...',
+                rpcUrls: ['https://...'] /* ... */,
+              },
+            ],
+          });
+        } catch (addError) {
+          // handle "add" error
+        }
+      }
+      // handle other "switch" errors
+    }
+  };
+
+  const oy = () => {
+    console.log('123');
+    connect(12306, 'OKX');
+  };
+
   return (
     <div className="App">
+      <button onClick={oy}>连接欧意</button>
       <Web3Button
         // pushWalletlist={[
         //   {
@@ -82,21 +125,10 @@ function App() {
       </>
       <button onClick={disconnect}>退出1</button>
       {account} ***** {chainId}
+      <button onClick={onB}>bit点击</button>
+      <button onClick={onB2}>evm点击</button>
       --------------
       {/* <div onClick={getSigner}>签名</div> */}
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }

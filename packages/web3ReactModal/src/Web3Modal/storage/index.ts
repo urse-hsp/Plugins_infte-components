@@ -36,16 +36,27 @@ function reducer(state: any, action: any) {
 function useStorage(customInitialStates?: storageInitialStates): StorageType {
   const data = JSON.parse(localStorage(WALLET_STORAGE) ?? '{}');
 
+  const getWallet = () => {
+    let wallet_ = '';
+    if (data?.[WALLET_TYPE_NAME]) {
+      wallet_ = data?.[WALLET_TYPE_NAME];
+    } else if (customInitialStates?.wallet_type) {
+      wallet_ = customInitialStates?.wallet_type;
+    } else {
+      wallet_ = config.BaseWalletType;
+    }
+    return wallet_;
+  };
+
   const initStates: storageInitialStates = {
     ...customInitialStates,
     [NETWORK_ID_NAME]:
       data?.[NETWORK_ID_NAME] ??
       customInitialStates?.network_id ??
       config.chainsList[0].chainId,
-    [WALLET_TYPE_NAME]: data?.[WALLET_TYPE_NAME]
-      ? data?.[WALLET_TYPE_NAME]
-      : customInitialStates?.wallet_type,
+    [WALLET_TYPE_NAME]: getWallet(),
   };
+
   const [state, dispatch] = useReducer(reducer, initStates);
   const { locale = config.BaseLocale } = initStates;
 

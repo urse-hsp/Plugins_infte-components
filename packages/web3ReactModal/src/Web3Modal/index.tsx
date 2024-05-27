@@ -213,14 +213,14 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
         const Account = await web3instance._getAddress(account); // ethers.utils.getAddress
 
         // set
-        setWeb3Provider(web3instance);
-        setWalletProider(providerInstance);
+        setWeb3Provider(web3instance); // web3实例
+        setWalletProider(providerInstance); // window钱包实例Proider
         setLoading(false);
 
-        setAccount(Account);
-        setWalletType(WALLET_TYPE);
-        setNetworkData(chainsInfo);
-        setNotSupport(false);
+        setAccount(Account); // 账户
+        setWalletType(WALLET_TYPE); // 钱包类型
+        setNetworkData(chainsInfo); // 网络数据
+        setNotSupport(false); // 不支持的网络
         fn?.();
         return null;
       } catch (e: any) {
@@ -257,7 +257,8 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     setChainId(undefined);
     setNetworkChainsInfo(undefined);
     setContracts(undefined);
-    setWalletType('');
+
+    setWalletType(''); // 删除连接的钱包
   };
 
   // 监听登录
