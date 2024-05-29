@@ -16,6 +16,7 @@ root.render(
       // network_id: 12306,
       chainsList: list,
       // wallet_type: 'MetaMask',
+      autoConnect: true,
     }}
   >
     <App />,

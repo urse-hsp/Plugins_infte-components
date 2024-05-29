@@ -29,7 +29,8 @@
 3. children
 
 - 其他配置：
-- 默认自动链接 同时传入 network_id 与 wallet_type 参数，打开 app 就会自动链接钱包
+- 默认自动链接 autoConnect,同时修传入默认连接的 network_id 与 wallet_type 参数，打开 app 就会自动链接钱包
+  - 默认 false 不进行连接
 
 ### useWeb3Storage
 

@@ -343,6 +343,7 @@ export const useWeb3Provider = Web3Hook.useContainer;
 
 interface ethereumClient extends initialState, storageInitialStates {
   locale?: localeKeys; // 语言
+  autoConnect?: boolean; // 自动连接
 }
 
 interface Web3ModalType {
@@ -353,12 +354,15 @@ interface Web3ModalType {
 
 export function Web3Modal(props: Web3ModalType) {
   const { children, ethereumClient, openHashStorage = true } = props;
+
+  const autoConnect_ = ethereumClient?.autoConnect ?? false;
   const baseEthereumClient = {
     ...ethereumClient,
     locale:
       ethereumClient?.locale && resources[ethereumClient?.locale]
         ? ethereumClient?.locale
         : BaseLocale,
+    autoConnect: autoConnect_,
   };
 
   const AppHashState_init = {

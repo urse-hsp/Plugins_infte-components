@@ -14,6 +14,7 @@ export type storageInitialStates = {
   network_id?: number | string | null; // 支持的链列表
   wallet_type?: WalletType; // 指定钱包类型，默认链接。不指定需要手动选择
   locale?: localeKeys; // 默认语言
+  autoConnect?: boolean; // 自动连接
 };
 
 interface StorageType {
@@ -24,30 +25,22 @@ interface StorageType {
   t: (str: string) => string;
 }
 
-function reducer(state: any, action: any) {
-  const data = {
-    ...state,
-    [action.type]: action.data,
-  };
-  localStorage(WALLET_STORAGE, JSON.stringify(data));
-  return { ...data };
-}
-
 function useStorage(customInitialStates?: storageInitialStates): StorageType {
-  const data = JSON.parse(localStorage(WALLET_STORAGE) ?? '{}');
+  const storageType_ = customInitialStates?.autoConnect
+    ? 'localStorage'
+    : 'sessionStorage';
+  const data = JSON.parse(
+    localStorage(WALLET_STORAGE, '', storageType_) ?? '{}',
+  );
 
-  // const getWallet = () => {
-  //   let wallet_ = '';
-  //   if (data?.[WALLET_TYPE_NAME]) {
-  //     wallet_ = data?.[WALLET_TYPE_NAME];
-  //   } else if (customInitialStates?.wallet_type) {
-  //     wallet_ = customInitialStates?.wallet_type;
-  //   } else {
-  //     // wallet_ = config.BaseWalletType; // 没有默认钱包，需要自己指定
-  //     wallet_ = '';
-  //   }
-  //   return wallet_;
-  // };
+  function reducer(state: any, action: any) {
+    const data = {
+      ...state,
+      [action.type]: action.data,
+    };
+    localStorage(WALLET_STORAGE, JSON.stringify(data), storageType_);
+    return { ...data };
+  }
 
   const initStates: storageInitialStates = {
     ...customInitialStates,
