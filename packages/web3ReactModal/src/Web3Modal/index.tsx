@@ -95,6 +95,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
     if (loading) {
       return;
     }
+    if (!WALLET_TYPE) {
+      message.error('Please select the wallet');
+      return;
+    }
 
     const network_chainsId: number = Number(CHAINS_ID);
     // 当前链当前钱包不做操作

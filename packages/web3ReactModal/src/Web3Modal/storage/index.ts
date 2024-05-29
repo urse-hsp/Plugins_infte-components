@@ -36,17 +36,18 @@ function reducer(state: any, action: any) {
 function useStorage(customInitialStates?: storageInitialStates): StorageType {
   const data = JSON.parse(localStorage(WALLET_STORAGE) ?? '{}');
 
-  const getWallet = () => {
-    let wallet_ = '';
-    if (data?.[WALLET_TYPE_NAME]) {
-      wallet_ = data?.[WALLET_TYPE_NAME];
-    } else if (customInitialStates?.wallet_type) {
-      wallet_ = customInitialStates?.wallet_type;
-    } else {
-      wallet_ = config.BaseWalletType;
-    }
-    return wallet_;
-  };
+  // const getWallet = () => {
+  //   let wallet_ = '';
+  //   if (data?.[WALLET_TYPE_NAME]) {
+  //     wallet_ = data?.[WALLET_TYPE_NAME];
+  //   } else if (customInitialStates?.wallet_type) {
+  //     wallet_ = customInitialStates?.wallet_type;
+  //   } else {
+  //     // wallet_ = config.BaseWalletType; // 没有默认钱包，需要自己指定
+  //     wallet_ = '';
+  //   }
+  //   return wallet_;
+  // };
 
   const initStates: storageInitialStates = {
     ...customInitialStates,
@@ -54,7 +55,9 @@ function useStorage(customInitialStates?: storageInitialStates): StorageType {
       data?.[NETWORK_ID_NAME] ??
       customInitialStates?.network_id ??
       config.chainsList[0].chainId,
-    [WALLET_TYPE_NAME]: getWallet(),
+    [WALLET_TYPE_NAME]: data?.[WALLET_TYPE_NAME]
+      ? data?.[WALLET_TYPE_NAME]
+      : customInitialStates?.wallet_type,
   };
 
   const [state, dispatch] = useReducer(reducer, initStates);
