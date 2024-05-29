@@ -96,7 +96,10 @@ const useWeb3Hook = (props?: initialState): web3HookType => {
       return;
     }
     if (!WALLET_TYPE) {
-      message.error('Please select the wallet');
+      message.error({
+        content: 'Please select the wallet',
+        key: 'Please select the wallet',
+      });
       return;
     }
 
