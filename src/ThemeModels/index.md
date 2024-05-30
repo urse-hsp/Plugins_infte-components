@@ -6,7 +6,8 @@
 
 ## 使用方法
 
-- ThemeConfigProvider 包裹在最外层提供 Provider
+- ThemeConfigProvider 控制组件库和 antd 组件库的主题等操作，基于 ConfigProvider 的二次封装，进行了白天黑夜切换的封装
+  ThemeSwitch 与 useTheme 等控制主题的参数 必须在 ThemeConfigProvider 组件下使用
 - ThemeSwitch 按钮进行切换黑夜与明亮
 - useTheme 控制主题切换，需要在注册的 ThemeConfigProvider 下使用
 
