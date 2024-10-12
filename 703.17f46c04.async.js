@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_infte_components=self.webpackChunk_infte_components||[]).push([[703],{93703:function(e,o,n){n.r(o),n.d(o,{Foo:function(){return u}});var f=n(67294),t=n(85893),s=function(c){return(0,t.jsx)("h4",{children:c.title})},u=s}}]);
