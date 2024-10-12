@@ -41,8 +41,6 @@ MIT
 
 远程仓库的 master 分支下有了 docs-dist 这个文件夹，里面就是打包编译之后的文件。我们接着在终端输入以下命令：
 
-git subtree push --prefix=docs-dist origin docs
-
 # From 1.0.0 -> 1.0.1
 
 npm version patch
@@ -66,6 +64,20 @@ shaoping ggshaoping@gmail.com
 /\*\* \*/
 
 <!-- scripts脚本命令 -->
+
+<!-- 方法一：根据docs-dist 创建gh-pages分支。 -->
+
+1. 打包
+   npm run build
+
+2. 提交代码到 github 远程仓库
+   git add .
+   git commit -m "test gh-pages"
+   git push origin master
+3. 生成 gh-pages 分支
+   git subtree push --prefix=docs-dist origin gh-pages
+
+<!-- 方法二：通关gh-pages创建分支 -->
 
 "deploy": "gh-pages -d docs-dist", // 上传到 githunPage
 "docs:build": "dumi build", // 打包文档

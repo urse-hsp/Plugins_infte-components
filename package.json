@@ -29,7 +29,7 @@
     "public": "npm version patch && npm publish --access public",
     "start": "npm run dev",
     "starta": "npm run dev",
-    "subtree": "git subtree push --prefix=docs-dist origin doce",
+    "subtree": "git subtree push --prefix=docs-dist origin docs",
     "update docs": "npm run docs:build && npm run deploy"
   },
   "commitlint": {
