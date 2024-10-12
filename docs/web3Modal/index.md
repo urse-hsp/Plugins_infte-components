@@ -206,7 +206,7 @@ web3 工具类函数
 - 类型：(value: any, isAddress = true): string
 - 判断地址是否正确
 
-<!-- ### urf8_fex = (str: any) -->
+### urf8_fex = (str: any)
 
 ### address_formatter
 

@@ -28,8 +28,7 @@
     "prepublishOnly": "father doctor && npm run build",
     "public": "npm version patch && npm publish --access public",
     "start": "npm run dev",
-    "starta": "npm run dev",
-    "subtree": "git subtree push --prefix=docs-dist origin docs",
+    "subtree": "git subtree push --prefix=docs-dist origin gh-pages",
     "update docs": "npm run docs:build && npm run deploy"
   },
   "commitlint": {

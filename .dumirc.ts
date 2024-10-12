@@ -26,6 +26,6 @@ export default defineConfig({
     target: ['chrome80', 'es2020'],
   },
 
-  base: process.env.NODE_ENV === 'production' ? `/${repo}/` : '/',
-  publicPath: process.env.NODE_ENV === 'production' ? `/${repo}/` : '/',
+  base: '/',
+  publicPath: '/',
 });
