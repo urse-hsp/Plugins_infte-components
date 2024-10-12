@@ -82,3 +82,5 @@ shaoping ggshaoping@gmail.com
 "deploy": "gh-pages -d docs-dist", // 上传到 githunPage
 "docs:build": "dumi build", // 打包文档
 "update docs": "npm run docs:build && npm run deploy" // 打包文档并且更新 github 页面
+
+方法一创建分支，方法二更新代码
